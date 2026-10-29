@@ -27,6 +27,10 @@ public final class ChargingSession {
     private long endEpochMillis = -1;
     private String workerName;
 
+    /** Starvation-guard bookkeeping, owned by PriorityScheduler and guarded by its lock. */
+    long overtakenSinceNanos = -1;
+    boolean guardReported;
+
     public ChargingSession(ChargingRequest request, long sequence, long arrivalNanos) {
         this.request = request;
         this.priority = request.priorityLevel();
