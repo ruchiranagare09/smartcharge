@@ -16,6 +16,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * {@code bays.tryAcquire()} inside it, so no thread ever waits for one resource while holding the
  * other (no hold-and-wait), and the acquisition order is fixed (no circular wait). Either both
  * the bay and the full power reservation are granted, or nothing is.
+ *
+ * Sources: the four deadlock conditions are from Coffman, Elphick and Shoshani (1971) "System
+ * Deadlocks", ACM Computing Surveys 3(2), pp. 67-78, https://doi.org/10.1145/356586.356588 ;
+ * tryAcquire() semantics (returns immediately, never blocks) are from the Java 17 Semaphore API,
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Semaphore.html
  */
 public final class StationResources {
 

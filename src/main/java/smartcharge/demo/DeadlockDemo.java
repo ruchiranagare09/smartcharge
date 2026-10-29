@@ -28,6 +28,13 @@ import smartcharge.core.StationResources;
  * {@link StationResources#tryAllocate}, which never blocks while holding a resource.
  *
  * Usage: DeadlockDemo [deadlock | fixed | both]
+ *
+ * Sources: deadlock conditions (mutual exclusion, hold-and-wait, no pre-emption, circular wait)
+ * from Coffman, Elphick and Shoshani (1971), https://doi.org/10.1145/356586.356588 . The JVM's
+ * findDeadlockedThreads() only detects cycles on object monitors and ownable synchronizers
+ * (Java 17 ThreadMXBean API), which is why a timeout watchdog is used to detect a cycle that
+ * involves a Semaphore:
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.management/java/lang/management/ThreadMXBean.html
  */
 public final class DeadlockDemo {
 

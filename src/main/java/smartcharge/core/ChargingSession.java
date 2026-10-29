@@ -15,6 +15,10 @@ import smartcharge.model.SessionState;
  * Lifecycle of one accepted request. Every state transition is synchronized on the session, so
  * cancellation, completion and billing are applied in one total order and an illegal transition
  * fails loudly instead of corrupting state.
+ *
+ * Source: cancellation uses a CountDownLatch timed await, which returns early once the latch is
+ * counted down (Java 17 CountDownLatch API):
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CountDownLatch.html
  */
 public final class ChargingSession {
 

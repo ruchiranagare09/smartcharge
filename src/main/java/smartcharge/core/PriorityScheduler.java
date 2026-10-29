@@ -30,6 +30,10 @@ import smartcharge.model.Priority;
  *    sizes) and is not reset if aging temporarily moves another request to the front.
  *
  * Lock order: scheduler lock -> StationResources power lock. Nothing acquires them the other way.
+ *
+ * Source: waiting uses a Condition of the ReentrantLock and re-checks state in a loop, because
+ * the Java 17 Condition API permits spurious wake-ups:
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/locks/Condition.html
  */
 public final class PriorityScheduler {
 
