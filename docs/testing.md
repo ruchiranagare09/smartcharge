@@ -24,7 +24,7 @@
 
 ## Results
 
-Source: `evidence/test-results.md` (Java 17.0.16, assertions on) and `evidence/test-console.txt`. Observed
+Source: `evidence/test-results.md` (Java 17.0.16, assertions on). Observed
 values are copied from that run; nothing below is predicted.
 
 | ID | Cat. | Scenario | Expected | Observed | Result |

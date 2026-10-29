@@ -31,7 +31,7 @@ Diagnostics also recorded for every run:
 
 ### Dataset A — final code, development checkout
 
-Source: `evidence/benchmark-summary-a.md`, `evidence/benchmark-runs-a.csv`, `evidence/benchmark-console.txt`.
+Source: `evidence/benchmark-summary-a.md`, `evidence/benchmark-runs-a.csv`.
 
 | Configuration | Total completion (sim-h) | Total completion (real s) | Avg wait (sim-min) | Max wait (sim-min) | Peak reserved (kW) | Peak bays | Completed | Peak live threads | Avg overrun (sim-min) |
 |---|---|---|---|---|---|---|---|---|---|
