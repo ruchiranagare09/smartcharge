@@ -1,0 +1,42 @@
+T01  NORMAL      PASS       139 ms  Standard-rate session completes and is billed once
+      observed: state=BILLED entries=1 total=7.0 charged=68.9 sim-min reserved=0 bays=0
+T02  NORMAL      PASS        68 ms  Fast-rate session completes and is billed once
+      observed: state=BILLED entries=1 peakReserved=22 kW charged=65.7 sim-min released=true
+T03  NORMAL      PASS       136 ms  Multiple simultaneous valid requests
+      observed: billed=8 peakBays=4 peakPower=28 kW entries=8 reconciled=true released=true
+T04  NORMAL      PASS       232 ms  Priority ordering with FIFO tie-break among equal priorities
+      observed: start order [BLK, F1, S1, S2, V1, V2]
+T05  EDGE        PASS        64 ms  Invalid and duplicate requests are rejected at intake
+      observed: 11/11 rejected; sessions created=1 (only OK1)
+T06  EDGE        PASS       132 ms  No free bay: fifth request waits for a released bay
+      observed: peakBays=4; 5th (R5) started at +60.9 ms, first release at +60.2 ms; all billed=true
+T07  EDGE        PASS       136 ms  Power exhausted while bays are free
+      observed: peakReserved=44 kW peakBays=2 (2 bays idle); 3rd started +61.9 ms, first release +61.2 ms
+T08  EDGE        PASS        64 ms  Cancellation before charging
+      observed: cancel()=true R2=CANCELLED started=false R2 billed kWh=0.0 entries=1 blocker=BILLED
+T09  EDGE        PASS        28 ms  Cancellation during charging
+      observed: cancel()=true state=CANCELLED reaction=1.6 ms entries=0 reserved=0 bays=0
+T10  EDGE        PASS         5 ms  Immediate shutdown while sessions are active
+      observed: charging at shutdown=4; terminated=true in 1.1 ms; cancelled=6/6; entries=0; reserved=0 kW; bays=0
+T11  EDGE        PASS       129 ms  Graceful shutdown while sessions are active
+      observed: terminated=true billed=6/6 entries=6 reserved=0 bays=0
+T12  EDGE        PASS        45 ms  Concurrent billing through the adapter
+      observed: entries=8001 (expected 8001) duplicatesIgnored=15 (expected 15) totalsExact=true
+T13  OBSERVATION OBSERVED    85 ms  Same concurrent load straight into the legacy service (no adapter)
+      observed: 5/5 trials showed lost entries, lost total updates or exceptions
+T14  EDGE        PASS        68 ms  Resources released after a billing exception
+      observed: RF=BILLING_FAILED RG=BILLED entries=1 reserved=0 kW bays=0 reconciled=true
+T15  EDGE        PASS         0 ms  Duplicate billing attempt is ignored
+      observed: first=BILLED second=DUPLICATE_IGNORED entries=1 total=7.0
+T16  EDGE        PASS         1 ms  Aging lifts a waiting visitor above a later fleet request
+      observed: selected at t=20: F; selected at t=65: V
+T17  EDGE        PASS         0 ms  Starvation guard bounds backfill past a blocked fast request
+      observed: selections at t=10,39,40,41,42: [S1, S2, none, F, S3]
+T18  EDGE        PASS       505 ms  Burst of the seeded workload with thread-per-request
+      observed: billed=200 peakBays=4 peakPower=58 kW reconciled=true threadsEnded=true released=true
+T19  EDGE        PASS      1034 ms  Deadlock-prone allocator deadlocks (separate demo)
+      observed: deadlock detected by watchdog; threads blocked
+T20  EDGE        PASS        63 ms  Corrected allocator under the same interleaving
+      observed: all threads finished; no deadlock
+
+TOTAL: 19 passed, 0 failed, 1 observations. Report: evidence/test-results.md

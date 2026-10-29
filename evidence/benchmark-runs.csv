@@ -1,0 +1,13 @@
+config,run,requests,completed,cancelled,billing_failed,completion_sim_min,completion_real_ms,avg_wait_sim_min,max_wait_sim_min,avg_wait_p1,avg_wait_p2,avg_wait_p3,peak_reserved_kw,peak_active_bays,reconciled,guard_activations,constraints_ok,avg_overrun_sim_min,peak_live_threads,workload_fingerprint
+pool-1,1,200,200,0,0,31799.2,31799.2,12189.3,24480.9,10252.6,12241.5,12843.0,22,1,true,0,true,3.588,8,b6cf65b335fdff82
+pool-4,1,200,200,0,0,8095.7,8095.7,610.8,1097.3,540.0,606.2,638.3,58,4,true,0,true,3.643,11,b6cf65b335fdff82
+pool-16,1,200,200,0,0,8088.5,8088.5,613.2,1086.7,537.8,611.3,640.9,58,4,true,0,true,3.626,23,b6cf65b335fdff82
+thread-per-request,1,200,200,0,0,8132.3,8132.3,609.5,1089.5,538.8,597.6,640.9,58,4,true,0,true,3.418,39,b6cf65b335fdff82
+pool-1,2,200,200,0,0,31760.1,31760.1,12167.6,24448.2,10233.3,12220.6,12820.0,22,1,true,0,true,3.431,8,b6cf65b335fdff82
+pool-4,2,200,200,0,0,8079.1,8079.1,601.4,1084.6,532.6,596.6,628.4,58,4,true,0,true,3.344,11,b6cf65b335fdff82
+pool-16,2,200,200,0,0,8080.5,8080.5,611.6,1091.9,534.7,610.5,639.3,58,4,true,0,true,3.538,23,b6cf65b335fdff82
+thread-per-request,2,200,200,0,0,8088.0,8088.0,611.0,1094.5,540.6,606.5,638.3,58,4,true,0,true,3.574,39,b6cf65b335fdff82
+pool-1,3,200,200,0,0,31809.4,31809.4,12192.9,24495.5,10256.1,12245.9,12846.0,22,1,true,0,true,3.682,8,b6cf65b335fdff82
+pool-4,3,200,200,0,0,8095.3,8095.3,610.2,1097.3,539.2,606.0,637.5,58,4,true,0,true,3.709,11,b6cf65b335fdff82
+pool-16,3,200,200,0,0,8070.5,8070.5,602.3,1085.6,533.2,597.3,629.4,58,4,true,0,true,3.238,23,b6cf65b335fdff82
+thread-per-request,3,200,200,0,0,8083.5,8083.5,606.0,1086.6,548.2,599.8,629.8,58,4,true,1,true,3.336,39,b6cf65b335fdff82

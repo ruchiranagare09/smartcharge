@@ -1,0 +1,29 @@
+21:53:37.960 [test-main] Station started: mode=pool-16 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+21:53:37.960 [test-main] QUEUED R1(P2,STANDARD,7.0kWh) account=ACC-R1 seq=1
+21:53:37.960 [test-main] QUEUED R2(P2,STANDARD,7.0kWh) account=ACC-R2 seq=2
+21:53:37.961 [test-main] QUEUED R3(P2,STANDARD,7.0kWh) account=ACC-R3 seq=3
+21:53:37.961 [test-main] QUEUED R4(P2,STANDARD,7.0kWh) account=ACC-R4 seq=4
+21:53:37.961 [test-main] QUEUED R5(P2,STANDARD,7.0kWh) account=ACC-R5 seq=5
+21:53:37.961 [test-main] SHUTDOWN requested (GRACEFUL)
+21:53:37.961 [worker-1] START R1(P2,STANDARD,7.0kWh) bay+7 kW waited=0.3 sim-min [bays 1/4, 7/60 kW]
+21:53:37.961 [worker-2] START R2(P2,STANDARD,7.0kWh) bay+7 kW waited=0.4 sim-min [bays 2/4, 14/60 kW]
+21:53:37.961 [worker-3] START R3(P2,STANDARD,7.0kWh) bay+7 kW waited=0.4 sim-min [bays 3/4, 21/60 kW]
+21:53:37.962 [worker-4] START R4(P2,STANDARD,7.0kWh) bay+7 kW waited=1.0 sim-min [bays 4/4, 28/60 kW]
+21:53:38.021 [worker-1] COMPLETED R1(P2,STANDARD,7.0kWh) after 60.2 sim-min
+21:53:38.021 [worker-1] BILLED R1 account=ACC-R1 7.0 kWh
+21:53:38.022 [worker-1] RELEASED R1 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:38.022 [worker-1] START R5(P2,STANDARD,7.0kWh) bay+7 kW waited=60.9 sim-min [bays 4/4, 28/60 kW]
+21:53:38.022 [worker-3] COMPLETED R3(P2,STANDARD,7.0kWh) after 61.0 sim-min
+21:53:38.022 [worker-3] BILLED R3 account=ACC-R3 7.0 kWh
+21:53:38.022 [worker-3] RELEASED R3 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:38.023 [worker-2] COMPLETED R2(P2,STANDARD,7.0kWh) after 61.1 sim-min
+21:53:38.023 [worker-2] BILLED R2 account=ACC-R2 7.0 kWh
+21:53:38.023 [worker-2] RELEASED R2 bay-7 kW [bays 2/4, 14/60 kW]
+21:53:38.027 [worker-4] COMPLETED R4(P2,STANDARD,7.0kWh) after 64.9 sim-min
+21:53:38.027 [worker-4] BILLED R4 account=ACC-R4 7.0 kWh
+21:53:38.027 [worker-4] RELEASED R4 bay-7 kW [bays 1/4, 7/60 kW]
+21:53:38.083 [worker-1] COMPLETED R5(P2,STANDARD,7.0kWh) after 61.7 sim-min
+21:53:38.084 [worker-1] BILLED R5 account=ACC-R5 7.0 kWh
+21:53:38.084 [worker-1] RELEASED R5 bay-7 kW [bays 0/4, 0/60 kW]
+21:53:38.084 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+

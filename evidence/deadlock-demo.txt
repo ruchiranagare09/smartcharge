@@ -1,0 +1,43 @@
+=== DEADLOCK-PRONE VARIANT (naive allocator, inconsistent acquisition order) ===
+[std-1] holds 1 bay, now waiting for the power ledger lock
+[fast-1] holds the power ledger lock, now waiting for a bay
+[std-4] holds 1 bay, now waiting for the power ledger lock
+[std-3] holds 1 bay, now waiting for the power ledger lock
+[std-2] holds 1 bay, now waiting for the power ledger lock
+DETECTED: no progress within 2000 ms timeout; 5 of 5 threads still blocked
+Thread dump of demo threads:
+  "std-1" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+  "std-2" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+  "std-3" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+  "std-4" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+  "fast-1" state=WAITING waitingOn=java.util.concurrent.Semaphore$FairSync@5caf905d owner=null
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$1(DeadlockDemo.java:91)
+Resource-allocation graph (holds: resource -> thread, requests: thread -> resource):
+  bay permits x4 -> std-1, std-2, std-3, std-4      (all permits held)
+  power ledger   -> fast-1                          (lock held)
+  std-1..std-4   -> power ledger                    (blocked in lock())
+  fast-1         -> bay permit                      (blocked in acquire())
+Wait-for graph: std-k -> fast-1 (ledger owner) and fast-1 -> {std-1..std-4} (permit holders): CYCLE
+Coffman conditions: mutual exclusion (ledger lock, bay permits) | hold-and-wait (each thread holds one,
+  waits for the other) | no pre-emption (neither can be taken away) | circular wait (cycle above) => deadlock
+ThreadMXBean.findDeadlockedThreads() = null (a Semaphore has no owner thread, so the JVM detector cannot see this cycle; the timeout watchdog does)
+RESULT deadlock-prone variant: DEADLOCKED (threads never finished)
+=== CORRECTED VARIANT (atomic, non-blocking allocation, fixed order: power lock -> bay tryAcquire) ===
+[std-1] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[std-2] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[std-3] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[std-4] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[fast-1] allocation refused (no free bay) - holding NOTHING, will retry
+[std-3] charging done, released bay + 7 kW
+[std-4] charging done, released bay + 7 kW
+[std-1] charging done, released bay + 7 kW
+[fast-1] allocated bay + 22 kW after 9 refused attempt(s)
+[std-2] charging done, released bay + 7 kW
+Finished=true, final reserved=0 kW, active bays=0, peak reserved=29 kW, peak bays=4
+Why no deadlock: tryAcquire() never blocks while the power lock is held, and a refused request
+  keeps nothing, so hold-and-wait and circular wait cannot occur.
+RESULT corrected variant: all sessions completed, no deadlock

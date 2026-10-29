@@ -1,0 +1,44 @@
+21:53:37.518 [test-main] Station started: mode=pool-4 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+21:53:37.521 [submitter-3] QUEUED R3(P2,STANDARD,7.0kWh) account=ACC-R3 seq=2
+21:53:37.521 [submitter-1] QUEUED R1(P2,STANDARD,7.0kWh) account=ACC-R1 seq=1
+21:53:37.521 [submitter-4] QUEUED R4(P2,STANDARD,7.0kWh) account=ACC-R4 seq=4
+21:53:37.521 [submitter-8] QUEUED R8(P2,STANDARD,7.0kWh) account=ACC-R8 seq=5
+21:53:37.522 [submitter-5] QUEUED R5(P2,STANDARD,7.0kWh) account=ACC-R5 seq=6
+21:53:37.521 [submitter-2] QUEUED R2(P2,STANDARD,7.0kWh) account=ACC-R2 seq=3
+21:53:37.522 [submitter-6] QUEUED R6(P2,STANDARD,7.0kWh) account=ACC-R6 seq=7
+21:53:37.522 [worker-2] START R3(P2,STANDARD,7.0kWh) bay+7 kW waited=0.8 sim-min [bays 2/4, 14/60 kW]
+21:53:37.522 [worker-1] START R1(P2,STANDARD,7.0kWh) bay+7 kW waited=0.7 sim-min [bays 1/4, 7/60 kW]
+21:53:37.522 [submitter-7] QUEUED R7(P2,STANDARD,7.0kWh) account=ACC-R7 seq=8
+21:53:37.522 [worker-3] START R2(P2,STANDARD,7.0kWh) bay+7 kW waited=0.8 sim-min [bays 3/4, 21/60 kW]
+21:53:37.522 [worker-4] START R4(P2,STANDARD,7.0kWh) bay+7 kW waited=1.0 sim-min [bays 4/4, 28/60 kW]
+21:53:37.523 [test-main] SHUTDOWN requested (GRACEFUL)
+21:53:37.584 [worker-1] COMPLETED R1(P2,STANDARD,7.0kWh) after 62.4 sim-min
+21:53:37.585 [worker-1] BILLED R1 account=ACC-R1 7.0 kWh
+21:53:37.585 [worker-1] RELEASED R1 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:37.585 [worker-1] START R8(P2,STANDARD,7.0kWh) bay+7 kW waited=63.6 sim-min [bays 4/4, 28/60 kW]
+21:53:37.585 [worker-2] COMPLETED R3(P2,STANDARD,7.0kWh) after 63.3 sim-min
+21:53:37.585 [worker-2] BILLED R3 account=ACC-R3 7.0 kWh
+21:53:37.586 [worker-2] RELEASED R3 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:37.586 [worker-2] START R5(P2,STANDARD,7.0kWh) bay+7 kW waited=64.1 sim-min [bays 4/4, 28/60 kW]
+21:53:37.585 [worker-3] COMPLETED R2(P2,STANDARD,7.0kWh) after 63.1 sim-min
+21:53:37.586 [worker-3] BILLED R2 account=ACC-R2 7.0 kWh
+21:53:37.586 [worker-3] RELEASED R2 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:37.587 [worker-3] START R6(P2,STANDARD,7.0kWh) bay+7 kW waited=64.8 sim-min [bays 4/4, 28/60 kW]
+21:53:37.588 [worker-4] COMPLETED R4(P2,STANDARD,7.0kWh) after 65.3 sim-min
+21:53:37.588 [worker-4] BILLED R4 account=ACC-R4 7.0 kWh
+21:53:37.588 [worker-4] RELEASED R4 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:37.588 [worker-4] START R7(P2,STANDARD,7.0kWh) bay+7 kW waited=66.1 sim-min [bays 4/4, 28/60 kW]
+21:53:37.647 [worker-2] COMPLETED R5(P2,STANDARD,7.0kWh) after 61.8 sim-min
+21:53:37.648 [worker-2] BILLED R5 account=ACC-R5 7.0 kWh
+21:53:37.648 [worker-2] RELEASED R5 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:37.648 [worker-1] COMPLETED R8(P2,STANDARD,7.0kWh) after 63.4 sim-min
+21:53:37.649 [worker-1] BILLED R8 account=ACC-R8 7.0 kWh
+21:53:37.649 [worker-1] RELEASED R8 bay-7 kW [bays 2/4, 14/60 kW]
+21:53:37.649 [worker-4] COMPLETED R7(P2,STANDARD,7.0kWh) after 60.6 sim-min
+21:53:37.649 [worker-4] BILLED R7 account=ACC-R7 7.0 kWh
+21:53:37.649 [worker-4] RELEASED R7 bay-7 kW [bays 1/4, 7/60 kW]
+21:53:37.650 [worker-3] COMPLETED R6(P2,STANDARD,7.0kWh) after 63.0 sim-min
+21:53:37.650 [worker-3] BILLED R6 account=ACC-R6 7.0 kWh
+21:53:37.650 [worker-3] RELEASED R6 bay-7 kW [bays 0/4, 0/60 kW]
+21:53:37.650 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+BILLING billedSessions=8 legacyEntries=8 cancelled=0 cancelledBilled=false totalsMatch=true duplicatesIgnored=0 billingFailures=0 => RECONCILED

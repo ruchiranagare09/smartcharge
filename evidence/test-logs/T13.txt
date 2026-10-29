@@ -1,0 +1,5 @@
+trial 1: entries=7035/8000 summedTotals=7678/8000 exceptions=0 corrupted=true
+trial 2: entries=7825/8000 summedTotals=7953/8000 exceptions=0 corrupted=true
+trial 3: entries=7954/8000 summedTotals=7971/8000 exceptions=0 corrupted=true
+trial 4: entries=7989/8000 summedTotals=7994/8000 exceptions=0 corrupted=true
+trial 5: entries=7866/8000 summedTotals=7922/8000 exceptions=0 corrupted=true

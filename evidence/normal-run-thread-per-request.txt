@@ -1,0 +1,1050 @@
+21:53:26.824 [main] Workload: 200 requests, seed=42, fingerprint=b6cf65b335fdff82, assertions=true
+21:53:26.833 [main] Station started: mode=thread-per-request bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+21:53:26.887 [intake] QUEUED R0001(P3,FAST,14.5kWh) account=ACC-40 seq=1
+21:53:26.892 [intake] QUEUED R0002(P2,STANDARD,29.0kWh) account=ACC-11 seq=2
+21:53:26.895 [req-thread-2] START R0001(P3,FAST,14.5kWh) bay+22 kW waited=6.1 sim-min [bays 2/4, 29/60 kW]
+21:53:26.895 [req-thread-1] START R0002(P2,STANDARD,29.0kWh) bay+7 kW waited=0.0 sim-min [bays 1/4, 7/60 kW]
+21:53:26.938 [req-thread-2] COMPLETED R0001(P3,FAST,14.5kWh) after 45.8 sim-min
+21:53:26.942 [req-thread-2] BILLED R0001 account=ACC-40 14.5 kWh
+21:53:26.943 [req-thread-2] RELEASED R0001 bay-22 kW [bays 1/4, 7/60 kW]
+21:53:26.944 [intake] QUEUED R0003(P3,STANDARD,31.0kWh) account=ACC-31 seq=3
+21:53:26.945 [req-thread-3] START R0003(P3,STANDARD,31.0kWh) bay+7 kW waited=0.2 sim-min [bays 2/4, 14/60 kW]
+21:53:26.997 [intake] QUEUED R0004(P1,FAST,14.0kWh) account=ACC-08 seq=4
+21:53:26.998 [req-thread-4] START R0004(P1,FAST,14.0kWh) bay+22 kW waited=0.3 sim-min [bays 3/4, 36/60 kW]
+21:53:27.004 [intake] QUEUED R0005(P3,STANDARD,25.0kWh) account=ACC-16 seq=5
+21:53:27.004 [req-thread-5] START R0005(P3,STANDARD,25.0kWh) bay+7 kW waited=0.2 sim-min [bays 4/4, 43/60 kW]
+21:53:27.005 [intake] QUEUED R0006(P3,FAST,12.0kWh) account=ACC-37 seq=6
+21:53:27.029 [intake] QUEUED R0007(P3,STANDARD,22.0kWh) account=ACC-33 seq=7
+21:53:27.034 [intake] QUEUED R0008(P3,FAST,18.0kWh) account=ACC-22 seq=8
+21:53:27.038 [req-thread-4] COMPLETED R0004(P1,FAST,14.0kWh) after 40.8 sim-min
+21:53:27.039 [req-thread-4] BILLED R0004 account=ACC-08 14.0 kWh
+21:53:27.039 [req-thread-4] RELEASED R0004 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.039 [req-thread-7] START R0006(P3,FAST,12.0kWh) bay+22 kW waited=33.4 sim-min [bays 4/4, 43/60 kW]
+21:53:27.050 [intake] QUEUED R0009(P2,STANDARD,21.5kWh) account=ACC-01 seq=9
+21:53:27.077 [req-thread-7] COMPLETED R0006(P3,FAST,12.0kWh) after 37.9 sim-min
+21:53:27.077 [req-thread-7] BILLED R0006 account=ACC-37 12.0 kWh
+21:53:27.077 [req-thread-7] RELEASED R0006 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.077 [req-thread-9] START R0007(P3,STANDARD,22.0kWh) bay+7 kW waited=47.6 sim-min [bays 4/4, 28/60 kW]
+21:53:27.081 [intake] QUEUED R0010(P1,FAST,32.5kWh) account=ACC-40 seq=10
+21:53:27.082 [monitor] STATUS queued[P1=1 P2=1 P3=1] activeBays=4/4 reserved=28/60 kW states={QUEUED=3, CHARGING=4, BILLED=3}
+21:53:27.090 [intake] QUEUED R0011(P1,FAST,35.5kWh) account=ACC-37 seq=11
+21:53:27.116 [intake] QUEUED R0012(P1,STANDARD,27.0kWh) account=ACC-07 seq=12
+21:53:27.149 [req-thread-1] COMPLETED R0002(P2,STANDARD,29.0kWh) after 257.0 sim-min
+21:53:27.149 [req-thread-1] BILLED R0002 account=ACC-11 29.0 kWh
+21:53:27.149 [req-thread-1] RELEASED R0002 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.150 [req-thread-8] START R0008(P3,FAST,18.0kWh) bay+22 kW waited=115.1 sim-min [bays 4/4, 43/60 kW]
+21:53:27.150 [intake] QUEUED R0013(P2,STANDARD,33.0kWh) account=ACC-07 seq=13
+21:53:27.164 [intake] QUEUED R0014(P1,FAST,15.0kWh) account=ACC-13 seq=14
+21:53:27.202 [req-thread-8] COMPLETED R0008(P3,FAST,18.0kWh) after 52.5 sim-min
+21:53:27.202 [req-thread-8] BILLED R0008 account=ACC-22 18.0 kWh
+21:53:27.202 [req-thread-8] RELEASED R0008 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.202 [req-thread-11] START R0009(P2,STANDARD,21.5kWh) bay+7 kW waited=152.0 sim-min [bays 4/4, 28/60 kW]
+21:53:27.215 [req-thread-3] COMPLETED R0003(P3,STANDARD,31.0kWh) after 271.0 sim-min
+21:53:27.216 [req-thread-3] BILLED R0003 account=ACC-31 31.0 kWh
+21:53:27.216 [req-thread-3] RELEASED R0003 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.216 [req-thread-10] START R0010(P1,FAST,32.5kWh) bay+22 kW waited=135.3 sim-min [bays 4/4, 43/60 kW]
+21:53:27.221 [intake] QUEUED R0015(P3,STANDARD,15.5kWh) account=ACC-33 seq=15
+21:53:27.222 [req-thread-5] COMPLETED R0005(P3,STANDARD,25.0kWh) after 217.8 sim-min
+21:53:27.222 [req-thread-5] BILLED R0005 account=ACC-16 25.0 kWh
+21:53:27.222 [req-thread-5] RELEASED R0005 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:27.222 [req-thread-13] START R0011(P1,FAST,35.5kWh) bay+22 kW waited=132.5 sim-min [bays 4/4, 58/60 kW]
+21:53:27.269 [req-thread-9] COMPLETED R0007(P3,STANDARD,22.0kWh) after 191.7 sim-min
+21:53:27.269 [req-thread-9] BILLED R0007 account=ACC-33 22.0 kWh
+21:53:27.269 [req-thread-9] RELEASED R0007 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:27.269 [req-thread-6] START R0012(P1,STANDARD,27.0kWh) bay+7 kW waited=153.0 sim-min [bays 4/4, 58/60 kW]
+21:53:27.280 [intake] QUEUED R0016(P3,FAST,32.5kWh) account=ACC-04 seq=16
+21:53:27.280 [intake] QUEUED R0017(P2,STANDARD,19.0kWh) account=ACC-22 seq=17
+21:53:27.283 [intake] QUEUED R0018(P3,STANDARD,29.5kWh) account=ACC-37 seq=18
+21:53:27.310 [req-thread-10] COMPLETED R0010(P1,FAST,32.5kWh) after 93.9 sim-min
+21:53:27.310 [req-thread-10] BILLED R0010 account=ACC-40 32.5 kWh
+21:53:27.310 [req-thread-10] RELEASED R0010 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:27.310 [req-thread-18] START R0013(P2,STANDARD,33.0kWh) bay+7 kW waited=160.0 sim-min [bays 4/4, 43/60 kW]
+21:53:27.317 [intake] QUEUED R0019(P3,FAST,32.0kWh) account=ACC-05 seq=19
+21:53:27.317 [monitor] STATUS queued[P1=1 P2=1 P3=4] activeBays=4/4 reserved=43/60 kW states={QUEUED=5, CHARGING=4, BILLED=9}
+21:53:27.322 [req-thread-13] COMPLETED R0011(P1,FAST,35.5kWh) after 99.9 sim-min
+21:53:27.322 [req-thread-13] BILLED R0011 account=ACC-37 35.5 kWh
+21:53:27.322 [req-thread-13] RELEASED R0011 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.322 [req-thread-16] START R0014(P1,FAST,15.0kWh) bay+22 kW waited=157.9 sim-min [bays 4/4, 43/60 kW]
+21:53:27.368 [req-thread-16] COMPLETED R0014(P1,FAST,15.0kWh) after 45.9 sim-min
+21:53:27.368 [req-thread-16] BILLED R0014 account=ACC-13 15.0 kWh
+21:53:27.368 [req-thread-16] RELEASED R0014 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.368 [req-thread-14] START R0015(P3,STANDARD,15.5kWh) bay+7 kW waited=147.5 sim-min [bays 4/4, 28/60 kW]
+21:53:27.391 [req-thread-11] COMPLETED R0009(P2,STANDARD,21.5kWh) after 188.4 sim-min
+21:53:27.391 [req-thread-11] BILLED R0009 account=ACC-01 21.5 kWh
+21:53:27.391 [req-thread-11] RELEASED R0009 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.391 [req-thread-15] START R0016(P3,FAST,32.5kWh) bay+22 kW waited=111.1 sim-min [bays 4/4, 43/60 kW]
+21:53:27.451 [intake] QUEUED R0020(P1,STANDARD,14.5kWh) account=ACC-23 seq=20
+21:53:27.463 [intake] QUEUED R0021(P2,FAST,31.0kWh) account=ACC-13 seq=21
+21:53:27.482 [req-thread-15] COMPLETED R0016(P3,FAST,32.5kWh) after 91.1 sim-min
+21:53:27.482 [req-thread-15] BILLED R0016 account=ACC-04 32.5 kWh
+21:53:27.482 [req-thread-15] RELEASED R0016 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.482 [req-thread-12] START R0017(P2,STANDARD,19.0kWh) bay+7 kW waited=202.3 sim-min [bays 4/4, 28/60 kW]
+21:53:27.501 [req-thread-6] COMPLETED R0012(P1,STANDARD,27.0kWh) after 232.1 sim-min
+21:53:27.501 [req-thread-6] BILLED R0012 account=ACC-07 27.0 kWh
+21:53:27.501 [req-thread-6] RELEASED R0012 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.501 [req-thread-20] START R0018(P3,STANDARD,29.5kWh) bay+7 kW waited=218.4 sim-min [bays 4/4, 28/60 kW]
+21:53:27.506 [req-thread-14] COMPLETED R0015(P3,STANDARD,15.5kWh) after 138.0 sim-min
+21:53:27.506 [req-thread-14] BILLED R0015 account=ACC-33 15.5 kWh
+21:53:27.506 [req-thread-14] RELEASED R0015 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.506 [req-thread-17] START R0019(P3,FAST,32.0kWh) bay+22 kW waited=189.2 sim-min [bays 4/4, 43/60 kW]
+21:53:27.551 [intake] QUEUED R0022(P2,STANDARD,15.5kWh) account=ACC-24 seq=22
+21:53:27.561 [monitor] STATUS queued[P1=1 P2=2 P3=0] activeBays=4/4 reserved=43/60 kW states={QUEUED=3, CHARGING=4, BILLED=15}
+21:53:27.580 [intake] QUEUED R0023(P2,STANDARD,36.5kWh) account=ACC-03 seq=23
+21:53:27.598 [req-thread-18] COMPLETED R0013(P2,STANDARD,33.0kWh) after 287.9 sim-min
+21:53:27.598 [req-thread-17] COMPLETED R0019(P3,FAST,32.0kWh) after 91.7 sim-min
+21:53:27.598 [req-thread-18] BILLED R0013 account=ACC-07 33.0 kWh
+21:53:27.598 [req-thread-18] RELEASED R0013 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:27.598 [req-thread-17] BILLED R0019 account=ACC-05 32.0 kWh
+21:53:27.598 [req-thread-22] START R0020(P1,STANDARD,14.5kWh) bay+7 kW waited=147.3 sim-min [bays 4/4, 43/60 kW]
+21:53:27.598 [req-thread-17] RELEASED R0019 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.598 [req-thread-21] START R0021(P2,FAST,31.0kWh) bay+22 kW waited=135.0 sim-min [bays 4/4, 43/60 kW]
+21:53:27.623 [intake] QUEUED R0024(P1,FAST,15.5kWh) account=ACC-26 seq=24
+21:53:27.650 [req-thread-12] COMPLETED R0017(P2,STANDARD,19.0kWh) after 168.0 sim-min
+21:53:27.650 [req-thread-12] BILLED R0017 account=ACC-22 19.0 kWh
+21:53:27.651 [req-thread-12] RELEASED R0017 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:27.651 [req-thread-19] START R0022(P2,STANDARD,15.5kWh) bay+7 kW waited=99.5 sim-min [bays 4/4, 43/60 kW]
+21:53:27.656 [intake] QUEUED R0025(P3,STANDARD,9.0kWh) account=ACC-34 seq=25
+21:53:27.657 [intake] QUEUED R0026(P3,STANDARD,29.5kWh) account=ACC-28 seq=26
+21:53:27.684 [req-thread-21] COMPLETED R0021(P2,FAST,31.0kWh) after 86.0 sim-min
+21:53:27.684 [req-thread-21] BILLED R0021 account=ACC-13 31.0 kWh
+21:53:27.684 [req-thread-21] RELEASED R0021 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.685 [req-thread-24] START R0023(P2,STANDARD,36.5kWh) bay+7 kW waited=104.2 sim-min [bays 4/4, 28/60 kW]
+21:53:27.723 [req-thread-22] COMPLETED R0020(P1,STANDARD,14.5kWh) after 124.5 sim-min
+21:53:27.723 [intake] QUEUED R0027(P2,STANDARD,19.0kWh) account=ACC-32 seq=27
+21:53:27.723 [req-thread-22] BILLED R0020 account=ACC-23 14.5 kWh
+21:53:27.723 [req-thread-22] RELEASED R0020 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.723 [req-thread-23] START R0024(P1,FAST,15.5kWh) bay+22 kW waited=99.5 sim-min [bays 4/4, 43/60 kW]
+21:53:27.740 [intake] QUEUED R0028(P3,STANDARD,9.5kWh) account=ACC-06 seq=28
+21:53:27.758 [req-thread-20] COMPLETED R0018(P3,STANDARD,29.5kWh) after 256.8 sim-min
+21:53:27.758 [req-thread-20] BILLED R0018 account=ACC-37 29.5 kWh
+21:53:27.758 [req-thread-20] RELEASED R0018 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:27.758 [req-thread-27] START R0025(P3,STANDARD,9.0kWh) bay+7 kW waited=101.8 sim-min [bays 4/4, 43/60 kW]
+21:53:27.765 [intake] QUEUED R0029(P2,STANDARD,35.0kWh) account=ACC-39 seq=29
+21:53:27.765 [req-thread-23] COMPLETED R0024(P1,FAST,15.5kWh) after 42.6 sim-min
+21:53:27.766 [req-thread-23] BILLED R0024 account=ACC-26 15.5 kWh
+21:53:27.766 [req-thread-23] RELEASED R0024 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:27.766 [req-thread-29] START R0026(P3,STANDARD,29.5kWh) bay+7 kW waited=109.1 sim-min [bays 4/4, 28/60 kW]
+21:53:27.788 [req-thread-19] COMPLETED R0022(P2,STANDARD,15.5kWh) after 137.7 sim-min
+21:53:27.788 [req-thread-19] BILLED R0022 account=ACC-24 15.5 kWh
+21:53:27.788 [req-thread-19] RELEASED R0022 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.788 [req-thread-28] START R0027(P2,STANDARD,19.0kWh) bay+7 kW waited=65.8 sim-min [bays 4/4, 28/60 kW]
+21:53:27.791 [intake] QUEUED R0030(P1,STANDARD,35.0kWh) account=ACC-07 seq=30
+21:53:27.799 [monitor] STATUS queued[P1=1 P2=1 P3=1] activeBays=4/4 reserved=28/60 kW states={QUEUED=3, CHARGING=4, BILLED=23}
+21:53:27.805 [intake] QUEUED R0031(P3,STANDARD,10.5kWh) account=ACC-04 seq=31
+21:53:27.831 [intake] QUEUED R0032(P2,STANDARD,27.5kWh) account=ACC-29 seq=32
+21:53:27.836 [req-thread-27] COMPLETED R0025(P3,STANDARD,9.0kWh) after 77.7 sim-min
+21:53:27.836 [req-thread-27] BILLED R0025 account=ACC-34 9.0 kWh
+21:53:27.836 [req-thread-27] RELEASED R0025 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.836 [req-thread-26] START R0028(P3,STANDARD,9.5kWh) bay+7 kW waited=95.8 sim-min [bays 4/4, 28/60 kW]
+21:53:27.920 [req-thread-26] COMPLETED R0028(P3,STANDARD,9.5kWh) after 83.4 sim-min
+21:53:27.920 [req-thread-26] BILLED R0028 account=ACC-06 9.5 kWh
+21:53:27.920 [req-thread-26] RELEASED R0028 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.920 [req-thread-30] START R0029(P2,STANDARD,35.0kWh) bay+7 kW waited=154.3 sim-min [bays 4/4, 28/60 kW]
+21:53:27.956 [req-thread-28] COMPLETED R0027(P2,STANDARD,19.0kWh) after 167.5 sim-min
+21:53:27.956 [req-thread-28] BILLED R0027 account=ACC-32 19.0 kWh
+21:53:27.956 [req-thread-28] RELEASED R0027 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.956 [req-thread-25] START R0030(P1,STANDARD,35.0kWh) bay+7 kW waited=165.5 sim-min [bays 4/4, 28/60 kW]
+21:53:27.978 [intake] QUEUED R0033(P1,STANDARD,24.0kWh) account=ACC-04 seq=33
+21:53:27.999 [req-thread-24] COMPLETED R0023(P2,STANDARD,36.5kWh) after 314.7 sim-min
+21:53:27.999 [req-thread-24] BILLED R0023 account=ACC-03 36.5 kWh
+21:53:27.999 [req-thread-24] RELEASED R0023 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:27.999 [req-thread-32] START R0031(P3,STANDARD,10.5kWh) bay+7 kW waited=194.7 sim-min [bays 4/4, 28/60 kW]
+21:53:28.007 [intake] QUEUED R0034(P3,STANDARD,39.0kWh) account=ACC-10 seq=34
+21:53:28.024 [req-thread-29] COMPLETED R0026(P3,STANDARD,29.5kWh) after 258.0 sim-min
+21:53:28.024 [req-thread-29] BILLED R0026 account=ACC-28 29.5 kWh
+21:53:28.024 [req-thread-29] RELEASED R0026 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.024 [req-thread-31] START R0032(P2,STANDARD,27.5kWh) bay+7 kW waited=192.4 sim-min [bays 4/4, 28/60 kW]
+21:53:28.028 [intake] QUEUED R0035(P1,FAST,8.5kWh) account=ACC-04 seq=35
+21:53:28.041 [monitor] STATUS queued[P1=2 P2=0 P3=1] activeBays=4/4 reserved=28/60 kW states={QUEUED=3, CHARGING=4, BILLED=28}
+21:53:28.047 [intake] QUEUED R0036(P1,STANDARD,20.5kWh) account=ACC-30 seq=36
+21:53:28.066 [intake] QUEUED R0037(P1,STANDARD,11.0kWh) account=ACC-22 seq=37
+21:53:28.066 [intake] QUEUED R0038(P2,STANDARD,39.0kWh) account=ACC-35 seq=38
+21:53:28.094 [req-thread-32] COMPLETED R0031(P3,STANDARD,10.5kWh) after 94.6 sim-min
+21:53:28.094 [req-thread-32] BILLED R0031 account=ACC-04 10.5 kWh
+21:53:28.094 [req-thread-32] RELEASED R0031 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.094 [req-thread-33] START R0033(P1,STANDARD,24.0kWh) bay+7 kW waited=115.8 sim-min [bays 4/4, 28/60 kW]
+21:53:28.136 [intake] QUEUED R0039(P3,FAST,18.0kWh) account=ACC-25 seq=39
+21:53:28.137 [intake] QUEUED R0040(P2,FAST,28.0kWh) account=ACC-13 seq=40
+21:53:28.154 [intake] QUEUED R0041(P3,STANDARD,30.5kWh) account=ACC-37 seq=41
+21:53:28.176 [intake] QUEUED R0042(P1,STANDARD,33.5kWh) account=ACC-15 seq=42
+21:53:28.224 [req-thread-30] COMPLETED R0029(P2,STANDARD,35.0kWh) after 304.2 sim-min
+21:53:28.224 [req-thread-30] BILLED R0029 account=ACC-39 35.0 kWh
+21:53:28.224 [req-thread-30] RELEASED R0029 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.224 [req-thread-38] START R0034(P3,STANDARD,39.0kWh) bay+7 kW waited=217.5 sim-min [bays 4/4, 28/60 kW]
+21:53:28.242 [intake] QUEUED R0043(P1,STANDARD,26.5kWh) account=ACC-33 seq=43
+21:53:28.259 [req-thread-25] COMPLETED R0030(P1,STANDARD,35.0kWh) after 303.0 sim-min
+21:53:28.259 [req-thread-25] BILLED R0030 account=ACC-07 35.0 kWh
+21:53:28.259 [req-thread-25] RELEASED R0030 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.259 [req-thread-43] START R0035(P1,FAST,8.5kWh) bay+22 kW waited=231.4 sim-min [bays 4/4, 43/60 kW]
+21:53:28.265 [req-thread-31] COMPLETED R0032(P2,STANDARD,27.5kWh) after 241.0 sim-min
+21:53:28.265 [req-thread-31] BILLED R0032 account=ACC-29 27.5 kWh
+21:53:28.265 [req-thread-31] RELEASED R0032 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:28.265 [req-thread-40] START R0036(P1,STANDARD,20.5kWh) bay+7 kW waited=218.1 sim-min [bays 4/4, 43/60 kW]
+21:53:28.278 [intake] QUEUED R0044(P3,FAST,27.0kWh) account=ACC-37 seq=44
+21:53:28.278 [monitor] STATUS queued[P1=3 P2=2 P3=3] activeBays=4/4 reserved=43/60 kW states={QUEUED=7, CHARGING=4, BILLED=32}
+21:53:28.286 [req-thread-43] COMPLETED R0035(P1,FAST,8.5kWh) after 26.9 sim-min
+21:53:28.286 [req-thread-43] BILLED R0035 account=ACC-04 8.5 kWh
+21:53:28.286 [req-thread-43] RELEASED R0035 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:28.286 [req-thread-34] START R0037(P1,STANDARD,11.0kWh) bay+7 kW waited=220.9 sim-min [bays 4/4, 28/60 kW]
+21:53:28.303 [intake] QUEUED R0045(P1,STANDARD,11.0kWh) account=ACC-19 seq=45
+21:53:28.305 [req-thread-33] COMPLETED R0033(P1,STANDARD,24.0kWh) after 211.1 sim-min
+21:53:28.305 [req-thread-33] BILLED R0033 account=ACC-04 24.0 kWh
+21:53:28.305 [req-thread-33] RELEASED R0033 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.305 [req-thread-41] START R0038(P2,STANDARD,39.0kWh) bay+7 kW waited=239.7 sim-min [bays 4/4, 28/60 kW]
+21:53:28.339 [intake] QUEUED R0046(P2,STANDARD,21.5kWh) account=ACC-09 seq=46
+21:53:28.384 [req-thread-34] COMPLETED R0037(P1,STANDARD,11.0kWh) after 97.6 sim-min
+21:53:28.384 [req-thread-34] BILLED R0037 account=ACC-22 11.0 kWh
+21:53:28.385 [req-thread-34] RELEASED R0037 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.385 [req-thread-45] START R0039(P3,FAST,18.0kWh) bay+22 kW waited=248.2 sim-min [bays 4/4, 43/60 kW]
+21:53:28.390 [intake] QUEUED R0047(P3,FAST,30.0kWh) account=ACC-34 seq=47
+21:53:28.434 [req-thread-45] COMPLETED R0039(P3,FAST,18.0kWh) after 49.7 sim-min
+21:53:28.435 [req-thread-45] BILLED R0039 account=ACC-25 18.0 kWh
+21:53:28.435 [req-thread-45] RELEASED R0039 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:28.435 [req-thread-36] START R0040(P2,FAST,28.0kWh) bay+22 kW waited=298.0 sim-min [bays 4/4, 43/60 kW]
+21:53:28.442 [req-thread-40] COMPLETED R0036(P1,STANDARD,20.5kWh) after 177.4 sim-min
+21:53:28.443 [req-thread-40] BILLED R0036 account=ACC-30 20.5 kWh
+21:53:28.443 [req-thread-40] RELEASED R0036 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:28.443 [req-thread-46] START R0041(P3,STANDARD,30.5kWh) bay+7 kW waited=288.4 sim-min [bays 4/4, 43/60 kW]
+21:53:28.449 [intake] QUEUED R0048(P3,STANDARD,15.5kWh) account=ACC-10 seq=48
+21:53:28.488 [intake] QUEUED R0049(P2,STANDARD,25.0kWh) account=ACC-15 seq=49
+21:53:28.490 [intake] QUEUED R0050(P3,STANDARD,16.5kWh) account=ACC-03 seq=50
+21:53:28.511 [intake] QUEUED R0051(P2,FAST,22.0kWh) account=ACC-39 seq=51
+21:53:28.516 [req-thread-36] COMPLETED R0040(P2,FAST,28.0kWh) after 81.0 sim-min
+21:53:28.516 [req-thread-36] BILLED R0040 account=ACC-13 28.0 kWh
+21:53:28.516 [monitor] STATUS queued[P1=3 P2=3 P3=4] activeBays=4/4 reserved=43/60 kW states={QUEUED=10, CHARGING=3, BILLED=38}
+21:53:28.516 [req-thread-36] RELEASED R0040 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:28.516 [req-thread-47] START R0042(P1,STANDARD,33.5kWh) bay+7 kW waited=339.8 sim-min [bays 4/4, 28/60 kW]
+21:53:28.531 [intake] QUEUED R0052(P3,FAST,12.5kWh) account=ACC-15 seq=52
+21:53:28.539 [intake] QUEUED R0053(P3,FAST,28.0kWh) account=ACC-01 seq=53
+21:53:28.560 [req-thread-38] COMPLETED R0034(P3,STANDARD,39.0kWh) after 335.9 sim-min
+21:53:28.560 [req-thread-38] BILLED R0034 account=ACC-10 39.0 kWh
+21:53:28.560 [req-thread-38] RELEASED R0034 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.560 [req-thread-49] START R0043(P1,STANDARD,26.5kWh) bay+7 kW waited=318.4 sim-min [bays 4/4, 28/60 kW]
+21:53:28.565 [intake] QUEUED R0054(P3,STANDARD,8.5kWh) account=ACC-08 seq=54
+21:53:28.603 [intake] QUEUED R0055(P3,STANDARD,31.0kWh) account=ACC-34 seq=55
+21:53:28.644 [req-thread-41] COMPLETED R0038(P2,STANDARD,39.0kWh) after 338.4 sim-min
+21:53:28.644 [req-thread-41] BILLED R0038 account=ACC-35 39.0 kWh
+21:53:28.644 [req-thread-41] RELEASED R0038 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.644 [req-thread-55] START R0044(P3,FAST,27.0kWh) bay+22 kW waited=366.3 sim-min [bays 4/4, 43/60 kW]
+21:53:28.646 [intake] QUEUED R0056(P2,STANDARD,5.5kWh) account=ACC-24 seq=56
+21:53:28.693 [intake] QUEUED R0057(P3,STANDARD,22.0kWh) account=ACC-15 seq=57
+21:53:28.709 [req-thread-46] COMPLETED R0041(P3,STANDARD,30.5kWh) after 266.6 sim-min
+21:53:28.709 [req-thread-46] BILLED R0041 account=ACC-37 30.5 kWh
+21:53:28.710 [req-thread-46] RELEASED R0041 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:28.710 [req-thread-56] START R0045(P1,STANDARD,11.0kWh) bay+7 kW waited=406.5 sim-min [bays 4/4, 43/60 kW]
+21:53:28.723 [req-thread-55] COMPLETED R0044(P3,FAST,27.0kWh) after 78.9 sim-min
+21:53:28.723 [req-thread-55] BILLED R0044 account=ACC-37 27.0 kWh
+21:53:28.723 [req-thread-55] RELEASED R0044 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:28.723 [req-thread-53] START R0046(P2,STANDARD,21.5kWh) bay+7 kW waited=384.1 sim-min [bays 4/4, 28/60 kW]
+21:53:28.738 [intake] QUEUED R0058(P3,STANDARD,37.0kWh) account=ACC-35 seq=58
+21:53:28.754 [intake] QUEUED R0059(P3,STANDARD,34.0kWh) account=ACC-25 seq=59
+21:53:28.760 [monitor] STATUS queued[P1=0 P2=3 P3=10] activeBays=4/4 reserved=28/60 kW states={QUEUED=13, CHARGING=4, BILLED=42}
+21:53:28.772 [intake] QUEUED R0060(P1,FAST,21.0kWh) account=ACC-12 seq=60
+21:53:28.790 [req-thread-49] COMPLETED R0043(P1,STANDARD,26.5kWh) after 229.6 sim-min
+21:53:28.790 [req-thread-49] BILLED R0043 account=ACC-33 26.5 kWh
+21:53:28.790 [req-thread-49] RELEASED R0043 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.790 [req-thread-50] START R0047(P3,FAST,30.0kWh) bay+22 kW waited=399.8 sim-min [bays 4/4, 43/60 kW]
+21:53:28.807 [req-thread-47] COMPLETED R0042(P1,STANDARD,33.5kWh) after 291.3 sim-min
+21:53:28.807 [req-thread-47] BILLED R0042 account=ACC-15 33.5 kWh
+21:53:28.807 [req-thread-47] RELEASED R0042 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:28.807 [req-thread-42] START R0048(P3,STANDARD,15.5kWh) bay+7 kW waited=358.3 sim-min [bays 4/4, 43/60 kW]
+21:53:28.808 [intake] QUEUED R0061(P3,STANDARD,27.0kWh) account=ACC-29 seq=61
+21:53:28.809 [req-thread-56] COMPLETED R0045(P1,STANDARD,11.0kWh) after 99.2 sim-min
+21:53:28.809 [req-thread-56] BILLED R0045 account=ACC-19 11.0 kWh
+21:53:28.809 [req-thread-56] RELEASED R0045 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:28.809 [req-thread-52] START R0049(P2,STANDARD,25.0kWh) bay+7 kW waited=320.4 sim-min [bays 4/4, 43/60 kW]
+21:53:28.850 [intake] QUEUED R0062(P3,STANDARD,28.0kWh) account=ACC-08 seq=62
+21:53:28.851 [intake] QUEUED R0063(P3,FAST,24.5kWh) account=ACC-29 seq=63
+21:53:28.860 [intake] QUEUED R0064(P2,FAST,38.0kWh) account=ACC-10 seq=64
+21:53:28.877 [req-thread-50] COMPLETED R0047(P3,FAST,30.0kWh) after 86.9 sim-min
+21:53:28.877 [req-thread-50] BILLED R0047 account=ACC-34 30.0 kWh
+21:53:28.877 [req-thread-50] RELEASED R0047 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:28.877 [req-thread-51] START R0050(P3,STANDARD,16.5kWh) bay+7 kW waited=387.6 sim-min [bays 4/4, 28/60 kW]
+21:53:28.896 [intake] QUEUED R0065(P3,FAST,11.5kWh) account=ACC-35 seq=65
+21:53:28.897 [intake] QUEUED R0066(P2,FAST,29.5kWh) account=ACC-04 seq=66
+21:53:28.913 [req-thread-53] COMPLETED R0046(P2,STANDARD,21.5kWh) after 189.4 sim-min
+21:53:28.913 [req-thread-53] BILLED R0046 account=ACC-09 21.5 kWh
+21:53:28.913 [req-thread-53] RELEASED R0046 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:28.913 [req-thread-57] START R0051(P2,FAST,22.0kWh) bay+22 kW waited=401.9 sim-min [bays 4/4, 43/60 kW]
+21:53:28.945 [req-thread-42] COMPLETED R0048(P3,STANDARD,15.5kWh) after 138.0 sim-min
+21:53:28.946 [req-thread-42] BILLED R0048 account=ACC-10 15.5 kWh
+21:53:28.946 [req-thread-42] RELEASED R0048 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:28.946 [req-thread-48] START R0052(P3,FAST,12.5kWh) bay+22 kW waited=414.4 sim-min [bays 4/4, 58/60 kW]
+21:53:28.947 [intake] QUEUED R0067(P1,STANDARD,18.5kWh) account=ACC-04 seq=67
+21:53:28.952 [intake] QUEUED R0068(P2,FAST,36.0kWh) account=ACC-30 seq=68
+21:53:28.952 [intake] QUEUED R0069(P1,FAST,28.5kWh) account=ACC-40 seq=69
+21:53:28.964 [intake] QUEUED R0070(P3,FAST,16.0kWh) account=ACC-18 seq=70
+21:53:28.971 [intake] QUEUED R0071(P2,FAST,31.0kWh) account=ACC-40 seq=71
+21:53:28.974 [req-thread-57] COMPLETED R0051(P2,FAST,22.0kWh) after 60.9 sim-min
+21:53:28.974 [req-thread-57] BILLED R0051 account=ACC-39 22.0 kWh
+21:53:28.974 [req-thread-57] RELEASED R0051 bay-22 kW [bays 4/4, 58/60 kW]
+21:53:28.974 [req-thread-62] START R0053(P3,FAST,28.0kWh) bay+22 kW waited=435.1 sim-min [bays 4/4, 58/60 kW]
+21:53:28.983 [req-thread-48] COMPLETED R0052(P3,FAST,12.5kWh) after 37.6 sim-min
+21:53:28.983 [req-thread-48] BILLED R0052 account=ACC-15 12.5 kWh
+21:53:28.983 [req-thread-48] RELEASED R0052 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:28.983 [req-thread-66] START R0054(P3,STANDARD,8.5kWh) bay+7 kW waited=418.7 sim-min [bays 4/4, 43/60 kW]
+21:53:29.001 [monitor] STATUS queued[P1=3 P2=5 P3=9] activeBays=4/4 reserved=43/60 kW states={QUEUED=17, CHARGING=4, BILLED=50}
+21:53:29.023 [req-thread-52] COMPLETED R0049(P2,STANDARD,25.0kWh) after 214.5 sim-min
+21:53:29.023 [req-thread-52] BILLED R0049 account=ACC-15 25.0 kWh
+21:53:29.024 [req-thread-52] RELEASED R0049 bay-7 kW [bays 4/4, 43/60 kW]
+21:53:29.024 [req-thread-51] COMPLETED R0050(P3,STANDARD,16.5kWh) after 146.3 sim-min
+21:53:29.024 [req-thread-61] START R0055(P3,STANDARD,31.0kWh) bay+7 kW waited=420.1 sim-min [bays 4/4, 43/60 kW]
+21:53:29.024 [req-thread-51] BILLED R0050 account=ACC-03 16.5 kWh
+21:53:29.024 [req-thread-51] RELEASED R0050 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.024 [req-thread-67] START R0056(P2,STANDARD,5.5kWh) bay+7 kW waited=377.9 sim-min [bays 4/4, 43/60 kW]
+21:53:29.055 [req-thread-62] COMPLETED R0053(P3,FAST,28.0kWh) after 81.5 sim-min
+21:53:29.056 [req-thread-62] BILLED R0053 account=ACC-01 28.0 kWh
+21:53:29.056 [req-thread-62] RELEASED R0053 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:29.056 [req-thread-35] START R0057(P3,STANDARD,22.0kWh) bay+7 kW waited=362.7 sim-min [bays 4/4, 28/60 kW]
+21:53:29.056 [intake] QUEUED R0072(P2,STANDARD,16.0kWh) account=ACC-40 seq=72
+21:53:29.057 [intake] QUEUED R0073(P2,FAST,10.5kWh) account=ACC-05 seq=73
+21:53:29.058 [req-thread-66] COMPLETED R0054(P3,STANDARD,8.5kWh) after 75.0 sim-min
+21:53:29.058 [req-thread-66] BILLED R0054 account=ACC-08 8.5 kWh
+21:53:29.058 [req-thread-66] RELEASED R0054 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.058 [req-thread-64] START R0058(P3,STANDARD,37.0kWh) bay+7 kW waited=320.1 sim-min [bays 4/4, 28/60 kW]
+21:53:29.075 [req-thread-67] COMPLETED R0056(P2,STANDARD,5.5kWh) after 50.8 sim-min
+21:53:29.075 [req-thread-67] BILLED R0056 account=ACC-24 5.5 kWh
+21:53:29.075 [req-thread-67] RELEASED R0056 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.075 [req-thread-69] START R0059(P3,STANDARD,34.0kWh) bay+7 kW waited=320.6 sim-min [bays 4/4, 28/60 kW]
+21:53:29.103 [intake] QUEUED R0074(P3,STANDARD,13.0kWh) account=ACC-28 seq=74
+21:53:29.149 [intake] QUEUED R0075(P3,STANDARD,29.5kWh) account=ACC-32 seq=75
+21:53:29.154 [intake] QUEUED R0076(P3,STANDARD,10.5kWh) account=ACC-40 seq=76
+21:53:29.182 [intake] QUEUED R0077(P3,FAST,16.5kWh) account=ACC-28 seq=77
+21:53:29.213 [intake] QUEUED R0078(P2,STANDARD,6.0kWh) account=ACC-28 seq=78
+21:53:29.241 [monitor] STATUS queued[P1=3 P2=7 P3=9] activeBays=4/4 reserved=28/60 kW states={QUEUED=19, CHARGING=4, BILLED=55}
+21:53:29.249 [req-thread-35] COMPLETED R0057(P3,STANDARD,22.0kWh) after 193.7 sim-min
+21:53:29.249 [req-thread-35] BILLED R0057 account=ACC-15 22.0 kWh
+21:53:29.249 [req-thread-35] RELEASED R0057 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.250 [req-thread-59] START R0060(P1,FAST,21.0kWh) bay+22 kW waited=478.0 sim-min [bays 4/4, 43/60 kW]
+21:53:29.251 [intake] QUEUED R0079(P2,FAST,18.5kWh) account=ACC-20 seq=79
+21:53:29.252 [intake] QUEUED R0080(P3,STANDARD,9.0kWh) account=ACC-02 seq=80
+21:53:29.292 [intake] QUEUED R0081(P1,FAST,11.5kWh) account=ACC-21 seq=81
+21:53:29.294 [req-thread-61] COMPLETED R0055(P3,STANDARD,31.0kWh) after 270.3 sim-min
+21:53:29.294 [req-thread-61] BILLED R0055 account=ACC-34 31.0 kWh
+21:53:29.294 [req-thread-61] RELEASED R0055 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.294 [req-thread-75] START R0061(P3,STANDARD,27.0kWh) bay+7 kW waited=485.7 sim-min [bays 4/4, 43/60 kW]
+21:53:29.312 [req-thread-59] COMPLETED R0060(P1,FAST,21.0kWh) after 62.4 sim-min
+21:53:29.312 [req-thread-59] BILLED R0060 account=ACC-12 21.0 kWh
+21:53:29.312 [req-thread-59] RELEASED R0060 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:29.313 [req-thread-80] START R0062(P3,STANDARD,28.0kWh) bay+7 kW waited=462.2 sim-min [bays 4/4, 28/60 kW]
+21:53:29.326 [intake] QUEUED R0082(P2,STANDARD,35.5kWh) account=ACC-14 seq=82
+21:53:29.368 [req-thread-69] COMPLETED R0059(P3,STANDARD,34.0kWh) after 293.5 sim-min
+21:53:29.369 [req-thread-69] BILLED R0059 account=ACC-25 34.0 kWh
+21:53:29.369 [req-thread-69] RELEASED R0059 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.369 [req-thread-82] START R0063(P3,FAST,24.5kWh) bay+22 kW waited=518.2 sim-min [bays 4/4, 43/60 kW]
+21:53:29.380 [req-thread-64] COMPLETED R0058(P3,STANDARD,37.0kWh) after 321.1 sim-min
+21:53:29.380 [req-thread-64] BILLED R0058 account=ACC-35 37.0 kWh
+21:53:29.380 [req-thread-64] RELEASED R0058 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.381 [req-thread-44] START R0064(P2,FAST,38.0kWh) bay+22 kW waited=521.2 sim-min [bays 4/4, 58/60 kW]
+21:53:29.382 [intake] QUEUED R0083(P2,STANDARD,15.0kWh) account=ACC-29 seq=83
+21:53:29.395 [intake] QUEUED R0084(P3,FAST,17.5kWh) account=ACC-02 seq=84
+21:53:29.420 [intake] QUEUED R0085(P2,STANDARD,5.0kWh) account=ACC-34 seq=85
+21:53:29.423 [intake] QUEUED R0086(P1,STANDARD,18.0kWh) account=ACC-36 seq=86
+21:53:29.440 [req-thread-82] COMPLETED R0063(P3,FAST,24.5kWh) after 71.2 sim-min
+21:53:29.440 [req-thread-82] BILLED R0063 account=ACC-29 24.5 kWh
+21:53:29.440 [req-thread-82] RELEASED R0063 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.441 [req-thread-81] START R0065(P3,FAST,11.5kWh) bay+22 kW waited=545.1 sim-min [bays 4/4, 58/60 kW]
+21:53:29.460 [intake] QUEUED R0087(P2,FAST,31.0kWh) account=ACC-10 seq=87
+21:53:29.476 [req-thread-81] COMPLETED R0065(P3,FAST,11.5kWh) after 35.0 sim-min
+21:53:29.476 [req-thread-81] BILLED R0065 account=ACC-35 11.5 kWh
+21:53:29.476 [req-thread-81] RELEASED R0065 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.476 [req-thread-83] START R0066(P2,FAST,29.5kWh) bay+22 kW waited=579.2 sim-min [bays 4/4, 58/60 kW]
+21:53:29.480 [monitor] STATUS queued[P1=4 P2=10 P3=7] activeBays=4/4 reserved=58/60 kW states={QUEUED=21, CHARGING=4, BILLED=62}
+21:53:29.490 [req-thread-44] COMPLETED R0064(P2,FAST,38.0kWh) after 109.6 sim-min
+21:53:29.491 [req-thread-44] BILLED R0064 account=ACC-10 38.0 kWh
+21:53:29.491 [req-thread-44] RELEASED R0064 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.491 [req-thread-68] START R0067(P1,STANDARD,18.5kWh) bay+7 kW waited=544.3 sim-min [bays 4/4, 43/60 kW]
+21:53:29.493 [intake] QUEUED R0088(P3,FAST,14.5kWh) account=ACC-27 seq=88
+21:53:29.526 [req-thread-75] COMPLETED R0061(P3,STANDARD,27.0kWh) after 232.2 sim-min
+21:53:29.526 [req-thread-75] BILLED R0061 account=ACC-29 27.0 kWh
+21:53:29.526 [req-thread-75] RELEASED R0061 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.527 [req-thread-78] START R0068(P2,FAST,36.0kWh) bay+22 kW waited=575.0 sim-min [bays 4/4, 58/60 kW]
+21:53:29.554 [intake] QUEUED R0089(P1,STANDARD,31.0kWh) account=ACC-26 seq=89
+21:53:29.555 [req-thread-80] COMPLETED R0062(P3,STANDARD,28.0kWh) after 242.4 sim-min
+21:53:29.555 [req-thread-80] BILLED R0062 account=ACC-08 28.0 kWh
+21:53:29.556 [req-thread-80] RELEASED R0062 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:29.556 [req-thread-73] BACKFILL R0072(P2,STANDARD,16.0kWh) starts ahead of blocked R0069(P1,FAST,28.5kWh)
+21:53:29.556 [req-thread-73] START R0072(P2,STANDARD,16.0kWh) bay+7 kW waited=499.9 sim-min [bays 4/4, 58/60 kW]
+21:53:29.559 [req-thread-83] COMPLETED R0066(P2,FAST,29.5kWh) after 82.7 sim-min
+21:53:29.559 [req-thread-83] BILLED R0066 account=ACC-04 29.5 kWh
+21:53:29.559 [req-thread-83] RELEASED R0066 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.559 [req-thread-76] START R0069(P1,FAST,28.5kWh) bay+22 kW waited=607.5 sim-min [bays 4/4, 58/60 kW]
+21:53:29.629 [req-thread-78] COMPLETED R0068(P2,FAST,36.0kWh) after 102.6 sim-min
+21:53:29.629 [req-thread-78] BILLED R0068 account=ACC-30 36.0 kWh
+21:53:29.630 [req-thread-78] RELEASED R0068 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.630 [req-thread-71] START R0070(P3,FAST,16.0kWh) bay+22 kW waited=665.2 sim-min [bays 4/4, 58/60 kW]
+21:53:29.639 [req-thread-76] COMPLETED R0069(P1,FAST,28.5kWh) after 79.6 sim-min
+21:53:29.639 [req-thread-76] BILLED R0069 account=ACC-40 28.5 kWh
+21:53:29.639 [req-thread-76] RELEASED R0069 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.639 [req-thread-39] START R0071(P2,FAST,31.0kWh) bay+22 kW waited=668.3 sim-min [bays 4/4, 58/60 kW]
+21:53:29.652 [req-thread-68] COMPLETED R0067(P1,STANDARD,18.5kWh) after 161.1 sim-min
+21:53:29.653 [req-thread-68] BILLED R0067 account=ACC-04 18.5 kWh
+21:53:29.653 [req-thread-68] RELEASED R0067 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:29.653 [req-thread-37] BACKFILL R0074(P3,STANDARD,13.0kWh) starts ahead of blocked R0073(P2,FAST,10.5kWh)
+21:53:29.653 [req-thread-37] START R0074(P3,STANDARD,13.0kWh) bay+7 kW waited=549.9 sim-min [bays 4/4, 58/60 kW]
+21:53:29.678 [req-thread-71] COMPLETED R0070(P3,FAST,16.0kWh) after 48.9 sim-min
+21:53:29.679 [req-thread-71] BILLED R0070 account=ACC-18 16.0 kWh
+21:53:29.679 [req-thread-71] RELEASED R0070 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.679 [req-thread-60] START R0073(P2,FAST,10.5kWh) bay+22 kW waited=622.2 sim-min [bays 4/4, 58/60 kW]
+21:53:29.680 [intake] QUEUED R0090(P3,STANDARD,34.5kWh) account=ACC-04 seq=90
+21:53:29.688 [intake] QUEUED R0091(P3,STANDARD,38.0kWh) account=ACC-07 seq=91
+21:53:29.690 [intake] QUEUED R0092(P3,STANDARD,26.5kWh) account=ACC-02 seq=92
+21:53:29.694 [req-thread-73] COMPLETED R0072(P2,STANDARD,16.0kWh) after 137.6 sim-min
+21:53:29.694 [req-thread-73] BILLED R0072 account=ACC-40 16.0 kWh
+21:53:29.694 [req-thread-73] RELEASED R0072 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:29.694 [req-thread-79] START R0075(P3,STANDARD,29.5kWh) bay+7 kW waited=545.1 sim-min [bays 4/4, 58/60 kW]
+21:53:29.709 [req-thread-60] COMPLETED R0073(P2,FAST,10.5kWh) after 30.7 sim-min
+21:53:29.710 [req-thread-60] BILLED R0073 account=ACC-05 10.5 kWh
+21:53:29.710 [req-thread-60] RELEASED R0073 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.710 [req-thread-63] START R0076(P3,STANDARD,10.5kWh) bay+7 kW waited=555.4 sim-min [bays 4/4, 43/60 kW]
+21:53:29.716 [monitor] STATUS queued[P1=3 P2=6 P3=7] activeBays=4/4 reserved=43/60 kW states={QUEUED=16, CHARGING=4, BILLED=72}
+21:53:29.725 [req-thread-39] COMPLETED R0071(P2,FAST,31.0kWh) after 85.5 sim-min
+21:53:29.725 [req-thread-39] BILLED R0071 account=ACC-40 31.0 kWh
+21:53:29.725 [req-thread-39] RELEASED R0071 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:29.725 [req-thread-54] START R0077(P3,FAST,16.5kWh) bay+22 kW waited=542.5 sim-min [bays 4/4, 43/60 kW]
+21:53:29.736 [intake] QUEUED R0093(P3,STANDARD,32.5kWh) account=ACC-02 seq=93
+21:53:29.741 [intake] QUEUED R0094(P1,STANDARD,27.0kWh) account=ACC-09 seq=94
+21:53:29.766 [req-thread-37] COMPLETED R0074(P3,STANDARD,13.0kWh) after 112.8 sim-min
+21:53:29.766 [req-thread-37] BILLED R0074 account=ACC-28 13.0 kWh
+21:53:29.766 [req-thread-37] RELEASED R0074 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.766 [req-thread-84] START R0078(P2,STANDARD,6.0kWh) bay+7 kW waited=552.9 sim-min [bays 4/4, 43/60 kW]
+21:53:29.774 [req-thread-54] COMPLETED R0077(P3,FAST,16.5kWh) after 49.2 sim-min
+21:53:29.774 [req-thread-54] BILLED R0077 account=ACC-28 16.5 kWh
+21:53:29.774 [req-thread-54] RELEASED R0077 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:29.774 [req-thread-89] START R0079(P2,FAST,18.5kWh) bay+22 kW waited=523.4 sim-min [bays 4/4, 43/60 kW]
+21:53:29.804 [req-thread-63] COMPLETED R0076(P3,STANDARD,10.5kWh) after 94.8 sim-min
+21:53:29.805 [req-thread-63] BILLED R0076 account=ACC-40 10.5 kWh
+21:53:29.805 [req-thread-63] RELEASED R0076 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.805 [req-thread-88] START R0080(P3,STANDARD,9.0kWh) bay+7 kW waited=552.6 sim-min [bays 4/4, 43/60 kW]
+21:53:29.820 [req-thread-84] COMPLETED R0078(P2,STANDARD,6.0kWh) after 53.8 sim-min
+21:53:29.820 [req-thread-84] BILLED R0078 account=ACC-28 6.0 kWh
+21:53:29.820 [req-thread-84] RELEASED R0078 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.820 [req-thread-58] START R0081(P1,FAST,11.5kWh) bay+22 kW waited=528.1 sim-min [bays 4/4, 58/60 kW]
+21:53:29.830 [req-thread-89] COMPLETED R0079(P2,FAST,18.5kWh) after 55.6 sim-min
+21:53:29.830 [req-thread-89] BILLED R0079 account=ACC-20 18.5 kWh
+21:53:29.830 [req-thread-89] RELEASED R0079 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:29.831 [req-thread-90] START R0082(P2,STANDARD,35.5kWh) bay+7 kW waited=504.7 sim-min [bays 4/4, 43/60 kW]
+21:53:29.832 [intake] QUEUED R0095(P3,STANDARD,18.5kWh) account=ACC-32 seq=95
+21:53:29.841 [intake] QUEUED R0096(P2,FAST,37.5kWh) account=ACC-25 seq=96
+21:53:29.853 [req-thread-58] COMPLETED R0081(P1,FAST,11.5kWh) after 32.9 sim-min
+21:53:29.853 [req-thread-58] BILLED R0081 account=ACC-21 11.5 kWh
+21:53:29.853 [req-thread-58] RELEASED R0081 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:29.853 [req-thread-85] START R0083(P2,STANDARD,15.0kWh) bay+7 kW waited=471.2 sim-min [bays 4/4, 28/60 kW]
+21:53:29.880 [intake] QUEUED R0097(P3,STANDARD,31.5kWh) account=ACC-10 seq=97
+21:53:29.884 [req-thread-88] COMPLETED R0080(P3,STANDARD,9.0kWh) after 79.1 sim-min
+21:53:29.884 [req-thread-88] BILLED R0080 account=ACC-02 9.0 kWh
+21:53:29.884 [req-thread-88] RELEASED R0080 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.884 [req-thread-94] START R0084(P3,FAST,17.5kWh) bay+22 kW waited=489.0 sim-min [bays 4/4, 43/60 kW]
+21:53:29.935 [req-thread-94] COMPLETED R0084(P3,FAST,17.5kWh) after 50.9 sim-min
+21:53:29.935 [intake] QUEUED R0098(P2,FAST,18.0kWh) account=ACC-20 seq=98
+21:53:29.935 [req-thread-94] BILLED R0084 account=ACC-02 17.5 kWh
+21:53:29.936 [req-thread-94] RELEASED R0084 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:29.936 [req-thread-70] START R0085(P2,STANDARD,5.0kWh) bay+7 kW waited=515.5 sim-min [bays 4/4, 28/60 kW]
+21:53:29.948 [intake] QUEUED R0099(P2,FAST,30.5kWh) account=ACC-03 seq=99
+21:53:29.949 [req-thread-79] COMPLETED R0075(P3,STANDARD,29.5kWh) after 254.5 sim-min
+21:53:29.949 [req-thread-79] BILLED R0075 account=ACC-32 29.5 kWh
+21:53:29.949 [req-thread-79] RELEASED R0075 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.949 [req-thread-93] START R0086(P1,STANDARD,18.0kWh) bay+7 kW waited=525.5 sim-min [bays 4/4, 28/60 kW]
+21:53:29.957 [monitor] STATUS queued[P1=2 P2=4 P3=7] activeBays=4/4 reserved=28/60 kW states={QUEUED=13, CHARGING=4, BILLED=82}
+21:53:29.974 [intake] QUEUED R0100(P2,STANDARD,5.0kWh) account=ACC-02 seq=100
+21:53:29.980 [req-thread-70] COMPLETED R0085(P2,STANDARD,5.0kWh) after 44.5 sim-min
+21:53:29.980 [req-thread-70] BILLED R0085 account=ACC-34 5.0 kWh
+21:53:29.980 [req-thread-70] RELEASED R0085 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:29.981 [req-thread-99] START R0087(P2,FAST,31.0kWh) bay+22 kW waited=520.9 sim-min [bays 4/4, 43/60 kW]
+21:53:29.982 [req-thread-85] COMPLETED R0083(P2,STANDARD,15.0kWh) after 129.2 sim-min
+21:53:29.982 [req-thread-85] BILLED R0083 account=ACC-29 15.0 kWh
+21:53:29.982 [req-thread-85] RELEASED R0083 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:29.983 [req-thread-100] START R0088(P3,FAST,14.5kWh) bay+22 kW waited=489.4 sim-min [bays 4/4, 58/60 kW]
+21:53:29.984 [intake] QUEUED R0101(P3,STANDARD,10.5kWh) account=ACC-34 seq=101
+21:53:30.023 [intake] QUEUED R0102(P3,FAST,20.0kWh) account=ACC-23 seq=102
+21:53:30.028 [req-thread-100] COMPLETED R0088(P3,FAST,14.5kWh) after 44.9 sim-min
+21:53:30.028 [req-thread-100] BILLED R0088 account=ACC-27 14.5 kWh
+21:53:30.028 [req-thread-100] RELEASED R0088 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:30.028 [req-thread-77] START R0089(P1,STANDARD,31.0kWh) bay+7 kW waited=474.1 sim-min [bays 4/4, 43/60 kW]
+21:53:30.030 [intake] QUEUED R0103(P3,STANDARD,40.0kWh) account=ACC-26 seq=103
+21:53:30.066 [req-thread-99] COMPLETED R0087(P2,FAST,31.0kWh) after 85.1 sim-min
+21:53:30.066 [req-thread-99] BILLED R0087 account=ACC-10 31.0 kWh
+21:53:30.066 [req-thread-99] RELEASED R0087 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:30.067 [req-thread-72] START R0090(P3,STANDARD,34.5kWh) bay+7 kW waited=387.0 sim-min [bays 4/4, 28/60 kW]
+21:53:30.104 [intake] QUEUED R0104(P3,STANDARD,22.0kWh) account=ACC-09 seq=104
+21:53:30.109 [intake] QUEUED R0105(P3,STANDARD,12.0kWh) account=ACC-13 seq=105
+21:53:30.109 [req-thread-93] COMPLETED R0086(P1,STANDARD,18.0kWh) after 160.0 sim-min
+21:53:30.109 [req-thread-93] BILLED R0086 account=ACC-36 18.0 kWh
+21:53:30.109 [req-thread-93] RELEASED R0086 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.109 [req-thread-95] START R0091(P3,STANDARD,38.0kWh) bay+7 kW waited=421.3 sim-min [bays 4/4, 28/60 kW]
+21:53:30.139 [req-thread-90] COMPLETED R0082(P2,STANDARD,35.5kWh) after 307.7 sim-min
+21:53:30.139 [req-thread-90] BILLED R0082 account=ACC-14 35.5 kWh
+21:53:30.139 [req-thread-90] RELEASED R0082 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.139 [req-thread-97] START R0092(P3,STANDARD,26.5kWh) bay+7 kW waited=449.7 sim-min [bays 4/4, 28/60 kW]
+21:53:30.196 [monitor] STATUS queued[P1=1 P2=4 P3=8] activeBays=4/4 reserved=28/60 kW states={QUEUED=13, CHARGING=4, BILLED=88}
+21:53:30.241 [intake] QUEUED R0106(P3,STANDARD,29.5kWh) account=ACC-14 seq=106
+21:53:30.243 [intake] QUEUED R0107(P3,STANDARD,18.0kWh) account=ACC-23 seq=107
+21:53:30.252 [intake] QUEUED R0108(P1,STANDARD,20.0kWh) account=ACC-06 seq=108
+21:53:30.270 [intake] QUEUED R0109(P2,FAST,23.5kWh) account=ACC-21 seq=109
+21:53:30.296 [intake] QUEUED R0110(P3,STANDARD,19.0kWh) account=ACC-09 seq=110
+21:53:30.297 [intake] QUEUED R0111(P3,STANDARD,25.0kWh) account=ACC-33 seq=111
+21:53:30.299 [req-thread-77] COMPLETED R0089(P1,STANDARD,31.0kWh) after 271.2 sim-min
+21:53:30.299 [req-thread-77] BILLED R0089 account=ACC-26 31.0 kWh
+21:53:30.299 [req-thread-77] RELEASED R0089 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.300 [req-thread-86] START R0093(P3,STANDARD,32.5kWh) bay+7 kW waited=564.2 sim-min [bays 4/4, 28/60 kW]
+21:53:30.322 [intake] QUEUED R0112(P3,FAST,36.5kWh) account=ACC-14 seq=112
+21:53:30.367 [req-thread-97] COMPLETED R0092(P3,STANDARD,26.5kWh) after 227.6 sim-min
+21:53:30.367 [req-thread-97] BILLED R0092 account=ACC-02 26.5 kWh
+21:53:30.367 [req-thread-97] RELEASED R0092 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.367 [req-thread-110] START R0094(P1,STANDARD,27.0kWh) bay+7 kW waited=626.8 sim-min [bays 4/4, 28/60 kW]
+21:53:30.368 [req-thread-72] COMPLETED R0090(P3,STANDARD,34.5kWh) after 301.5 sim-min
+21:53:30.369 [req-thread-72] BILLED R0090 account=ACC-04 34.5 kWh
+21:53:30.369 [req-thread-72] RELEASED R0090 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.369 [req-thread-104] START R0095(P3,STANDARD,18.5kWh) bay+7 kW waited=536.6 sim-min [bays 4/4, 28/60 kW]
+21:53:30.406 [intake] QUEUED R0113(P2,STANDARD,7.0kWh) account=ACC-37 seq=113
+21:53:30.407 [intake] QUEUED R0114(P2,STANDARD,32.5kWh) account=ACC-02 seq=114
+21:53:30.417 [intake] QUEUED R0115(P3,STANDARD,26.0kWh) account=ACC-37 seq=115
+21:53:30.432 [intake] QUEUED R0116(P1,STANDARD,32.5kWh) account=ACC-12 seq=116
+21:53:30.437 [req-thread-95] COMPLETED R0091(P3,STANDARD,38.0kWh) after 328.1 sim-min
+21:53:30.437 [req-thread-95] BILLED R0091 account=ACC-07 38.0 kWh
+21:53:30.437 [req-thread-95] RELEASED R0091 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.438 [req-thread-87] START R0096(P2,FAST,37.5kWh) bay+22 kW waited=596.6 sim-min [bays 4/4, 43/60 kW]
+21:53:30.441 [monitor] STATUS queued[P1=2 P2=6 P3=12] activeBays=4/4 reserved=43/60 kW states={QUEUED=20, CHARGING=4, BILLED=92}
+21:53:30.494 [intake] QUEUED R0117(P3,STANDARD,18.0kWh) account=ACC-38 seq=117
+21:53:30.514 [intake] QUEUED R0118(P3,STANDARD,22.0kWh) account=ACC-14 seq=118
+21:53:30.532 [req-thread-104] COMPLETED R0095(P3,STANDARD,18.5kWh) after 162.9 sim-min
+21:53:30.532 [req-thread-104] BILLED R0095 account=ACC-32 18.5 kWh
+21:53:30.532 [req-thread-65] START R0097(P3,STANDARD,31.5kWh) bay+7 kW waited=652.8 sim-min [bays 4/4, 43/60 kW]
+21:53:30.532 [req-thread-104] RELEASED R0095 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:30.537 [intake] QUEUED R0119(P3,STANDARD,26.5kWh) account=ACC-23 seq=119
+21:53:30.541 [req-thread-87] COMPLETED R0096(P2,FAST,37.5kWh) after 103.7 sim-min
+21:53:30.544 [req-thread-87] BILLED R0096 account=ACC-25 37.5 kWh
+21:53:30.544 [req-thread-87] RELEASED R0096 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:30.545 [req-thread-101] START R0098(P2,FAST,18.0kWh) bay+22 kW waited=609.3 sim-min [bays 4/4, 43/60 kW]
+21:53:30.581 [req-thread-86] COMPLETED R0093(P3,STANDARD,32.5kWh) after 281.2 sim-min
+21:53:30.581 [req-thread-86] BILLED R0093 account=ACC-02 32.5 kWh
+21:53:30.581 [req-thread-86] RELEASED R0093 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:30.582 [req-thread-108] START R0099(P2,FAST,30.5kWh) bay+22 kW waited=633.3 sim-min [bays 4/4, 58/60 kW]
+21:53:30.583 [intake] QUEUED R0120(P3,STANDARD,15.5kWh) account=ACC-32 seq=120
+21:53:30.599 [req-thread-101] COMPLETED R0098(P2,FAST,18.0kWh) after 54.6 sim-min
+21:53:30.599 [req-thread-101] BILLED R0098 account=ACC-20 18.0 kWh
+21:53:30.600 [req-thread-101] RELEASED R0098 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:30.600 [req-thread-92] START R0100(P2,STANDARD,5.0kWh) bay+7 kW waited=626.6 sim-min [bays 4/4, 43/60 kW]
+21:53:30.601 [req-thread-110] COMPLETED R0094(P1,STANDARD,27.0kWh) after 233.7 sim-min
+21:53:30.602 [req-thread-110] BILLED R0094 account=ACC-09 27.0 kWh
+21:53:30.602 [req-thread-110] RELEASED R0094 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:30.602 [req-thread-115] START R0101(P3,STANDARD,10.5kWh) bay+7 kW waited=617.4 sim-min [bays 4/4, 43/60 kW]
+21:53:30.603 [intake] QUEUED R0121(P2,STANDARD,35.0kWh) account=ACC-32 seq=121
+21:53:30.604 [intake] QUEUED R0122(P1,STANDARD,22.5kWh) account=ACC-19 seq=122
+21:53:30.644 [req-thread-92] COMPLETED R0100(P2,STANDARD,5.0kWh) after 44.2 sim-min
+21:53:30.645 [req-thread-92] BILLED R0100 account=ACC-02 5.0 kWh
+21:53:30.645 [req-thread-92] RELEASED R0100 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:30.645 [req-thread-119] START R0102(P3,FAST,20.0kWh) bay+22 kW waited=622.7 sim-min [bays 4/4, 58/60 kW]
+21:53:30.658 [intake] QUEUED R0123(P3,STANDARD,26.5kWh) account=ACC-31 seq=123
+21:53:30.666 [req-thread-108] COMPLETED R0099(P2,FAST,30.5kWh) after 84.4 sim-min
+21:53:30.666 [req-thread-108] BILLED R0099 account=ACC-03 30.5 kWh
+21:53:30.666 [req-thread-108] RELEASED R0099 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:30.667 [req-thread-91] START R0103(P3,STANDARD,40.0kWh) bay+7 kW waited=636.8 sim-min [bays 4/4, 43/60 kW]
+21:53:30.673 [intake] QUEUED R0124(P2,STANDARD,34.0kWh) account=ACC-27 seq=124
+21:53:30.679 [monitor] STATUS queued[P1=3 P2=5 P3=13] activeBays=4/4 reserved=43/60 kW states={QUEUED=21, CHARGING=4, BILLED=99}
+21:53:30.695 [req-thread-115] COMPLETED R0101(P3,STANDARD,10.5kWh) after 93.1 sim-min
+21:53:30.705 [req-thread-115] BILLED R0101 account=ACC-34 10.5 kWh
+21:53:30.705 [req-thread-119] COMPLETED R0102(P3,FAST,20.0kWh) after 59.3 sim-min
+21:53:30.706 [req-thread-115] RELEASED R0101 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:30.706 [req-thread-119] BILLED R0102 account=ACC-23 20.0 kWh
+21:53:30.706 [req-thread-119] RELEASED R0102 bay-22 kW [bays 2/4, 14/60 kW]
+21:53:30.707 [req-thread-106] START R0104(P3,STANDARD,22.0kWh) bay+7 kW waited=601.8 sim-min [bays 3/4, 21/60 kW]
+21:53:30.707 [req-thread-105] START R0105(P3,STANDARD,12.0kWh) bay+7 kW waited=597.9 sim-min [bays 4/4, 28/60 kW]
+21:53:30.712 [intake] QUEUED R0125(P1,STANDARD,23.5kWh) account=ACC-09 seq=125
+21:53:30.795 [intake] QUEUED R0126(P2,STANDARD,33.5kWh) account=ACC-14 seq=126
+21:53:30.807 [req-thread-65] COMPLETED R0097(P3,STANDARD,31.5kWh) after 274.7 sim-min
+21:53:30.807 [req-thread-65] BILLED R0097 account=ACC-10 31.5 kWh
+21:53:30.807 [req-thread-65] RELEASED R0097 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.808 [req-thread-102] START R0106(P3,STANDARD,29.5kWh) bay+7 kW waited=566.9 sim-min [bays 4/4, 28/60 kW]
+21:53:30.809 [intake] QUEUED R0127(P3,FAST,19.0kWh) account=ACC-17 seq=127
+21:53:30.815 [req-thread-105] COMPLETED R0105(P3,STANDARD,12.0kWh) after 107.9 sim-min
+21:53:30.815 [req-thread-105] BILLED R0105 account=ACC-13 12.0 kWh
+21:53:30.815 [req-thread-105] RELEASED R0105 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.815 [req-thread-113] START R0107(P3,STANDARD,18.0kWh) bay+7 kW waited=572.3 sim-min [bays 4/4, 28/60 kW]
+21:53:30.837 [intake] QUEUED R0128(P2,FAST,34.0kWh) account=ACC-06 seq=128
+21:53:30.838 [intake] QUEUED R0129(P3,FAST,33.0kWh) account=ACC-12 seq=129
+21:53:30.899 [intake] QUEUED R0130(P3,FAST,32.0kWh) account=ACC-40 seq=130
+21:53:30.900 [req-thread-106] COMPLETED R0104(P3,STANDARD,22.0kWh) after 193.3 sim-min
+21:53:30.900 [req-thread-106] BILLED R0104 account=ACC-09 22.0 kWh
+21:53:30.900 [req-thread-130] START R0108(P1,STANDARD,20.0kWh) bay+7 kW waited=647.7 sim-min [bays 4/4, 28/60 kW]
+21:53:30.900 [req-thread-106] RELEASED R0104 bay-7 kW [bays 4/4, 28/60 kW]
+21:53:30.917 [monitor] STATUS queued[P1=3 P2=7 P3=12] activeBays=4/4 reserved=28/60 kW states={QUEUED=22, CHARGING=4, BILLED=104}
+21:53:30.963 [intake] QUEUED R0131(P3,STANDARD,19.5kWh) account=ACC-04 seq=131
+21:53:30.970 [req-thread-113] COMPLETED R0107(P3,STANDARD,18.0kWh) after 154.6 sim-min
+21:53:30.970 [req-thread-113] BILLED R0107 account=ACC-23 18.0 kWh
+21:53:30.970 [req-thread-113] RELEASED R0107 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:30.970 [req-thread-123] START R0109(P2,FAST,23.5kWh) bay+22 kW waited=699.8 sim-min [bays 4/4, 43/60 kW]
+21:53:30.977 [intake] QUEUED R0132(P3,STANDARD,38.5kWh) account=ACC-39 seq=132
+21:53:31.012 [intake] QUEUED R0133(P3,STANDARD,19.0kWh) account=ACC-32 seq=133
+21:53:31.012 [req-thread-91] COMPLETED R0103(P3,STANDARD,40.0kWh) after 345.4 sim-min
+21:53:31.012 [req-thread-91] BILLED R0103 account=ACC-26 40.0 kWh
+21:53:31.012 [req-thread-91] RELEASED R0103 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:31.012 [req-thread-125] START R0110(P3,STANDARD,19.0kWh) bay+7 kW waited=716.1 sim-min [bays 4/4, 43/60 kW]
+21:53:31.036 [req-thread-123] COMPLETED R0109(P2,FAST,23.5kWh) after 65.6 sim-min
+21:53:31.036 [req-thread-123] BILLED R0109 account=ACC-21 23.5 kWh
+21:53:31.036 [req-thread-123] RELEASED R0109 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:31.036 [req-thread-118] START R0111(P3,STANDARD,25.0kWh) bay+7 kW waited=738.7 sim-min [bays 4/4, 28/60 kW]
+21:53:31.037 [intake] QUEUED R0134(P2,FAST,31.5kWh) account=ACC-04 seq=134
+21:53:31.065 [req-thread-102] COMPLETED R0106(P3,STANDARD,29.5kWh) after 257.2 sim-min
+21:53:31.065 [req-thread-102] BILLED R0106 account=ACC-14 29.5 kWh
+21:53:31.065 [req-thread-102] RELEASED R0106 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.065 [req-thread-109] START R0112(P3,FAST,36.5kWh) bay+22 kW waited=743.6 sim-min [bays 4/4, 43/60 kW]
+21:53:31.075 [req-thread-130] COMPLETED R0108(P1,STANDARD,20.0kWh) after 174.9 sim-min
+21:53:31.075 [req-thread-130] BILLED R0108 account=ACC-06 20.0 kWh
+21:53:31.075 [req-thread-130] RELEASED R0108 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:31.075 [req-thread-74] START R0113(P2,STANDARD,7.0kWh) bay+7 kW waited=669.5 sim-min [bays 4/4, 43/60 kW]
+21:53:31.125 [intake] QUEUED R0135(P3,STANDARD,11.0kWh) account=ACC-35 seq=135
+21:53:31.140 [req-thread-74] COMPLETED R0113(P2,STANDARD,7.0kWh) after 65.0 sim-min
+21:53:31.140 [req-thread-74] BILLED R0113 account=ACC-37 7.0 kWh
+21:53:31.140 [req-thread-74] RELEASED R0113 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:31.140 [req-thread-133] START R0114(P2,STANDARD,32.5kWh) bay+7 kW waited=733.5 sim-min [bays 4/4, 43/60 kW]
+21:53:31.157 [monitor] STATUS queued[P1=3 P2=5 P3=13] activeBays=4/4 reserved=43/60 kW states={QUEUED=21, CHARGING=4, BILLED=110}
+21:53:31.169 [req-thread-109] COMPLETED R0112(P3,FAST,36.5kWh) after 104.1 sim-min
+21:53:31.170 [req-thread-109] BILLED R0112 account=ACC-14 36.5 kWh
+21:53:31.170 [req-thread-109] RELEASED R0112 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:31.170 [req-thread-96] START R0115(P3,STANDARD,26.0kWh) bay+7 kW waited=753.0 sim-min [bays 4/4, 28/60 kW]
+21:53:31.176 [intake] QUEUED R0136(P1,STANDARD,24.0kWh) account=ACC-23 seq=136
+21:53:31.179 [req-thread-125] COMPLETED R0110(P3,STANDARD,19.0kWh) after 166.3 sim-min
+21:53:31.179 [req-thread-125] BILLED R0110 account=ACC-09 19.0 kWh
+21:53:31.179 [req-thread-125] RELEASED R0110 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.179 [req-thread-124] START R0116(P1,STANDARD,32.5kWh) bay+7 kW waited=746.3 sim-min [bays 4/4, 28/60 kW]
+21:53:31.254 [intake] QUEUED R0137(P2,FAST,8.5kWh) account=ACC-17 seq=137
+21:53:31.255 [req-thread-118] COMPLETED R0111(P3,STANDARD,25.0kWh) after 219.5 sim-min
+21:53:31.256 [req-thread-118] BILLED R0111 account=ACC-33 25.0 kWh
+21:53:31.256 [req-thread-118] RELEASED R0111 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.256 [req-thread-131] START R0117(P3,STANDARD,18.0kWh) bay+7 kW waited=762.5 sim-min [bays 4/4, 28/60 kW]
+21:53:31.335 [intake] QUEUED R0138(P1,STANDARD,36.5kWh) account=ACC-39 seq=138
+21:53:31.357 [intake] QUEUED R0139(P3,STANDARD,29.5kWh) account=ACC-25 seq=139
+21:53:31.358 [intake] QUEUED R0140(P3,FAST,26.5kWh) account=ACC-33 seq=140
+21:53:31.366 [intake] QUEUED R0141(P3,STANDARD,18.5kWh) account=ACC-19 seq=141
+21:53:31.394 [req-thread-96] COMPLETED R0115(P3,STANDARD,26.0kWh) after 224.3 sim-min
+21:53:31.395 [req-thread-96] BILLED R0115 account=ACC-37 26.0 kWh
+21:53:31.395 [req-thread-96] RELEASED R0115 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.395 [req-thread-117] START R0118(P3,STANDARD,22.0kWh) bay+7 kW waited=880.6 sim-min [bays 4/4, 28/60 kW]
+21:53:31.396 [intake] QUEUED R0142(P1,STANDARD,5.5kWh) account=ACC-04 seq=142
+21:53:31.400 [monitor] STATUS queued[P1=5 P2=6 P3=13] activeBays=4/4 reserved=28/60 kW states={QUEUED=24, CHARGING=4, BILLED=114}
+21:53:31.412 [req-thread-131] COMPLETED R0117(P3,STANDARD,18.0kWh) after 155.8 sim-min
+21:53:31.412 [req-thread-131] BILLED R0117 account=ACC-38 18.0 kWh
+21:53:31.412 [req-thread-131] RELEASED R0117 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.412 [req-thread-138] START R0119(P3,STANDARD,26.5kWh) bay+7 kW waited=875.6 sim-min [bays 4/4, 28/60 kW]
+21:53:31.414 [intake] QUEUED R0143(P3,STANDARD,37.0kWh) account=ACC-31 seq=143
+21:53:31.420 [req-thread-133] COMPLETED R0114(P2,STANDARD,32.5kWh) after 279.2 sim-min
+21:53:31.420 [req-thread-133] BILLED R0114 account=ACC-02 32.5 kWh
+21:53:31.420 [req-thread-133] RELEASED R0114 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.420 [req-thread-140] START R0120(P3,STANDARD,15.5kWh) bay+7 kW waited=836.3 sim-min [bays 4/4, 28/60 kW]
+21:53:31.428 [intake] QUEUED R0144(P3,FAST,30.5kWh) account=ACC-26 seq=144
+21:53:31.441 [intake] QUEUED R0145(P1,STANDARD,25.0kWh) account=ACC-18 seq=145
+21:53:31.458 [req-thread-124] COMPLETED R0116(P1,STANDARD,32.5kWh) after 279.4 sim-min
+21:53:31.458 [req-thread-124] BILLED R0116 account=ACC-12 32.5 kWh
+21:53:31.458 [req-thread-124] RELEASED R0116 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.458 [req-thread-107] START R0121(P2,STANDARD,35.0kWh) bay+7 kW waited=854.9 sim-min [bays 4/4, 28/60 kW]
+21:53:31.507 [intake] QUEUED R0146(P2,FAST,15.0kWh) account=ACC-26 seq=146
+21:53:31.555 [req-thread-140] COMPLETED R0120(P3,STANDARD,15.5kWh) after 135.3 sim-min
+21:53:31.555 [req-thread-140] BILLED R0120 account=ACC-32 15.5 kWh
+21:53:31.555 [req-thread-140] RELEASED R0120 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.555 [req-thread-142] START R0122(P1,STANDARD,22.5kWh) bay+7 kW waited=951.3 sim-min [bays 4/4, 28/60 kW]
+21:53:31.589 [req-thread-117] COMPLETED R0118(P3,STANDARD,22.0kWh) after 194.2 sim-min
+21:53:31.589 [req-thread-117] BILLED R0118 account=ACC-14 22.0 kWh
+21:53:31.589 [req-thread-117] RELEASED R0118 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.590 [req-thread-120] START R0123(P3,STANDARD,26.5kWh) bay+7 kW waited=931.4 sim-min [bays 4/4, 28/60 kW]
+21:53:31.634 [intake] QUEUED R0147(P3,FAST,24.0kWh) account=ACC-08 seq=147
+21:53:31.636 [monitor] STATUS queued[P1=5 P2=6 P3=13] activeBays=4/4 reserved=28/60 kW states={QUEUED=24, CHARGING=4, BILLED=119}
+21:53:31.640 [req-thread-138] COMPLETED R0119(P3,STANDARD,26.5kWh) after 227.6 sim-min
+21:53:31.640 [req-thread-138] BILLED R0119 account=ACC-23 26.5 kWh
+21:53:31.640 [req-thread-138] RELEASED R0119 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.640 [req-thread-132] START R0124(P2,STANDARD,34.0kWh) bay+7 kW waited=966.9 sim-min [bays 4/4, 28/60 kW]
+21:53:31.651 [intake] QUEUED R0148(P3,FAST,39.5kWh) account=ACC-09 seq=148
+21:53:31.694 [intake] QUEUED R0149(P2,STANDARD,16.0kWh) account=ACC-31 seq=149
+21:53:31.733 [intake] QUEUED R0150(P1,FAST,39.5kWh) account=ACC-36 seq=150
+21:53:31.752 [req-thread-142] COMPLETED R0122(P1,STANDARD,22.5kWh) after 196.5 sim-min
+21:53:31.752 [req-thread-142] BILLED R0122 account=ACC-19 22.5 kWh
+21:53:31.752 [req-thread-142] RELEASED R0122 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.752 [req-thread-103] START R0125(P1,STANDARD,23.5kWh) bay+7 kW waited=1040.7 sim-min [bays 4/4, 28/60 kW]
+21:53:31.761 [intake] QUEUED R0151(P1,FAST,7.5kWh) account=ACC-14 seq=151
+21:53:31.762 [req-thread-107] COMPLETED R0121(P2,STANDARD,35.0kWh) after 303.5 sim-min
+21:53:31.762 [req-thread-107] BILLED R0121 account=ACC-32 35.0 kWh
+21:53:31.762 [req-thread-107] RELEASED R0121 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.762 [req-thread-129] START R0126(P2,STANDARD,33.5kWh) bay+7 kW waited=967.0 sim-min [bays 4/4, 28/60 kW]
+21:53:31.772 [intake] QUEUED R0152(P3,FAST,27.0kWh) account=ACC-11 seq=152
+21:53:31.797 [intake] QUEUED R0153(P3,STANDARD,16.5kWh) account=ACC-20 seq=153
+21:53:31.820 [req-thread-120] COMPLETED R0123(P3,STANDARD,26.5kWh) after 230.9 sim-min
+21:53:31.821 [req-thread-120] BILLED R0123 account=ACC-31 26.5 kWh
+21:53:31.821 [req-thread-120] RELEASED R0123 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:31.821 [req-thread-126] START R0127(P3,FAST,19.0kWh) bay+22 kW waited=1011.7 sim-min [bays 4/4, 43/60 kW]
+21:53:31.824 [intake] QUEUED R0154(P3,FAST,35.5kWh) account=ACC-36 seq=154
+21:53:31.865 [intake] QUEUED R0155(P2,STANDARD,12.5kWh) account=ACC-29 seq=155
+21:53:31.876 [req-thread-126] COMPLETED R0127(P3,FAST,19.0kWh) after 55.5 sim-min
+21:53:31.876 [req-thread-126] BILLED R0127 account=ACC-17 19.0 kWh
+21:53:31.876 [req-thread-126] RELEASED R0127 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:31.877 [req-thread-114] START R0128(P2,FAST,34.0kWh) bay+22 kW waited=1040.0 sim-min [bays 4/4, 43/60 kW]
+21:53:31.878 [monitor] STATUS queued[P1=6 P2=5 P3=16] activeBays=4/4 reserved=43/60 kW states={QUEUED=27, CHARGING=4, BILLED=124}
+21:53:31.896 [intake] QUEUED R0156(P3,FAST,32.0kWh) account=ACC-21 seq=156
+21:53:31.936 [req-thread-132] COMPLETED R0124(P2,STANDARD,34.0kWh) after 296.0 sim-min
+21:53:31.936 [req-thread-132] BILLED R0124 account=ACC-27 34.0 kWh
+21:53:31.936 [req-thread-132] RELEASED R0124 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:31.936 [req-thread-141] START R0129(P3,FAST,33.0kWh) bay+22 kW waited=1098.0 sim-min [bays 4/4, 58/60 kW]
+21:53:31.957 [req-thread-103] COMPLETED R0125(P1,STANDARD,23.5kWh) after 204.5 sim-min
+21:53:31.957 [req-thread-103] BILLED R0125 account=ACC-09 23.5 kWh
+21:53:31.957 [req-thread-103] RELEASED R0125 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:31.957 [req-thread-147] BACKFILL R0131(P3,STANDARD,19.5kWh) starts ahead of blocked R0130(P3,FAST,32.0kWh)
+21:53:31.957 [req-thread-147] START R0131(P3,STANDARD,19.5kWh) bay+7 kW waited=993.6 sim-min [bays 4/4, 58/60 kW]
+21:53:31.972 [req-thread-114] COMPLETED R0128(P2,FAST,34.0kWh) after 95.1 sim-min
+21:53:31.972 [req-thread-114] BILLED R0128 account=ACC-06 34.0 kWh
+21:53:31.972 [req-thread-114] RELEASED R0128 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:31.972 [req-thread-112] START R0130(P3,FAST,32.0kWh) bay+22 kW waited=1072.8 sim-min [bays 4/4, 58/60 kW]
+21:53:31.992 [intake] QUEUED R0157(P3,FAST,6.5kWh) account=ACC-32 seq=157
+21:53:32.012 [intake] QUEUED R0158(P2,STANDARD,39.0kWh) account=ACC-28 seq=158
+21:53:32.012 [intake] QUEUED R0159(P3,STANDARD,16.0kWh) account=ACC-12 seq=159
+21:53:32.027 [req-thread-141] COMPLETED R0129(P3,FAST,33.0kWh) after 90.5 sim-min
+21:53:32.027 [req-thread-141] BILLED R0129 account=ACC-12 33.0 kWh
+21:53:32.027 [req-thread-141] RELEASED R0129 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.028 [req-thread-128] START R0132(P3,STANDARD,38.5kWh) bay+7 kW waited=1051.2 sim-min [bays 4/4, 43/60 kW]
+21:53:32.053 [req-thread-129] COMPLETED R0126(P2,STANDARD,33.5kWh) after 290.9 sim-min
+21:53:32.053 [req-thread-129] BILLED R0126 account=ACC-14 33.5 kWh
+21:53:32.053 [req-thread-129] RELEASED R0126 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:32.053 [req-thread-144] START R0133(P3,STANDARD,19.0kWh) bay+7 kW waited=1041.3 sim-min [bays 4/4, 43/60 kW]
+21:53:32.063 [req-thread-112] COMPLETED R0130(P3,FAST,32.0kWh) after 91.1 sim-min
+21:53:32.063 [req-thread-112] BILLED R0130 account=ACC-40 32.0 kWh
+21:53:32.063 [req-thread-112] RELEASED R0130 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:32.064 [req-thread-153] START R0134(P2,FAST,31.5kWh) bay+22 kW waited=1026.6 sim-min [bays 4/4, 43/60 kW]
+21:53:32.106 [intake] QUEUED R0160(P1,STANDARD,34.5kWh) account=ACC-38 seq=160
+21:53:32.119 [monitor] STATUS queued[P1=7 P2=5 P3=14] activeBays=4/4 reserved=43/60 kW states={QUEUED=26, CHARGING=4, BILLED=130}
+21:53:32.127 [req-thread-147] COMPLETED R0131(P3,STANDARD,19.5kWh) after 169.8 sim-min
+21:53:32.127 [req-thread-147] BILLED R0131 account=ACC-04 19.5 kWh
+21:53:32.127 [req-thread-147] RELEASED R0131 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:32.128 [req-thread-154] START R0135(P3,STANDARD,11.0kWh) bay+7 kW waited=1003.0 sim-min [bays 4/4, 43/60 kW]
+21:53:32.154 [req-thread-153] COMPLETED R0134(P2,FAST,31.5kWh) after 90.0 sim-min
+21:53:32.154 [req-thread-153] BILLED R0134 account=ACC-04 31.5 kWh
+21:53:32.154 [req-thread-153] RELEASED R0134 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:32.154 [req-thread-156] START R0136(P1,STANDARD,24.0kWh) bay+7 kW waited=978.0 sim-min [bays 4/4, 28/60 kW]
+21:53:32.191 [intake] QUEUED R0161(P1,STANDARD,38.0kWh) account=ACC-37 seq=161
+21:53:32.222 [req-thread-144] COMPLETED R0133(P3,STANDARD,19.0kWh) after 168.4 sim-min
+21:53:32.222 [req-thread-144] BILLED R0133 account=ACC-32 19.0 kWh
+21:53:32.222 [req-thread-144] RELEASED R0133 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:32.222 [req-thread-111] START R0137(P2,FAST,8.5kWh) bay+22 kW waited=968.3 sim-min [bays 4/4, 43/60 kW]
+21:53:32.224 [intake] QUEUED R0162(P3,FAST,7.5kWh) account=ACC-34 seq=162
+21:53:32.225 [req-thread-154] COMPLETED R0135(P3,STANDARD,11.0kWh) after 97.5 sim-min
+21:53:32.225 [req-thread-154] BILLED R0135 account=ACC-35 11.0 kWh
+21:53:32.225 [req-thread-154] RELEASED R0135 bay-7 kW [bays 4/4, 43/60 kW]
+21:53:32.225 [req-thread-136] START R0138(P1,STANDARD,36.5kWh) bay+7 kW waited=889.9 sim-min [bays 4/4, 43/60 kW]
+21:53:32.229 [intake] QUEUED R0163(P3,STANDARD,26.0kWh) account=ACC-11 seq=163
+21:53:32.249 [req-thread-111] COMPLETED R0137(P2,FAST,8.5kWh) after 27.0 sim-min
+21:53:32.249 [req-thread-111] BILLED R0137 account=ACC-17 8.5 kWh
+21:53:32.249 [req-thread-111] RELEASED R0137 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:32.249 [req-thread-98] START R0139(P3,STANDARD,29.5kWh) bay+7 kW waited=892.3 sim-min [bays 4/4, 28/60 kW]
+21:53:32.289 [intake] QUEUED R0164(P3,STANDARD,29.0kWh) account=ACC-16 seq=164
+21:53:32.357 [monitor] STATUS queued[P1=6 P2=4 P3=15] activeBays=4/4 reserved=28/60 kW states={QUEUED=25, CHARGING=4, BILLED=135}
+21:53:32.359 [intake] QUEUED R0165(P1,STANDARD,12.5kWh) account=ACC-14 seq=165
+21:53:32.360 [req-thread-128] COMPLETED R0132(P3,STANDARD,38.5kWh) after 331.9 sim-min
+21:53:32.360 [req-thread-128] BILLED R0132 account=ACC-39 38.5 kWh
+21:53:32.360 [req-thread-128] RELEASED R0132 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:32.360 [req-thread-137] START R0140(P3,FAST,26.5kWh) bay+22 kW waited=1002.4 sim-min [bays 4/4, 43/60 kW]
+21:53:32.362 [req-thread-156] COMPLETED R0136(P1,STANDARD,24.0kWh) after 208.2 sim-min
+21:53:32.362 [req-thread-156] BILLED R0136 account=ACC-23 24.0 kWh
+21:53:32.362 [req-thread-156] RELEASED R0136 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:32.363 [req-thread-158] START R0141(P3,STANDARD,18.5kWh) bay+7 kW waited=996.6 sim-min [bays 4/4, 43/60 kW]
+21:53:32.388 [intake] QUEUED R0166(P2,FAST,27.5kWh) account=ACC-15 seq=166
+21:53:32.437 [req-thread-137] COMPLETED R0140(P3,FAST,26.5kWh) after 77.4 sim-min
+21:53:32.437 [req-thread-137] BILLED R0140 account=ACC-33 26.5 kWh
+21:53:32.438 [req-thread-137] RELEASED R0140 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:32.438 [req-thread-150] START R0142(P1,STANDARD,5.5kWh) bay+7 kW waited=1042.2 sim-min [bays 4/4, 28/60 kW]
+21:53:32.445 [intake] QUEUED R0167(P2,FAST,30.0kWh) account=ACC-31 seq=167
+21:53:32.488 [intake] QUEUED R0168(P3,STANDARD,29.5kWh) account=ACC-19 seq=168
+21:53:32.489 [req-thread-150] COMPLETED R0142(P1,STANDARD,5.5kWh) after 51.4 sim-min
+21:53:32.489 [req-thread-150] BILLED R0142 account=ACC-04 5.5 kWh
+21:53:32.489 [req-thread-168] START R0143(P3,STANDARD,37.0kWh) bay+7 kW waited=1075.0 sim-min [bays 4/4, 28/60 kW]
+21:53:32.490 [req-thread-150] RELEASED R0142 bay-7 kW [bays 4/4, 28/60 kW]
+21:53:32.494 [intake] QUEUED R0169(P3,STANDARD,16.0kWh) account=ACC-14 seq=169
+21:53:32.504 [req-thread-98] COMPLETED R0139(P3,STANDARD,29.5kWh) after 255.1 sim-min
+21:53:32.505 [req-thread-98] BILLED R0139 account=ACC-25 29.5 kWh
+21:53:32.505 [req-thread-98] RELEASED R0139 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:32.505 [req-thread-148] START R0144(P3,FAST,30.5kWh) bay+22 kW waited=1077.0 sim-min [bays 4/4, 43/60 kW]
+21:53:32.523 [req-thread-158] COMPLETED R0141(P3,STANDARD,18.5kWh) after 160.6 sim-min
+21:53:32.524 [req-thread-158] BILLED R0141 account=ACC-19 18.5 kWh
+21:53:32.524 [req-thread-158] RELEASED R0141 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:32.524 [req-thread-164] START R0145(P1,STANDARD,25.0kWh) bay+7 kW waited=1082.6 sim-min [bays 4/4, 43/60 kW]
+21:53:32.535 [intake] QUEUED R0170(P3,STANDARD,6.5kWh) account=ACC-04 seq=170
+21:53:32.541 [req-thread-136] COMPLETED R0138(P1,STANDARD,36.5kWh) after 315.2 sim-min
+21:53:32.541 [req-thread-136] BILLED R0138 account=ACC-39 36.5 kWh
+21:53:32.541 [req-thread-136] RELEASED R0138 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:32.541 [req-thread-127] START R0146(P2,FAST,15.0kWh) bay+22 kW waited=1033.9 sim-min [bays 4/4, 58/60 kW]
+21:53:32.571 [intake] QUEUED R0171(P1,STANDARD,31.5kWh) account=ACC-27 seq=171
+21:53:32.587 [req-thread-127] COMPLETED R0146(P2,FAST,15.0kWh) after 46.0 sim-min
+21:53:32.587 [req-thread-127] BILLED R0146 account=ACC-26 15.0 kWh
+21:53:32.587 [req-thread-127] RELEASED R0146 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.587 [req-thread-169] START R0147(P3,FAST,24.0kWh) bay+22 kW waited=953.6 sim-min [bays 4/4, 58/60 kW]
+21:53:32.589 [req-thread-148] COMPLETED R0144(P3,FAST,30.5kWh) after 83.9 sim-min
+21:53:32.589 [req-thread-148] BILLED R0144 account=ACC-26 30.5 kWh
+21:53:32.589 [req-thread-148] RELEASED R0144 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.589 [req-thread-167] START R0148(P3,FAST,39.5kWh) bay+22 kW waited=938.2 sim-min [bays 4/4, 58/60 kW]
+21:53:32.600 [monitor] STATUS queued[P1=6 P2=5 P3=12] activeBays=4/4 reserved=58/60 kW states={QUEUED=23, CHARGING=4, BILLED=144}
+21:53:32.658 [req-thread-169] COMPLETED R0147(P3,FAST,24.0kWh) after 70.7 sim-min
+21:53:32.658 [req-thread-169] BILLED R0147 account=ACC-08 24.0 kWh
+21:53:32.658 [req-thread-169] RELEASED R0147 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.658 [req-thread-122] START R0149(P2,STANDARD,16.0kWh) bay+7 kW waited=964.6 sim-min [bays 4/4, 43/60 kW]
+21:53:32.700 [req-thread-167] COMPLETED R0148(P3,FAST,39.5kWh) after 110.7 sim-min
+21:53:32.700 [req-thread-167] BILLED R0148 account=ACC-09 39.5 kWh
+21:53:32.700 [req-thread-167] RELEASED R0148 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:32.700 [req-thread-155] START R0150(P1,FAST,39.5kWh) bay+22 kW waited=967.0 sim-min [bays 4/4, 43/60 kW]
+21:53:32.701 [intake] QUEUED R0172(P3,STANDARD,10.0kWh) account=ACC-06 seq=172
+21:53:32.741 [req-thread-164] COMPLETED R0145(P1,STANDARD,25.0kWh) after 217.3 sim-min
+21:53:32.741 [req-thread-164] BILLED R0145 account=ACC-18 25.0 kWh
+21:53:32.741 [req-thread-164] RELEASED R0145 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:32.741 [req-thread-134] START R0151(P1,FAST,7.5kWh) bay+22 kW waited=980.4 sim-min [bays 4/4, 58/60 kW]
+21:53:32.749 [intake] QUEUED R0173(P3,STANDARD,22.0kWh) account=ACC-11 seq=173
+21:53:32.763 [req-thread-134] COMPLETED R0151(P1,FAST,7.5kWh) after 21.7 sim-min
+21:53:32.763 [req-thread-134] BILLED R0151 account=ACC-14 7.5 kWh
+21:53:32.763 [req-thread-134] RELEASED R0151 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.763 [req-thread-146] START R0152(P3,FAST,27.0kWh) bay+22 kW waited=990.9 sim-min [bays 4/4, 58/60 kW]
+21:53:32.799 [intake] QUEUED R0174(P3,STANDARD,20.5kWh) account=ACC-09 seq=174
+21:53:32.800 [req-thread-122] COMPLETED R0149(P2,STANDARD,16.0kWh) after 142.1 sim-min
+21:53:32.800 [req-thread-122] BILLED R0149 account=ACC-31 16.0 kWh
+21:53:32.801 [req-thread-122] RELEASED R0149 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:32.801 [req-thread-135] START R0153(P3,STANDARD,16.5kWh) bay+7 kW waited=1003.7 sim-min [bays 4/4, 58/60 kW]
+21:53:32.810 [req-thread-168] COMPLETED R0143(P3,STANDARD,37.0kWh) after 321.1 sim-min
+21:53:32.810 [intake] QUEUED R0175(P3,STANDARD,22.5kWh) account=ACC-24 seq=175
+21:53:32.810 [req-thread-168] BILLED R0143 account=ACC-31 37.0 kWh
+21:53:32.811 [req-thread-168] RELEASED R0143 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:32.811 [req-thread-116] BACKFILL R0155(P2,STANDARD,12.5kWh) starts ahead of blocked R0154(P3,FAST,35.5kWh)
+21:53:32.811 [req-thread-116] START R0155(P2,STANDARD,12.5kWh) bay+7 kW waited=945.4 sim-min [bays 4/4, 58/60 kW]
+21:53:32.812 [intake] QUEUED R0176(P2,STANDARD,37.5kWh) account=ACC-10 seq=176
+21:53:32.813 [req-thread-155] COMPLETED R0150(P1,FAST,39.5kWh) after 112.6 sim-min
+21:53:32.813 [req-thread-155] BILLED R0150 account=ACC-36 39.5 kWh
+21:53:32.813 [req-thread-155] RELEASED R0150 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.813 [req-thread-160] START R0154(P3,FAST,35.5kWh) bay+22 kW waited=988.5 sim-min [bays 4/4, 58/60 kW]
+21:53:32.837 [req-thread-146] COMPLETED R0152(P3,FAST,27.0kWh) after 74.0 sim-min
+21:53:32.837 [req-thread-146] BILLED R0152 account=ACC-11 27.0 kWh
+21:53:32.837 [req-thread-146] RELEASED R0152 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.837 [req-thread-159] START R0156(P3,FAST,32.0kWh) bay+22 kW waited=941.7 sim-min [bays 4/4, 58/60 kW]
+21:53:32.840 [monitor] STATUS queued[P1=4 P2=4 P3=12] activeBays=4/4 reserved=58/60 kW states={QUEUED=20, CHARGING=4, BILLED=152}
+21:53:32.872 [intake] QUEUED R0177(P2,FAST,30.5kWh) account=ACC-25 seq=177
+21:53:32.910 [req-thread-160] COMPLETED R0154(P3,FAST,35.5kWh) after 97.7 sim-min
+21:53:32.911 [req-thread-160] BILLED R0154 account=ACC-36 35.5 kWh
+21:53:32.911 [req-thread-160] RELEASED R0154 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.911 [req-thread-166] START R0157(P3,FAST,6.5kWh) bay+22 kW waited=918.6 sim-min [bays 4/4, 58/60 kW]
+21:53:32.923 [req-thread-116] COMPLETED R0155(P2,STANDARD,12.5kWh) after 112.2 sim-min
+21:53:32.923 [req-thread-116] BILLED R0155 account=ACC-29 12.5 kWh
+21:53:32.923 [req-thread-116] RELEASED R0155 bay-7 kW [bays 3/4, 51/60 kW]
+21:53:32.923 [req-thread-149] START R0158(P2,STANDARD,39.0kWh) bay+7 kW waited=911.7 sim-min [bays 4/4, 58/60 kW]
+21:53:32.928 [req-thread-159] COMPLETED R0156(P3,FAST,32.0kWh) after 90.2 sim-min
+21:53:32.928 [req-thread-159] BILLED R0156 account=ACC-21 32.0 kWh
+21:53:32.928 [req-thread-159] RELEASED R0156 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:32.928 [req-thread-151] START R0159(P3,STANDARD,16.0kWh) bay+7 kW waited=916.1 sim-min [bays 4/4, 43/60 kW]
+21:53:32.930 [req-thread-166] COMPLETED R0157(P3,FAST,6.5kWh) after 19.3 sim-min
+21:53:32.930 [req-thread-166] BILLED R0157 account=ACC-32 6.5 kWh
+21:53:32.930 [req-thread-166] RELEASED R0157 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:32.930 [req-thread-145] START R0160(P1,STANDARD,34.5kWh) bay+7 kW waited=824.0 sim-min [bays 4/4, 28/60 kW]
+21:53:32.937 [intake] QUEUED R0178(P2,STANDARD,19.5kWh) account=ACC-10 seq=178
+21:53:32.946 [req-thread-135] COMPLETED R0153(P3,STANDARD,16.5kWh) after 145.3 sim-min
+21:53:32.946 [req-thread-135] BILLED R0153 account=ACC-20 16.5 kWh
+21:53:32.946 [req-thread-135] RELEASED R0153 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:32.946 [req-thread-163] START R0161(P1,STANDARD,38.0kWh) bay+7 kW waited=755.3 sim-min [bays 4/4, 28/60 kW]
+21:53:33.004 [intake] QUEUED R0179(P3,STANDARD,19.5kWh) account=ACC-05 seq=179
+21:53:33.017 [intake] QUEUED R0180(P2,FAST,26.0kWh) account=ACC-36 seq=180
+21:53:33.020 [intake] QUEUED R0181(P3,STANDARD,15.5kWh) account=ACC-02 seq=181
+21:53:33.060 [intake] QUEUED R0182(P3,STANDARD,26.5kWh) account=ACC-40 seq=182
+21:53:33.066 [req-thread-151] COMPLETED R0159(P3,STANDARD,16.0kWh) after 137.7 sim-min
+21:53:33.066 [req-thread-151] BILLED R0159 account=ACC-12 16.0 kWh
+21:53:33.066 [req-thread-151] RELEASED R0159 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.066 [req-thread-178] START R0162(P3,FAST,7.5kWh) bay+22 kW waited=841.6 sim-min [bays 4/4, 43/60 kW]
+21:53:33.077 [monitor] STATUS queued[P1=2 P2=6 P3=12] activeBays=4/4 reserved=43/60 kW states={QUEUED=20, CHARGING=4, BILLED=158}
+21:53:33.090 [req-thread-178] COMPLETED R0162(P3,FAST,7.5kWh) after 24.5 sim-min
+21:53:33.091 [req-thread-178] BILLED R0162 account=ACC-34 7.5 kWh
+21:53:33.091 [req-thread-178] RELEASED R0162 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:33.091 [req-thread-161] START R0163(P3,STANDARD,26.0kWh) bay+7 kW waited=861.3 sim-min [bays 4/4, 28/60 kW]
+21:53:33.097 [intake] QUEUED R0183(P2,STANDARD,14.5kWh) account=ACC-17 seq=183
+21:53:33.098 [intake] QUEUED R0184(P3,STANDARD,35.5kWh) account=ACC-15 seq=184
+21:53:33.107 [intake] QUEUED R0185(P3,STANDARD,21.0kWh) account=ACC-02 seq=185
+21:53:33.193 [intake] QUEUED R0186(P3,STANDARD,20.0kWh) account=ACC-02 seq=186
+21:53:33.231 [req-thread-145] COMPLETED R0160(P1,STANDARD,34.5kWh) after 300.9 sim-min
+21:53:33.231 [req-thread-145] BILLED R0160 account=ACC-38 34.5 kWh
+21:53:33.232 [req-thread-176] START R0164(P3,STANDARD,29.0kWh) bay+7 kW waited=943.6 sim-min [bays 4/4, 28/60 kW]
+21:53:33.233 [req-thread-145] RELEASED R0160 bay-7 kW [bays 4/4, 28/60 kW]
+21:53:33.262 [req-thread-149] COMPLETED R0158(P2,STANDARD,39.0kWh) after 338.7 sim-min
+21:53:33.262 [req-thread-149] BILLED R0158 account=ACC-28 39.0 kWh
+21:53:33.262 [req-thread-149] RELEASED R0158 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.263 [req-thread-157] START R0165(P1,STANDARD,12.5kWh) bay+7 kW waited=904.0 sim-min [bays 4/4, 28/60 kW]
+21:53:33.276 [req-thread-163] COMPLETED R0161(P1,STANDARD,38.0kWh) after 329.5 sim-min
+21:53:33.276 [req-thread-163] BILLED R0161 account=ACC-37 38.0 kWh
+21:53:33.276 [req-thread-163] RELEASED R0161 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.276 [req-thread-152] START R0166(P2,FAST,27.5kWh) bay+22 kW waited=888.2 sim-min [bays 4/4, 43/60 kW]
+21:53:33.307 [intake] QUEUED R0187(P2,STANDARD,39.0kWh) account=ACC-12 seq=187
+21:53:33.316 [req-thread-161] COMPLETED R0163(P3,STANDARD,26.0kWh) after 224.9 sim-min
+21:53:33.316 [monitor] STATUS queued[P1=1 P2=7 P3=13] activeBays=4/4 reserved=43/60 kW states={QUEUED=21, CHARGING=3, COMPLETED=1, BILLED=162}
+21:53:33.316 [req-thread-161] BILLED R0163 account=ACC-11 26.0 kWh
+21:53:33.316 [req-thread-161] RELEASED R0163 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:33.316 [req-thread-181] START R0167(P2,FAST,30.0kWh) bay+22 kW waited=871.3 sim-min [bays 4/4, 58/60 kW]
+21:53:33.353 [req-thread-152] COMPLETED R0166(P2,FAST,27.5kWh) after 77.7 sim-min
+21:53:33.354 [req-thread-152] BILLED R0166 account=ACC-15 27.5 kWh
+21:53:33.354 [req-thread-152] RELEASED R0166 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:33.354 [req-thread-175] START R0168(P3,STANDARD,29.5kWh) bay+7 kW waited=865.4 sim-min [bays 4/4, 43/60 kW]
+21:53:33.371 [req-thread-157] COMPLETED R0165(P1,STANDARD,12.5kWh) after 107.8 sim-min
+21:53:33.371 [req-thread-157] BILLED R0165 account=ACC-14 12.5 kWh
+21:53:33.371 [req-thread-157] RELEASED R0165 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:33.371 [req-thread-179] START R0169(P3,STANDARD,16.0kWh) bay+7 kW waited=876.6 sim-min [bays 4/4, 43/60 kW]
+21:53:33.403 [req-thread-181] COMPLETED R0167(P2,FAST,30.0kWh) after 86.9 sim-min
+21:53:33.403 [req-thread-181] BILLED R0167 account=ACC-31 30.0 kWh
+21:53:33.403 [req-thread-181] RELEASED R0167 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:33.404 [req-thread-121] START R0170(P3,STANDARD,6.5kWh) bay+7 kW waited=868.4 sim-min [bays 4/4, 28/60 kW]
+21:53:33.433 [intake] QUEUED R0188(P2,STANDARD,37.5kWh) account=ACC-27 seq=188
+21:53:33.436 [intake] QUEUED R0189(P2,STANDARD,31.5kWh) account=ACC-01 seq=189
+21:53:33.440 [intake] QUEUED R0190(P1,STANDARD,34.5kWh) account=ACC-06 seq=190
+21:53:33.463 [req-thread-121] COMPLETED R0170(P3,STANDARD,6.5kWh) after 59.0 sim-min
+21:53:33.463 [req-thread-121] BILLED R0170 account=ACC-04 6.5 kWh
+21:53:33.463 [req-thread-121] RELEASED R0170 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.463 [req-thread-182] START R0171(P1,STANDARD,31.5kWh) bay+7 kW waited=892.4 sim-min [bays 4/4, 28/60 kW]
+21:53:33.485 [req-thread-176] COMPLETED R0164(P3,STANDARD,29.0kWh) after 252.6 sim-min
+21:53:33.485 [req-thread-176] BILLED R0164 account=ACC-16 29.0 kWh
+21:53:33.485 [req-thread-176] RELEASED R0164 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.486 [req-thread-190] START R0172(P3,STANDARD,10.0kWh) bay+7 kW waited=784.9 sim-min [bays 4/4, 28/60 kW]
+21:53:33.486 [intake] QUEUED R0191(P2,STANDARD,10.0kWh) account=ACC-37 seq=191
+21:53:33.499 [intake] QUEUED R0192(P3,FAST,27.5kWh) account=ACC-13 seq=192
+21:53:33.510 [req-thread-179] COMPLETED R0169(P3,STANDARD,16.0kWh) after 139.1 sim-min
+21:53:33.511 [req-thread-179] BILLED R0169 account=ACC-14 16.0 kWh
+21:53:33.511 [req-thread-179] RELEASED R0169 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.511 [req-thread-185] START R0173(P3,STANDARD,22.0kWh) bay+7 kW waited=762.4 sim-min [bays 4/4, 28/60 kW]
+21:53:33.545 [intake] QUEUED R0193(P2,STANDARD,38.5kWh) account=ACC-33 seq=193
+21:53:33.558 [monitor] STATUS queued[P1=1 P2=10 P3=9] activeBays=4/4 reserved=28/60 kW states={QUEUED=20, CHARGING=4, BILLED=169}
+21:53:33.568 [intake] QUEUED R0194(P3,FAST,22.0kWh) account=ACC-30 seq=194
+21:53:33.572 [req-thread-190] COMPLETED R0172(P3,STANDARD,10.0kWh) after 86.4 sim-min
+21:53:33.572 [req-thread-190] BILLED R0172 account=ACC-06 10.0 kWh
+21:53:33.572 [req-thread-190] RELEASED R0172 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.572 [req-thread-143] START R0174(P3,STANDARD,20.5kWh) bay+7 kW waited=773.7 sim-min [bays 4/4, 28/60 kW]
+21:53:33.604 [intake] QUEUED R0195(P3,STANDARD,21.5kWh) account=ACC-05 seq=195
+21:53:33.610 [req-thread-175] COMPLETED R0168(P3,STANDARD,29.5kWh) after 256.6 sim-min
+21:53:33.610 [req-thread-175] BILLED R0168 account=ACC-19 29.5 kWh
+21:53:33.611 [req-thread-175] RELEASED R0168 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.611 [req-thread-194] START R0175(P3,STANDARD,22.5kWh) bay+7 kW waited=800.4 sim-min [bays 4/4, 28/60 kW]
+21:53:33.620 [intake] QUEUED R0196(P3,FAST,9.0kWh) account=ACC-27 seq=196
+21:53:33.653 [intake] QUEUED R0197(P3,FAST,6.0kWh) account=ACC-39 seq=197
+21:53:33.705 [req-thread-185] COMPLETED R0173(P3,STANDARD,22.0kWh) after 193.8 sim-min
+21:53:33.705 [req-thread-185] BILLED R0173 account=ACC-11 22.0 kWh
+21:53:33.705 [req-thread-185] RELEASED R0173 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.705 [req-thread-197] START R0176(P2,STANDARD,37.5kWh) bay+7 kW waited=893.0 sim-min [bays 4/4, 28/60 kW]
+21:53:33.734 [req-thread-182] COMPLETED R0171(P1,STANDARD,31.5kWh) after 271.1 sim-min
+21:53:33.734 [req-thread-182] BILLED R0171 account=ACC-27 31.5 kWh
+21:53:33.734 [req-thread-182] RELEASED R0171 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.735 [req-thread-188] START R0177(P2,FAST,30.5kWh) bay+22 kW waited=863.0 sim-min [bays 4/4, 43/60 kW]
+21:53:33.751 [req-thread-143] COMPLETED R0174(P3,STANDARD,20.5kWh) after 178.3 sim-min
+21:53:33.751 [req-thread-143] BILLED R0174 account=ACC-09 20.5 kWh
+21:53:33.751 [req-thread-143] RELEASED R0174 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:33.751 [req-thread-196] START R0178(P2,STANDARD,19.5kWh) bay+7 kW waited=814.2 sim-min [bays 4/4, 43/60 kW]
+21:53:33.793 [intake] QUEUED R0198(P2,FAST,10.0kWh) account=ACC-19 seq=198
+21:53:33.799 [monitor] STATUS queued[P1=1 P2=8 P3=11] activeBays=4/4 reserved=43/60 kW states={QUEUED=20, CHARGING=4, BILLED=174}
+21:53:33.808 [req-thread-194] COMPLETED R0175(P3,STANDARD,22.5kWh) after 197.5 sim-min
+21:53:33.809 [req-thread-194] BILLED R0175 account=ACC-24 22.5 kWh
+21:53:33.809 [req-thread-194] RELEASED R0175 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:33.809 [req-thread-171] START R0179(P3,STANDARD,19.5kWh) bay+7 kW waited=805.6 sim-min [bays 4/4, 43/60 kW]
+21:53:33.822 [req-thread-188] COMPLETED R0177(P2,FAST,30.5kWh) after 87.4 sim-min
+21:53:33.822 [req-thread-188] BILLED R0177 account=ACC-25 30.5 kWh
+21:53:33.822 [req-thread-188] RELEASED R0177 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:33.822 [req-thread-162] START R0180(P2,FAST,26.0kWh) bay+22 kW waited=805.3 sim-min [bays 4/4, 43/60 kW]
+21:53:33.828 [intake] QUEUED R0199(P3,STANDARD,30.0kWh) account=ACC-18 seq=199
+21:53:33.896 [req-thread-162] COMPLETED R0180(P2,FAST,26.0kWh) after 73.6 sim-min
+21:53:33.896 [req-thread-162] BILLED R0180 account=ACC-36 26.0 kWh
+21:53:33.896 [req-thread-162] RELEASED R0180 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:33.896 [req-thread-195] START R0181(P3,STANDARD,15.5kWh) bay+7 kW waited=876.0 sim-min [bays 4/4, 28/60 kW]
+21:53:33.915 [intake] QUEUED R0200(P3,STANDARD,27.5kWh) account=ACC-03 seq=200
+21:53:33.915 [main] All 200 requests submitted; draining queue
+21:53:33.916 [main] SHUTDOWN requested (GRACEFUL)
+21:53:33.920 [req-thread-196] COMPLETED R0178(P2,STANDARD,19.5kWh) after 168.7 sim-min
+21:53:33.920 [req-thread-196] BILLED R0178 account=ACC-10 19.5 kWh
+21:53:33.920 [req-thread-196] RELEASED R0178 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:33.921 [req-thread-173] START R0182(P3,STANDARD,26.5kWh) bay+7 kW waited=861.5 sim-min [bays 4/4, 28/60 kW]
+21:53:33.982 [req-thread-171] COMPLETED R0179(P3,STANDARD,19.5kWh) after 172.5 sim-min
+21:53:33.982 [req-thread-171] BILLED R0179 account=ACC-05 19.5 kWh
+21:53:33.982 [req-thread-171] RELEASED R0179 bay-7 kW [bays 4/4, 28/60 kW]
+21:53:33.982 [req-thread-165] START R0183(P2,STANDARD,14.5kWh) bay+7 kW waited=884.5 sim-min [bays 4/4, 28/60 kW]
+21:53:34.031 [req-thread-197] COMPLETED R0176(P2,STANDARD,37.5kWh) after 325.8 sim-min
+21:53:34.031 [req-thread-197] BILLED R0176 account=ACC-10 37.5 kWh
+21:53:34.031 [req-thread-197] RELEASED R0176 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.031 [req-thread-186] START R0184(P3,STANDARD,35.5kWh) bay+7 kW waited=933.3 sim-min [bays 4/4, 28/60 kW]
+21:53:34.032 [req-thread-195] COMPLETED R0181(P3,STANDARD,15.5kWh) after 135.9 sim-min
+21:53:34.032 [req-thread-195] BILLED R0181 account=ACC-02 15.5 kWh
+21:53:34.032 [req-thread-195] RELEASED R0181 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.033 [req-thread-180] START R0185(P3,STANDARD,21.0kWh) bay+7 kW waited=925.4 sim-min [bays 4/4, 28/60 kW]
+21:53:34.040 [monitor] STATUS queued[P1=1 P2=6 P3=8] activeBays=4/4 reserved=28/60 kW states={QUEUED=15, CHARGING=4, BILLED=181}
+21:53:34.110 [req-thread-165] COMPLETED R0183(P2,STANDARD,14.5kWh) after 128.0 sim-min
+21:53:34.110 [req-thread-165] BILLED R0183 account=ACC-17 14.5 kWh
+21:53:34.110 [req-thread-165] RELEASED R0183 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.110 [req-thread-189] START R0186(P3,STANDARD,20.0kWh) bay+7 kW waited=917.1 sim-min [bays 4/4, 28/60 kW]
+21:53:34.150 [req-thread-173] COMPLETED R0182(P3,STANDARD,26.5kWh) after 228.9 sim-min
+21:53:34.150 [req-thread-173] BILLED R0182 account=ACC-40 26.5 kWh
+21:53:34.150 [req-thread-173] RELEASED R0182 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.150 [req-thread-139] START R0187(P2,STANDARD,39.0kWh) bay+7 kW waited=843.9 sim-min [bays 4/4, 28/60 kW]
+21:53:34.216 [req-thread-180] COMPLETED R0185(P3,STANDARD,21.0kWh) after 183.4 sim-min
+21:53:34.216 [req-thread-180] BILLED R0185 account=ACC-02 21.0 kWh
+21:53:34.216 [req-thread-180] RELEASED R0185 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.217 [req-thread-174] START R0188(P2,STANDARD,37.5kWh) bay+7 kW waited=783.8 sim-min [bays 4/4, 28/60 kW]
+21:53:34.279 [monitor] STATUS queued[P1=1 P2=4 P3=7] activeBays=4/4 reserved=28/60 kW states={QUEUED=12, CHARGING=4, BILLED=184}
+21:53:34.283 [req-thread-189] COMPLETED R0186(P3,STANDARD,20.0kWh) after 172.4 sim-min
+21:53:34.283 [req-thread-189] BILLED R0186 account=ACC-02 20.0 kWh
+21:53:34.283 [req-thread-189] RELEASED R0186 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.283 [req-thread-198] START R0189(P2,STANDARD,31.5kWh) bay+7 kW waited=847.0 sim-min [bays 4/4, 28/60 kW]
+21:53:34.339 [req-thread-186] COMPLETED R0184(P3,STANDARD,35.5kWh) after 308.0 sim-min
+21:53:34.339 [req-thread-186] BILLED R0184 account=ACC-15 35.5 kWh
+21:53:34.339 [req-thread-186] RELEASED R0184 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.340 [req-thread-192] START R0190(P1,STANDARD,34.5kWh) bay+7 kW waited=899.7 sim-min [bays 4/4, 28/60 kW]
+21:53:34.488 [req-thread-139] COMPLETED R0187(P2,STANDARD,39.0kWh) after 338.0 sim-min
+21:53:34.489 [req-thread-139] BILLED R0187 account=ACC-12 39.0 kWh
+21:53:34.489 [req-thread-139] RELEASED R0187 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.489 [req-thread-177] START R0191(P2,STANDARD,10.0kWh) bay+7 kW waited=1003.0 sim-min [bays 4/4, 28/60 kW]
+21:53:34.517 [monitor] STATUS queued[P1=0 P2=2 P3=7] activeBays=4/4 reserved=28/60 kW states={QUEUED=9, CHARGING=4, BILLED=187}
+21:53:34.540 [req-thread-174] COMPLETED R0188(P2,STANDARD,37.5kWh) after 323.2 sim-min
+21:53:34.540 [req-thread-174] BILLED R0188 account=ACC-27 37.5 kWh
+21:53:34.540 [req-thread-174] RELEASED R0188 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.540 [req-thread-184] START R0192(P3,FAST,27.5kWh) bay+22 kW waited=1040.8 sim-min [bays 4/4, 43/60 kW]
+21:53:34.557 [req-thread-198] COMPLETED R0189(P2,STANDARD,31.5kWh) after 274.1 sim-min
+21:53:34.557 [req-thread-198] BILLED R0189 account=ACC-01 31.5 kWh
+21:53:34.557 [req-thread-198] RELEASED R0189 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:34.558 [req-thread-170] START R0193(P2,STANDARD,38.5kWh) bay+7 kW waited=1012.4 sim-min [bays 4/4, 43/60 kW]
+21:53:34.576 [req-thread-177] COMPLETED R0191(P2,STANDARD,10.0kWh) after 87.7 sim-min
+21:53:34.576 [req-thread-177] BILLED R0191 account=ACC-37 10.0 kWh
+21:53:34.576 [req-thread-177] RELEASED R0191 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:34.577 [req-thread-187] START R0194(P3,FAST,22.0kWh) bay+22 kW waited=1008.9 sim-min [bays 4/4, 58/60 kW]
+21:53:34.620 [req-thread-184] COMPLETED R0192(P3,FAST,27.5kWh) after 80.2 sim-min
+21:53:34.621 [req-thread-184] BILLED R0192 account=ACC-13 27.5 kWh
+21:53:34.621 [req-thread-184] RELEASED R0192 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:34.621 [req-thread-172] START R0195(P3,STANDARD,21.5kWh) bay+7 kW waited=1017.0 sim-min [bays 4/4, 43/60 kW]
+21:53:34.638 [req-thread-192] COMPLETED R0190(P1,STANDARD,34.5kWh) after 298.3 sim-min
+21:53:34.638 [req-thread-192] BILLED R0190 account=ACC-06 34.5 kWh
+21:53:34.638 [req-thread-192] RELEASED R0190 bay-7 kW [bays 3/4, 36/60 kW]
+21:53:34.639 [req-thread-199] START R0196(P3,FAST,9.0kWh) bay+22 kW waited=1018.9 sim-min [bays 4/4, 58/60 kW]
+21:53:34.640 [req-thread-187] COMPLETED R0194(P3,FAST,22.0kWh) after 63.8 sim-min
+21:53:34.640 [req-thread-187] BILLED R0194 account=ACC-30 22.0 kWh
+21:53:34.641 [req-thread-187] RELEASED R0194 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:34.641 [req-thread-200] START R0197(P3,FAST,6.0kWh) bay+22 kW waited=988.3 sim-min [bays 4/4, 58/60 kW]
+21:53:34.658 [req-thread-200] COMPLETED R0197(P3,FAST,6.0kWh) after 17.1 sim-min
+21:53:34.658 [req-thread-200] BILLED R0197 account=ACC-39 6.0 kWh
+21:53:34.658 [req-thread-200] RELEASED R0197 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:34.659 [req-thread-183] START R0198(P2,FAST,10.0kWh) bay+22 kW waited=865.5 sim-min [bays 4/4, 58/60 kW]
+21:53:34.667 [req-thread-199] COMPLETED R0196(P3,FAST,9.0kWh) after 27.8 sim-min
+21:53:34.667 [req-thread-199] BILLED R0196 account=ACC-27 9.0 kWh
+21:53:34.667 [req-thread-199] RELEASED R0196 bay-22 kW [bays 3/4, 36/60 kW]
+21:53:34.667 [req-thread-191] START R0199(P3,STANDARD,30.0kWh) bay+7 kW waited=838.9 sim-min [bays 4/4, 43/60 kW]
+21:53:34.689 [req-thread-183] COMPLETED R0198(P2,FAST,10.0kWh) after 29.9 sim-min
+21:53:34.689 [req-thread-183] BILLED R0198 account=ACC-19 10.0 kWh
+21:53:34.689 [req-thread-183] RELEASED R0198 bay-22 kW [bays 3/4, 21/60 kW]
+21:53:34.689 [req-thread-193] START R0200(P3,STANDARD,27.5kWh) bay+7 kW waited=773.6 sim-min [bays 4/4, 28/60 kW]
+21:53:34.759 [monitor] STATUS queued[P1=0 P2=0 P3=0] activeBays=4/4 reserved=28/60 kW states={CHARGING=4, BILLED=196}
+21:53:34.808 [req-thread-172] COMPLETED R0195(P3,STANDARD,21.5kWh) after 187.3 sim-min
+21:53:34.808 [req-thread-172] BILLED R0195 account=ACC-05 21.5 kWh
+21:53:34.808 [req-thread-172] RELEASED R0195 bay-7 kW [bays 3/4, 21/60 kW]
+21:53:34.890 [req-thread-170] COMPLETED R0193(P2,STANDARD,38.5kWh) after 332.7 sim-min
+21:53:34.890 [req-thread-170] BILLED R0193 account=ACC-33 38.5 kWh
+21:53:34.891 [req-thread-170] RELEASED R0193 bay-7 kW [bays 2/4, 14/60 kW]
+21:53:34.926 [req-thread-193] COMPLETED R0200(P3,STANDARD,27.5kWh) after 237.4 sim-min
+21:53:34.926 [req-thread-193] BILLED R0200 account=ACC-03 27.5 kWh
+21:53:34.926 [req-thread-193] RELEASED R0200 bay-7 kW [bays 1/4, 7/60 kW]
+21:53:34.929 [req-thread-191] COMPLETED R0199(P3,STANDARD,30.0kWh) after 262.3 sim-min
+21:53:34.929 [req-thread-191] BILLED R0199 account=ACC-18 30.0 kWh
+21:53:34.929 [req-thread-191] RELEASED R0199 bay-7 kW [bays 0/4, 0/60 kW]
+21:53:34.931 [main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+21:53:34.934 [main] FINAL STATUS queued[P1=0 P2=0 P3=0] activeBays=0/4 reserved=0/60 kW states={BILLED=200}
+21:53:34.934 [main] BILLING billedSessions=200 legacyEntries=200 cancelled=0 cancelledBilled=false totalsMatch=true duplicatesIgnored=0 billingFailures=0 => RECONCILED
+21:53:34.934 [main] SUMMARY
+config=thread-per-request run=1 requests=200 completed=200 cancelled=0 billingFailed=0
+  total completion time = 8092.3 sim-min (134.87 sim-h, 8092 real ms)
+  waiting time avg = 616.2 sim-min, max = 1098.0 sim-min (avg by priority P1=546.7 P2=611.5 P3=643.3)
+  peak reserved power = 58/60 kW, peak active bays = 4/4, constraints ok = true
+  billing reconciled = true, starvation-guard activations = 0, avg session overrun = 3.27 sim-min

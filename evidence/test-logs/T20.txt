@@ -1,0 +1,14 @@
+=== CORRECTED VARIANT (atomic, non-blocking allocation, fixed order: power lock -> bay tryAcquire) ===
+[std-1] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[std-2] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[std-3] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[std-4] allocated bay + 7 kW atomically (holds both, waits for nothing)
+[fast-1] allocation refused (no free bay) - holding NOTHING, will retry
+[std-2] charging done, released bay + 7 kW
+[std-1] charging done, released bay + 7 kW
+[std-4] charging done, released bay + 7 kW
+[std-3] charging done, released bay + 7 kW
+[fast-1] allocated bay + 22 kW after 9 refused attempt(s)
+Finished=true, final reserved=0 kW, active bays=0, peak reserved=28 kW, peak bays=4
+Why no deadlock: tryAcquire() never blocks while the power lock is held, and a refused request
+  keeps nothing, so hold-and-wait and circular wait cannot occur.

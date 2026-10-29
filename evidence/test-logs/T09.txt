@@ -1,0 +1,9 @@
+21:53:38.297 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+21:53:38.297 [test-main] QUEUED R1(P2,STANDARD,60.0kWh) account=ACC-R1 seq=1
+21:53:38.297 [worker-1] START R1(P2,STANDARD,60.0kWh) bay+7 kW waited=0.1 sim-min [bays 1/4, 7/60 kW]
+21:53:38.321 [test-main] CANCEL requested for charging session R1(P2,STANDARD,60.0kWh)
+21:53:38.321 [worker-1] CANCELLED R1(P2,STANDARD,60.0kWh) during charging (not billed)
+21:53:38.321 [worker-1] RELEASED R1 bay-7 kW [bays 0/4, 0/60 kW]
+21:53:38.323 [test-main] SHUTDOWN requested (GRACEFUL)
+21:53:38.323 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+
