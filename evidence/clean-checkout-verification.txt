@@ -1,6 +1,6 @@
 # Clean-checkout verification
-Date: 2026-10-29 21:56:29 IST
-Clone: https://github.com/ruchiranagare09/smartcharge.git @ 182c3c0
+Date: 2026-10-29 22:39:01 IST
+Clone: https://github.com/ruchiranagare09/smartcharge.git @ 2b87dcd
 Host: Darwin arm64
 openjdk version "17.0.16" 2025-07-15
 OpenJDK Runtime Environment Homebrew (build 17.0.16+0)
@@ -14,48 +14,51 @@ $ manual javac (README "Build" section)
 exit=0
 
 $ ./scripts/test.sh
+exit=0
 Build OK: out/main, out/test
-T01  NORMAL      PASS       105 ms  Standard-rate session completes and is billed once
+T01  NORMAL      PASS       108 ms  Standard-rate session completes and is billed once
 T02  NORMAL      PASS        65 ms  Fast-rate session completes and is billed once
-T03  NORMAL      PASS       132 ms  Multiple simultaneous valid requests
-T04  NORMAL      PASS       234 ms  Priority ordering with FIFO tie-break among equal priorities
+T03  NORMAL      PASS       130 ms  Multiple simultaneous valid requests
+T04  NORMAL      PASS       238 ms  Priority ordering with FIFO tie-break among equal priorities
 T05  EDGE        PASS        66 ms  Invalid and duplicate requests are rejected at intake
-T06  EDGE        PASS       134 ms  No free bay: fifth request waits for a released bay
-T07  EDGE        PASS       127 ms  Power exhausted while bays are free
-T08  EDGE        PASS        62 ms  Cancellation before charging
-T09  EDGE        PASS        25 ms  Cancellation during charging
-T10  EDGE        PASS         2 ms  Immediate shutdown while sessions are active
-T11  EDGE        PASS       131 ms  Graceful shutdown while sessions are active
-T12  EDGE        PASS        23 ms  Concurrent billing through the adapter
-T13  OBSERVATION OBSERVED    25 ms  Same concurrent load straight into the legacy service (no adapter)
+T06  EDGE        PASS       130 ms  No free bay: fifth request waits for a released bay
+T07  EDGE        PASS       131 ms  Power exhausted while bays are free
+T08  EDGE        PASS        65 ms  Cancellation before charging
+T09  EDGE        PASS        29 ms  Cancellation during charging
+T10  EDGE        PASS         3 ms  Immediate shutdown while sessions are active
+T11  EDGE        PASS       132 ms  Graceful shutdown while sessions are active
+T12  EDGE        PASS        22 ms  Concurrent billing through the adapter
+T13  OBSERVATION OBSERVED    28 ms  Same concurrent load straight into the legacy service (no adapter)
 T14  EDGE        PASS        66 ms  Resources released after a billing exception
 T15  EDGE        PASS         0 ms  Duplicate billing attempt is ignored
 T16  EDGE        PASS         0 ms  Aging lifts a waiting visitor above a later fleet request
 T17  EDGE        PASS         0 ms  Starvation guard bounds backfill past a blocked fast request
-T18  EDGE        PASS       484 ms  Burst of the seeded workload with thread-per-request
-T19  EDGE        PASS      1042 ms  Deadlock-prone allocator deadlocks (separate demo)
-T20  EDGE        PASS        56 ms  Corrected allocator under the same interleaving
-TOTAL: 19 passed, 0 failed, 1 observations. Report: results/test-results.md
-
-results/test-results.md
-
-results/test-logs:
+T18  EDGE        PASS       475 ms  Burst of the seeded workload with thread-per-request
+T19  EDGE        PASS      1030 ms  Deadlock-prone allocator deadlocks (separate demo)
+T20  EDGE        PASS        58 ms  Corrected allocator under the same interleaving
+T21  EDGE        PASS         1 ms  Contract C1/C2 violations on StationResources are rejected
+T22  EDGE        PASS         0 ms  Contract C3/C5 violations on session and billing are rejected
+T23  EDGE        PASS         0 ms  Contract C6 lifecycle violations are rejected
+T24  EDGE        PASS       327 ms  Starvation guard on a running station
+T25  EDGE        PASS         0 ms  Guard clock survives a temporary change of front request
+TOTAL: 24 passed, 0 failed, 1 observations. Report: results/test-results.md
 
 $ ./scripts/run.sh
 exit=0
-21:56:46.957 [main] FINAL STATUS queued[P1=0 P2=0 P3=0] activeBays=0/4 reserved=0/60 kW states={BILLED=200}
-21:56:46.957 [main] BILLING billedSessions=200 legacyEntries=200 cancelled=0 cancelledBilled=false totalsMatch=true duplicatesIgnored=0 billingFailures=0 => RECONCILED
-21:56:46.957 [main] SUMMARY
+22:39:20.376 [main] FINAL STATUS queued[P1=0 P2=0 P3=0] activeBays=0/4 reserved=0/60 kW states={BILLED=200}
+22:39:20.376 [main] BILLING billedSessions=200 legacyEntries=200 cancelled=0 cancelledBilled=false totalsMatch=true duplicatesIgnored=0 billingFailures=0 => RECONCILED
+22:39:20.376 [main] SUMMARY
 config=pool-4 run=1 requests=200 completed=200 cancelled=0 billingFailed=0
-  total completion time = 8100.9 sim-min (135.01 sim-h, 8101 real ms)
-  waiting time avg = 614.8 sim-min, max = 1101.4 sim-min (avg by priority P1=543.5 P2=610.0 P3=642.5)
+  total completion time = 8102.2 sim-min (135.04 sim-h, 8102 real ms)
+  waiting time avg = 615.5 sim-min, max = 1096.3 sim-min (avg by priority P1=544.6 P2=611.0 P3=643.0)
   peak reserved power = 58/60 kW, peak active bays = 4/4, constraints ok = true
-  billing reconciled = true, starvation-guard activations = 0, avg session overrun = 3.69 sim-min
+  billing reconciled = true, starvation-guard activations = 0, avg session overrun = 3.67 sim-min
 
 $ ./scripts/run.sh --thread-per-request
 exit=0
 
 $ ./scripts/deadlock-demo.sh
+exit=0
 Build OK: out/main, out/test
 DETECTED: no progress within 2000 ms timeout; 5 of 5 threads still blocked
 RESULT deadlock-prone variant: DEADLOCKED (threads never finished)
@@ -65,26 +68,29 @@ $ java -ea -cp out/main smartcharge.demo.DeadlockDemo fixed   (manual equivalent
 RESULT corrected variant: all sessions completed, no deadlock
 
 $ ./scripts/benchmark.sh
+exit=0
 Build OK: out/main, out/test
 Benchmark: 200 requests, seed=42, fingerprint=b6cf65b335fdff82, scale=1.000 ms/sim-min, runs=3, java=17.0.16, cpus=12, assertions=true
-run 1 pool-1             completion= 32427.4 sim-min ( 32427 ms) avgWait=12489.8 maxWait=25105.3 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
-run 1 pool-4             completion=  8239.7 sim-min (  8240 ms) avgWait=  679.3 maxWait= 1179.7 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
-run 1 pool-16            completion=  8260.7 sim-min (  8261 ms) avgWait=  695.0 maxWait= 1212.7 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
-run 1 thread-per-request completion=  8260.9 sim-min (  8261 ms) avgWait=  682.9 maxWait= 1260.3 peakPower=58 kW peakBays=4 completed=200 peakThreads=42 OK
-run 2 pool-1             completion= 32282.2 sim-min ( 32282 ms) avgWait=12421.9 maxWait=24953.0 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
-run 2 pool-4             completion=  8221.5 sim-min (  8222 ms) avgWait=  673.3 maxWait= 1168.0 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
-run 2 pool-16            completion=  8280.1 sim-min (  8280 ms) avgWait=  695.8 maxWait= 1232.6 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
-run 2 thread-per-request completion=  8278.6 sim-min (  8279 ms) avgWait=  693.4 maxWait= 1260.1 peakPower=58 kW peakBays=4 completed=200 peakThreads=41 OK
-run 3 pool-1             completion= 32390.9 sim-min ( 32391 ms) avgWait=12503.5 maxWait=25063.5 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
-run 3 pool-4             completion=  8249.7 sim-min (  8250 ms) avgWait=  684.9 maxWait= 1201.2 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
-run 3 pool-16            completion=  8256.5 sim-min (  8256 ms) avgWait=  685.8 maxWait= 1201.1 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
-run 3 thread-per-request completion=  8272.1 sim-min (  8272 ms) avgWait=  693.1 maxWait= 1246.7 peakPower=58 kW peakBays=4 completed=200 peakThreads=42 OK
+run 1 pool-1             completion= 31827.0 sim-min ( 31827 ms) avgWait=12192.9 maxWait=24510.1 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
+run 1 pool-4             completion=  8101.3 sim-min (  8101 ms) avgWait=  612.8 maxWait= 1097.5 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
+run 1 pool-16            completion=  8108.2 sim-min (  8108 ms) avgWait=  601.1 maxWait= 1092.8 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
+run 1 thread-per-request completion=  8077.1 sim-min (  8077 ms) avgWait=  603.4 maxWait= 1097.2 peakPower=58 kW peakBays=4 completed=200 peakThreads=39 OK
+run 2 pool-1             completion= 31813.4 sim-min ( 31813 ms) avgWait=12184.5 maxWait=24494.7 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
+run 2 pool-4             completion=  8092.0 sim-min (  8092 ms) avgWait=  614.6 maxWait= 1106.9 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
+run 2 pool-16            completion=  8090.1 sim-min (  8090 ms) avgWait=  610.7 maxWait= 1146.1 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
+run 2 thread-per-request completion=  8071.5 sim-min (  8072 ms) avgWait=  603.2 maxWait= 1113.7 peakPower=58 kW peakBays=4 completed=200 peakThreads=39 OK
+run 3 pool-1             completion= 31828.9 sim-min ( 31829 ms) avgWait=12199.7 maxWait=24512.0 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
+run 3 pool-4             completion=  8096.0 sim-min (  8096 ms) avgWait=  613.8 maxWait= 1102.4 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
+run 3 pool-16            completion=  8085.5 sim-min (  8086 ms) avgWait=  607.3 maxWait= 1095.0 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
+run 3 thread-per-request completion=  8087.5 sim-min (  8088 ms) avgWait=  609.0 maxWait= 1163.9 peakPower=58 kW peakBays=4 completed=200 peakThreads=39 OK
 Constraint check across all 12 runs (peak bays <= 4, peak power <= 60 kW, all requests billed, billing reconciled, identical workload fingerprint): **PASSED**
-Raw runs: results/benchmark-runs-20261029-215955.csv
-Summary:  results/benchmark-summary-20261029-215955.md
-exit=0
-benchmark-runs-20261029-215955.csv
-benchmark-summary-20261029-215955.md
+Raw runs: results/benchmark-runs-20261029-224226.csv
+Summary:  results/benchmark-summary-20261029-224226.md
+benchmark-runs-20261029-224226.csv
+benchmark-summary-20261029-224226.md
+
+$ ./scripts/set-author.sh (no arguments: must refuse)
+exit=2
 
 $ git status --short (after all runs; build/log/result output must be ignored)
 (end of git status)

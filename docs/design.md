@@ -93,8 +93,12 @@ That pre-fix output was not retained as evidence. It can be reproduced by runnin
 
 Overtakes only happen at release or arrival events, which every multi-worker configuration observes
 identically, so the policy is now thread-count independent. The activation counter also only counts
-when the guard actually stops a request that `wouldFit`. With the final code: 0 activations in 11 of
-12 benchmark runs and 1 in one pool-16 run (`evidence/benchmark-runs.csv`).
+when the guard actually stops a request that `wouldFit`. With the final code the guard activated
+once in each of 3 of the 24 benchmark runs:
+- 1 of 12 in `evidence/benchmark-runs.csv` (pool-16);
+- 2 of 12 in `evidence/benchmark-runs-clean-checkout.csv` (thread-per-request and pool-16).
+
+The activations are spread across configurations rather than tied to thread count.
 
 Worked example (from T17): a P1 fast request F cannot fit (only 9 kW free); P2 standard S1, S2 can.
 At t=10 S1 backfills; at t=39 S2 backfills; at t=40 F has been the blocked front for 30 → nothing starts
@@ -132,7 +136,7 @@ State: one fast (22 kW) and one standard (7 kW) session running → `reservedKw 
 Result: four sessions draw 22+7+22+22 = **73 kW > 60 kW**, yet the ledger says 51 kW, so later checks
 admit even more. Both the check-then-act and the read-modify-write are non-atomic.
 Prevention: `tryAllocate` performs check, bay acquisition and update as one critical section under the
-power lock. Evidence: T03, T06, T07, T18 and all 12 benchmark runs report peak ≤ 58 kW with assertions on.
+power lock. Evidence: T03, T06, T07, T18 and all 24 benchmark runs report peak ≤ 58 kW with assertions on; T21 shows that invalid or unmatched calls are rejected without changing the ledger.
 
 The same hazard exists in the legacy billing service (`HashMap` get/put and `ArrayList.add`).
 Observed in T13 without the adapter (`evidence/test-logs/T13.txt`): 5/5 trials corrupted, with
@@ -151,7 +155,7 @@ Two forms: (a) visitors overtaken forever by a stream of higher-priority request
 (T16); (b) a large (fast) request overtaken forever by smaller backfilled requests — aging cannot help a
 P1 request, so the starvation guard bounds it (T17, T24, T25). Limitation: bays, not power, are usually the
 binding constraint for this workload, so backfill is rare (6 backfills in a 200-request run) and the
-guard activated in only 1 of 12 benchmark runs; its behaviour is primarily evidenced by the
+guard activated in only 3 of 24 benchmark runs; its behaviour is primarily evidenced by the
 deterministic test T17.
 
 ### H4 — Priority inversion
