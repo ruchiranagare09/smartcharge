@@ -89,7 +89,7 @@ for requests that nobody had overtaken; pool-4 has no spare threads and only che
 During development the benchmark showed about 100 guard activations per run for pool-16 and
 thread-per-request, but 0 for pool-4: the same workload was being scheduled by a different policy.
 That pre-fix output was not retained as evidence. It can be reproduced by running
-`./scripts/benchmark.sh` at commit `0913b2e`, whose CSV already has a `guard_activations` column.
+the benchmark (`java -ea -cp out/main smartcharge.app.BenchmarkRunner`) at commit `0913b2e`, whose CSV already has a `guard_activations` column.
 
 Overtakes only happen at release or arrival events, which every multi-worker configuration observes
 identically, so the policy is now thread-count independent. The activation counter also only counts
