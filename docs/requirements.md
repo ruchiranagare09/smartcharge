@@ -60,7 +60,7 @@ evidence file is named for each.
 | NFR-09 | Portability | Java 17 standard library only; builds and runs with `javac`/`java` from a clean checkout. | Marker reproducibility; brief forbids third-party concurrency (p.4). | Only `java.*` imports. Clean-checkout transcript in `evidence/clean-checkout-verification.txt`. | yes |
 | NFR-10 | Observability | 100% of log events start with a timestamp and `[thread-name]`. | Concurrent behaviour must be traceable (p.10). | 1,048/1,048 events in each normal run. The only other lines are the 5-line continuation of the final summary. | yes |
 | NFR-11 | Verifiability | Contracts enforced by exceptions and assertions. Tests refuse to run without `-ea`. Every contract has a test showing it holds and a test showing its violation is rejected. | Contracts must be checkable, not decorative (p.10). | Test report header "Assertions enabled: true". Violation tests T21–T23. | yes |
-| NFR-12 | Legacy isolation | `LegacyBillingService` behaviour is never modified; all access goes through the adapter's lock. | Brownfield constraint (p.7). | Since its creation in commit `2442271`, the only change is the Name / Student ID header comment required on every file (commit `76dc652`). | yes |
+| NFR-12 | Legacy isolation | `LegacyBillingService` behaviour is never modified; all access goes through the adapter's lock. | Brownfield constraint (p.7). | Since its creation in commit `2442271`, the only changes are the Name / Student ID header comment required on every file (commits `76dc652` and `7300ac5`). | yes |
 | NFR-13 | Simplicity | No database, network, GUI, cloud service or build tool. | Scope (p.6). | Repository contents. | yes |
 
 ## 3. Assumptions (decisions where the brief is silent)
