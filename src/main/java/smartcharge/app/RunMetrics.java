@@ -1,7 +1,7 @@
 /*
  * SmartCharge - CO3408 Advanced Software Modelling
- * Name: <STUDENT NAME>
- * Student ID: <STUDENT ID>
+ * Name: Ruchira Nagare
+ * Student ID: G21289292
  */
 package smartcharge.app;
 
