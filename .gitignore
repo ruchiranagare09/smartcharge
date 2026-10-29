@@ -1,0 +1,17 @@
+# Compiled output
+out/
+bin/
+build/
+*.class
+*.jar
+
+# Generated run artefacts (regenerate; keep curated evidence under evidence/)
+results/
+logs/
+*.log
+
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
