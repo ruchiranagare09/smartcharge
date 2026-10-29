@@ -4,6 +4,7 @@ classDiagram
       -Map~String,ChargingSession~ sessions
       -Set~String~ seenRequestIds
       -ExecutorService workerPool
+      -Allocator allocator
       +start()
       +submit(ChargingRequest) ChargingSession
       +cancel(String) boolean
@@ -36,6 +37,7 @@ classDiagram
       -long sequence
       -long arrivalNanos
       -CountDownLatch cancelSignal
+      long overtakenSinceNanos
       +markCharging(long, String)
       +requestCancel() boolean
       +finishCharging(long) SessionState
@@ -63,6 +65,44 @@ classDiagram
     class RequestValidator {
       +validate(ChargingRequest)
     }
+    class Allocator {
+      <<interface>>
+      +tryAllocate(ChargingSession) boolean
+      +wouldFit(ChargingSession) boolean
+    }
+    class Config {
+      <<record>>
+      workers
+      timeScale
+      agingStepSimMinutes
+      starvationGuardSimMinutes
+    }
+    class SessionState {
+      <<enumeration>>
+      QUEUED
+      CHARGING
+      COMPLETED
+      BILLED
+      BILLING_FAILED
+      CANCELLED
+    }
+    class Priority {
+      <<enumeration>>
+      FLEET_EMERGENCY
+      STAFF
+      VISITOR
+    }
+    class ChargingRate {
+      <<enumeration>>
+      STANDARD
+      FAST
+    }
+    ChargingStation "1" *-- "1" Config
+    ChargingStation "1" *-- "1" Allocator : adapts StationResources
+    PriorityScheduler ..> Allocator : uses
+    ChargingSession "*" --> "1" SessionState
+    ChargingSession "*" --> "1" Priority
+    ChargingRequest "*" --> "1" ChargingRate
     ChargingStation "1" *-- "1" PriorityScheduler
     ChargingStation "1" o-- "1" StationResources
     ChargingStation "1" o-- "1" BillingAdapter
