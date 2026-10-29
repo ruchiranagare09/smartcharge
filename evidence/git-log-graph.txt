@@ -1,3 +1,6 @@
+* de7c554 Export UML diagrams as Mermaid sources and rendered PNGs
+* aea9086 Add use case diagram and trace each design contract to its model elements
+* ba18356 Add git history graph to evidence
 * 8e13de8 Report both benchmark datasets and explain the small pool-4 advantage via session overrun
 * 78781c5 Add clean-checkout verification transcript and second benchmark dataset
 * 182c3c0 Add evidence from real runs: normal-run logs, test report, deadlock dump, benchmark data
