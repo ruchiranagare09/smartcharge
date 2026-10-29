@@ -47,7 +47,10 @@ Source: `evidence/benchmark-summary.md`, `evidence/benchmark-runs.csv`, `evidenc
 ### Dataset B — clean checkout from GitHub
 
 Source: `evidence/benchmark-summary-clean-checkout.md`, `evidence/benchmark-runs-clean-checkout.csv`.
-This invocation ran during the README verification (`evidence/clean-checkout-verification.txt`).
+This invocation ran on a fresh clone of commit `2b87dcd`, which has the same Java code as the final
+version (later commits changed only documentation, helper-script removal and the name / ID header
+comment). The final README verification (`evidence/clean-checkout-verification.txt`, commit `a7f0c56`)
+ran the same command once more, and all 12 runs again passed the constraint check.
 
 | Configuration | Total completion (sim-h) | Total completion (real s) | Avg wait (sim-min) | Max wait (sim-min) | Peak reserved (kW) | Peak bays | Completed | Peak live threads | Avg overrun (sim-min) |
 |---|---|---|---|---|---|---|---|---|---|
