@@ -1,19 +1,19 @@
-21:53:38.099 [test-main] Station started: mode=pool-16 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
-21:53:38.100 [test-main] QUEUED F1(P1,FAST,22.0kWh) account=ACC-F1 seq=1
-21:53:38.100 [test-main] QUEUED F2(P1,FAST,22.0kWh) account=ACC-F2 seq=2
-21:53:38.100 [test-main] QUEUED F3(P1,FAST,22.0kWh) account=ACC-F3 seq=3
-21:53:38.100 [test-main] SHUTDOWN requested (GRACEFUL)
-21:53:38.100 [worker-1] START F1(P1,FAST,22.0kWh) bay+22 kW waited=0.4 sim-min [bays 1/4, 22/60 kW]
-21:53:38.101 [worker-7] START F2(P1,FAST,22.0kWh) bay+22 kW waited=0.6 sim-min [bays 2/4, 44/60 kW]
-21:53:38.162 [worker-1] COMPLETED F1(P1,FAST,22.0kWh) after 61.2 sim-min
-21:53:38.162 [worker-1] BILLED F1 account=ACC-F1 22.0 kWh
-21:53:38.162 [worker-1] RELEASED F1 bay-22 kW [bays 1/4, 22/60 kW]
-21:53:38.162 [worker-1] START F3(P1,FAST,22.0kWh) bay+22 kW waited=62.1 sim-min [bays 2/4, 44/60 kW]
-21:53:38.163 [worker-7] COMPLETED F2(P1,FAST,22.0kWh) after 62.5 sim-min
-21:53:38.163 [worker-7] BILLED F2 account=ACC-F2 22.0 kWh
-21:53:38.164 [worker-7] RELEASED F2 bay-22 kW [bays 1/4, 22/60 kW]
-21:53:38.226 [worker-1] COMPLETED F3(P1,FAST,22.0kWh) after 63.3 sim-min
-21:53:38.226 [worker-1] BILLED F3 account=ACC-F3 22.0 kWh
-21:53:38.226 [worker-1] RELEASED F3 bay-22 kW [bays 0/4, 0/60 kW]
-21:53:38.226 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+22:32:57.883 [test-main] Station started: mode=pool-16 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+22:32:57.883 [test-main] QUEUED F1(P1,FAST,22.0kWh) account=ACC-F1 seq=1
+22:32:57.883 [worker-2] START F1(P1,FAST,22.0kWh) bay+22 kW waited=0.0 sim-min [bays 1/4, 22/60 kW]
+22:32:57.883 [test-main] QUEUED F2(P1,FAST,22.0kWh) account=ACC-F2 seq=2
+22:32:57.883 [test-main] QUEUED F3(P1,FAST,22.0kWh) account=ACC-F3 seq=3
+22:32:57.883 [test-main] SHUTDOWN requested (GRACEFUL)
+22:32:57.883 [worker-1] START F2(P1,FAST,22.0kWh) bay+22 kW waited=0.0 sim-min [bays 2/4, 44/60 kW]
+22:32:57.953 [worker-2] COMPLETED F1(P1,FAST,22.0kWh) after 70.2 sim-min
+22:32:57.954 [worker-2] BILLED F1 account=ACC-F1 22.0 kWh
+22:32:57.954 [worker-1] COMPLETED F2(P1,FAST,22.0kWh) after 70.3 sim-min
+22:32:57.954 [worker-2] RELEASED F1 bay-22 kW [bays 1/4, 22/60 kW]
+22:32:57.954 [worker-1] BILLED F2 account=ACC-F2 22.0 kWh
+22:32:57.954 [worker-1] RELEASED F2 bay-22 kW [bays 1/4, 22/60 kW]
+22:32:57.954 [worker-7] START F3(P1,FAST,22.0kWh) bay+22 kW waited=70.4 sim-min [bays 2/4, 44/60 kW]
+22:32:58.024 [worker-7] COMPLETED F3(P1,FAST,22.0kWh) after 69.8 sim-min
+22:32:58.024 [worker-7] BILLED F3 account=ACC-F3 22.0 kWh
+22:32:58.024 [worker-7] RELEASED F3 bay-22 kW [bays 0/4, 0/60 kW]
+22:32:58.024 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
 

@@ -1,3 +1,8 @@
+/*
+ * SmartCharge - CO3408 Advanced Software Modelling
+ * Name: <STUDENT NAME>
+ * Student ID: <STUDENT ID>
+ */
 package smartcharge.core;
 
 import java.util.ArrayDeque;
@@ -18,11 +23,17 @@ import smartcharge.model.Priority;
  * 2. Aging: effective priority = base level - one level per agingStep waited, never above 1.
  * 3. Backfill: if the front request cannot get a bay and its full power, start the first later
  *    request that can.
- * 4. Starvation guard: once the same front request has been overtaken by backfill for
- *    starvationGuard (measured from the first overtake), stop backfilling until it starts, so
- *    freed power accumulates for it.
+ * 4. Starvation guard: once the front request was first overtaken by a backfill at least
+ *    starvationGuard ago, stop backfilling until it starts, so freed power accumulates for it.
+ *    The clock is kept per request: it starts at the request's first overtake (not at the first
+ *    failed check, which would depend on how often idle threads poll and so differ between pool
+ *    sizes) and is not reset if aging temporarily moves another request to the front.
  *
  * Lock order: scheduler lock -> StationResources power lock. Nothing acquires them the other way.
+ *
+ * Source: waiting uses a Condition of the ReentrantLock and re-checks state in a loop, because
+ * the Java 17 Condition API permits spurious wake-ups:
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/locks/Condition.html
  */
 public final class PriorityScheduler {
 
@@ -48,9 +59,6 @@ public final class PriorityScheduler {
     private int pending;
     private boolean closed;
     private boolean draining;
-    private ChargingSession blockedHead;
-    private long blockedHeadSinceNanos;
-    private boolean guardLogged;
     private long guardActivations;
 
     public PriorityScheduler(long agingStepNanos, long starvationGuardNanos) {
@@ -137,20 +145,19 @@ public final class PriorityScheduler {
                 if (allocator.tryAllocate(candidate)) {
                     lane(candidate).remove(candidate);
                     pending--;
-                    if (candidate == blockedHead) {
-                        blockedHead = null;
-                    }
                     if (front != null) {
-                        recordOvertake(front, nowNanos);
+                        if (front.overtakenSinceNanos < 0) {
+                            front.overtakenSinceNanos = nowNanos;
+                        }
                         Log.info("BACKFILL %s starts ahead of blocked %s", candidate, front);
                     }
                     return candidate;
                 }
                 if (front == null) {
                     front = candidate;
-                    if (front == blockedHead && nowNanos - blockedHeadSinceNanos >= starvationGuardNanos) {
-                        if (!guardLogged && anyLaterWouldFit(order, allocator)) {
-                            guardLogged = true;
+                    if (front.overtakenSinceNanos >= 0 && nowNanos - front.overtakenSinceNanos >= starvationGuardNanos) {
+                        if (!front.guardReported && anyLaterWouldFit(order, allocator)) {
+                            front.guardReported = true;
                             guardActivations++;
                             Log.info("STARVATION GUARD %s overtaken for too long; backfill paused until it starts", front);
                         }
@@ -173,9 +180,6 @@ public final class PriorityScheduler {
             }
             if (lane(session).remove(session)) {
                 pending--;
-            }
-            if (blockedHead == session) {
-                blockedHead = null;
             }
             workAvailable.signal();
             return true;
@@ -210,7 +214,6 @@ public final class PriorityScheduler {
                     lane.clear();
                 }
                 pending = 0;
-                blockedHead = null;
             }
             workAvailable.signalAll();
             return dropped;
@@ -249,19 +252,6 @@ public final class PriorityScheduler {
             }
         }
         return false;
-    }
-
-    /**
-     * The guard clock starts at the first backfill past the current front request. Starting it
-     * at the first failed check instead would depend on how often idle threads poll, making the
-     * policy differ between pool sizes.
-     */
-    private void recordOvertake(ChargingSession front, long nowNanos) {
-        if (front != blockedHead) {
-            blockedHead = front;
-            blockedHeadSinceNanos = nowNanos;
-            guardLogged = false;
-        }
     }
 
     int effectivePriority(ChargingSession s, long nowNanos) {

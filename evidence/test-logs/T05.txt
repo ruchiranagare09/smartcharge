@@ -1,22 +1,22 @@
-21:53:37.890 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
-21:53:37.891 [test-main] QUEUED OK1(P2,STANDARD,7.0kWh) account=ACC-OK1 seq=1
-21:53:37.891 [worker-1] START OK1(P2,STANDARD,7.0kWh) bay+7 kW waited=0.3 sim-min [bays 1/4, 7/60 kW]
-21:53:37.893 [test-main] REJECTED energyKwh must be a positive finite number but was 0.0 (Z1)
-21:53:37.893 [test-main] REJECTED energyKwh must be a positive finite number but was -5.0 (N1)
-21:53:37.893 [test-main] REJECTED energyKwh must be a positive finite number but was NaN (NAN)
-21:53:37.893 [test-main] REJECTED energyKwh must be a positive finite number but was Infinity (INF)
-21:53:37.893 [test-main] REJECTED energyKwh must not exceed 100.0 but was 150.0 (BIG)
-21:53:37.895 [test-main] REJECTED priority must be 1, 2 or 3 but was 0 (P0)
-21:53:37.895 [test-main] REJECTED priority must be 1, 2 or 3 but was 4 (P4)
-21:53:37.896 [test-main] REJECTED charging rate is required (NR)
-21:53:37.896 [test-main] REJECTED accountId must not be blank
-21:53:37.896 [test-main] REJECTED requestId must not be blank
-21:53:37.896 [test-main] REJECTED duplicate request id OK1
-21:53:37.897 [test-main] SHUTDOWN requested (GRACEFUL)
-21:53:37.953 [worker-1] COMPLETED OK1(P2,STANDARD,7.0kWh) after 62.2 sim-min
-21:53:37.954 [worker-1] BILLED OK1 account=ACC-OK1 7.0 kWh
-21:53:37.954 [worker-1] RELEASED OK1 bay-7 kW [bays 0/4, 0/60 kW]
-21:53:37.954 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+22:32:57.686 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+22:32:57.686 [test-main] QUEUED OK1(P2,STANDARD,7.0kWh) account=ACC-OK1 seq=1
+22:32:57.686 [worker-1] START OK1(P2,STANDARD,7.0kWh) bay+7 kW waited=0.0 sim-min [bays 1/4, 7/60 kW]
+22:32:57.687 [test-main] REJECTED energyKwh must be a positive finite number but was 0.0 (Z1)
+22:32:57.687 [test-main] REJECTED energyKwh must be a positive finite number but was -5.0 (N1)
+22:32:57.687 [test-main] REJECTED energyKwh must be a positive finite number but was NaN (NAN)
+22:32:57.687 [test-main] REJECTED energyKwh must be a positive finite number but was Infinity (INF)
+22:32:57.687 [test-main] REJECTED energyKwh must not exceed 100.0 but was 150.0 (BIG)
+22:32:57.688 [test-main] REJECTED priority must be 1, 2 or 3 but was 0 (P0)
+22:32:57.688 [test-main] REJECTED priority must be 1, 2 or 3 but was 4 (P4)
+22:32:57.689 [test-main] REJECTED charging rate is required (NR)
+22:32:57.689 [test-main] REJECTED accountId must not be blank
+22:32:57.689 [test-main] REJECTED requestId must not be blank
+22:32:57.689 [test-main] REJECTED duplicate request id OK1
+22:32:57.689 [test-main] SHUTDOWN requested (GRACEFUL)
+22:32:57.747 [worker-1] COMPLETED OK1(P2,STANDARD,7.0kWh) after 60.8 sim-min
+22:32:57.747 [worker-1] BILLED OK1 account=ACC-OK1 7.0 kWh
+22:32:57.747 [worker-1] RELEASED OK1 bay-7 kW [bays 0/4, 0/60 kW]
+22:32:57.747 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
 rejected: energyKwh must be a positive finite number but was 0.0 (Z1)
 rejected: energyKwh must be a positive finite number but was -5.0 (N1)
 rejected: energyKwh must be a positive finite number but was NaN (NAN)

@@ -1,3 +1,8 @@
+/*
+ * SmartCharge - CO3408 Advanced Software Modelling
+ * Name: <STUDENT NAME>
+ * Student ID: <STUDENT ID>
+ */
 package smartcharge.model;
 
 /** Charging rate category. A session reserves exactly this much power for its whole duration. */

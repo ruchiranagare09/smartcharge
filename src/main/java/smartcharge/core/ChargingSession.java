@@ -1,3 +1,8 @@
+/*
+ * SmartCharge - CO3408 Advanced Software Modelling
+ * Name: <STUDENT NAME>
+ * Student ID: <STUDENT ID>
+ */
 package smartcharge.core;
 
 import java.util.concurrent.CountDownLatch;
@@ -10,6 +15,10 @@ import smartcharge.model.SessionState;
  * Lifecycle of one accepted request. Every state transition is synchronized on the session, so
  * cancellation, completion and billing are applied in one total order and an illegal transition
  * fails loudly instead of corrupting state.
+ *
+ * Source: cancellation uses a CountDownLatch timed await, which returns early once the latch is
+ * counted down (Java 17 CountDownLatch API):
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CountDownLatch.html
  */
 public final class ChargingSession {
 
@@ -26,6 +35,10 @@ public final class ChargingSession {
     private long startEpochMillis = -1;
     private long endEpochMillis = -1;
     private String workerName;
+
+    /** Starvation-guard bookkeeping, owned by PriorityScheduler and guarded by its lock. */
+    long overtakenSinceNanos = -1;
+    boolean guardReported;
 
     public ChargingSession(ChargingRequest request, long sequence, long arrivalNanos) {
         this.request = request;

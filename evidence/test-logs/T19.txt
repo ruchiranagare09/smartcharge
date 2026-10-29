@@ -1,21 +1,21 @@
 === DEADLOCK-PRONE VARIANT (naive allocator, inconsistent acquisition order) ===
-[std-1] holds 1 bay, now waiting for the power ledger lock
 [std-2] holds 1 bay, now waiting for the power ledger lock
-[std-3] holds 1 bay, now waiting for the power ledger lock
 [std-4] holds 1 bay, now waiting for the power ledger lock
 [fast-1] holds the power ledger lock, now waiting for a bay
+[std-3] holds 1 bay, now waiting for the power ledger lock
+[std-1] holds 1 bay, now waiting for the power ledger lock
 DETECTED: no progress within 1000 ms timeout; 5 of 5 threads still blocked
 Thread dump of demo threads:
-  "std-1" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@4c98385c owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
-  "std-2" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@4c98385c owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
-  "std-3" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@4c98385c owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
-  "std-4" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@4c98385c owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
-  "fast-1" state=WAITING waitingOn=java.util.concurrent.Semaphore$FairSync@5fcfe4b2 owner=null
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$1(DeadlockDemo.java:91)
+  "std-1" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@73a8dfcc owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
+  "std-2" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@73a8dfcc owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
+  "std-3" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@73a8dfcc owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
+  "std-4" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@73a8dfcc owner=fast-1
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
+  "fast-1" state=WAITING waitingOn=java.util.concurrent.Semaphore$FairSync@ea30797 owner=null
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$1(DeadlockDemo.java:103)
 Resource-allocation graph (holds: resource -> thread, requests: thread -> resource):
   bay permits x4 -> std-1, std-2, std-3, std-4      (all permits held)
   power ledger   -> fast-1                          (lock held)

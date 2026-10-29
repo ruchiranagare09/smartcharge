@@ -1,0 +1,73 @@
+22:33:00.029 [test-main] Station started: mode=pool-16 bays=4 power=60 kW aging=1000000000 min guard=30 min scale=1.000 ms/sim-min
+22:33:00.029 [test-main] QUEUED F1(P1,FAST,88.0kWh) account=ACC-F1 seq=1
+22:33:00.029 [test-main] QUEUED F2(P1,FAST,88.0kWh) account=ACC-F2 seq=2
+22:33:00.029 [worker-1] START F1(P1,FAST,88.0kWh) bay+22 kW waited=0.0 sim-min [bays 1/4, 22/60 kW]
+22:33:00.029 [test-main] QUEUED F3(P1,FAST,22.0kWh) account=ACC-F3 seq=3
+22:33:00.029 [worker-2] START F2(P1,FAST,88.0kWh) bay+22 kW waited=0.0 sim-min [bays 2/4, 44/60 kW]
+22:33:00.029 [test-main] QUEUED S1(P2,STANDARD,4.2kWh) account=ACC-S1 seq=4
+22:33:00.029 [worker-4] BACKFILL S1(P2,STANDARD,4.2kWh) starts ahead of blocked F3(P1,FAST,22.0kWh)
+22:33:00.030 [worker-4] START S1(P2,STANDARD,4.2kWh) bay+7 kW waited=0.0 sim-min [bays 3/4, 51/60 kW]
+22:33:00.045 [test-main] QUEUED S2(P2,STANDARD,4.2kWh) account=ACC-S2 seq=5
+22:33:00.045 [worker-8] BACKFILL S2(P2,STANDARD,4.2kWh) starts ahead of blocked F3(P1,FAST,22.0kWh)
+22:33:00.045 [worker-8] START S2(P2,STANDARD,4.2kWh) bay+7 kW waited=0.0 sim-min [bays 4/4, 58/60 kW]
+22:33:00.060 [test-main] QUEUED S3(P2,STANDARD,4.2kWh) account=ACC-S3 seq=6
+22:33:00.071 [worker-4] COMPLETED S1(P2,STANDARD,4.2kWh) after 41.4 sim-min
+22:33:00.071 [test-main] QUEUED S4(P2,STANDARD,4.2kWh) account=ACC-S4 seq=7
+22:33:00.071 [worker-4] BILLED S1 account=ACC-S1 4.2 kWh
+22:33:00.071 [worker-4] RELEASED S1 bay-7 kW [bays 3/4, 51/60 kW]
+22:33:00.071 [worker-10] STARVATION GUARD F3(P1,FAST,22.0kWh) overtaken for too long; backfill paused until it starts
+22:33:00.085 [test-main] QUEUED S5(P2,STANDARD,4.2kWh) account=ACC-S5 seq=8
+22:33:00.089 [worker-8] COMPLETED S2(P2,STANDARD,4.2kWh) after 44.2 sim-min
+22:33:00.089 [worker-8] BILLED S2 account=ACC-S2 4.2 kWh
+22:33:00.089 [worker-8] RELEASED S2 bay-7 kW [bays 2/4, 44/60 kW]
+22:33:00.100 [test-main] QUEUED S6(P2,STANDARD,4.2kWh) account=ACC-S6 seq=9
+22:33:00.110 [test-main] QUEUED S7(P2,STANDARD,4.2kWh) account=ACC-S7 seq=10
+22:33:00.125 [test-main] QUEUED S8(P2,STANDARD,4.2kWh) account=ACC-S8 seq=11
+22:33:00.135 [test-main] SHUTDOWN requested (GRACEFUL)
+22:33:00.273 [worker-2] COMPLETED F2(P1,FAST,88.0kWh) after 243.6 sim-min
+22:33:00.273 [worker-2] BILLED F2 account=ACC-F2 88.0 kWh
+22:33:00.273 [worker-2] RELEASED F2 bay-22 kW [bays 1/4, 22/60 kW]
+22:33:00.273 [worker-2] START S4(P2,STANDARD,4.2kWh) bay+7 kW waited=202.3 sim-min [bays 4/4, 58/60 kW]
+22:33:00.273 [worker-14] START F3(P1,FAST,22.0kWh) bay+22 kW waited=243.8 sim-min [bays 2/4, 44/60 kW]
+22:33:00.273 [worker-13] START S3(P2,STANDARD,4.2kWh) bay+7 kW waited=213.6 sim-min [bays 3/4, 51/60 kW]
+22:33:00.279 [worker-1] COMPLETED F1(P1,FAST,88.0kWh) after 250.1 sim-min
+22:33:00.279 [worker-1] BILLED F1 account=ACC-F1 88.0 kWh
+22:33:00.279 [worker-1] RELEASED F1 bay-22 kW [bays 3/4, 36/60 kW]
+22:33:00.279 [worker-16] START S5(P2,STANDARD,4.2kWh) bay+7 kW waited=194.7 sim-min [bays 4/4, 43/60 kW]
+22:33:00.318 [worker-2] COMPLETED S4(P2,STANDARD,4.2kWh) after 44.5 sim-min
+22:33:00.318 [worker-13] COMPLETED S3(P2,STANDARD,4.2kWh) after 44.5 sim-min
+22:33:00.318 [worker-2] BILLED S4 account=ACC-S4 4.2 kWh
+22:33:00.318 [worker-2] RELEASED S4 bay-7 kW [bays 3/4, 36/60 kW]
+22:33:00.318 [worker-13] BILLED S3 account=ACC-S3 4.2 kWh
+22:33:00.318 [worker-1] START S6(P2,STANDARD,4.2kWh) bay+7 kW waited=217.9 sim-min [bays 4/4, 43/60 kW]
+22:33:00.318 [worker-13] RELEASED S3 bay-7 kW [bays 3/4, 36/60 kW]
+22:33:00.318 [worker-3] START S7(P2,STANDARD,4.2kWh) bay+7 kW waited=207.7 sim-min [bays 4/4, 43/60 kW]
+22:33:00.321 [worker-16] COMPLETED S5(P2,STANDARD,4.2kWh) after 41.9 sim-min
+22:33:00.321 [worker-16] BILLED S5 account=ACC-S5 4.2 kWh
+22:33:00.321 [worker-16] RELEASED S5 bay-7 kW [bays 3/4, 36/60 kW]
+22:33:00.322 [worker-16] START S8(P2,STANDARD,4.2kWh) bay+7 kW waited=196.4 sim-min [bays 4/4, 43/60 kW]
+22:33:00.337 [worker-14] COMPLETED F3(P1,FAST,22.0kWh) after 63.6 sim-min
+22:33:00.337 [worker-14] BILLED F3 account=ACC-F3 22.0 kWh
+22:33:00.337 [worker-14] RELEASED F3 bay-22 kW [bays 3/4, 21/60 kW]
+22:33:00.362 [worker-1] COMPLETED S6(P2,STANDARD,4.2kWh) after 44.0 sim-min
+22:33:00.362 [worker-3] COMPLETED S7(P2,STANDARD,4.2kWh) after 44.0 sim-min
+22:33:00.362 [worker-1] BILLED S6 account=ACC-S6 4.2 kWh
+22:33:00.362 [worker-1] RELEASED S6 bay-7 kW [bays 2/4, 14/60 kW]
+22:33:00.362 [worker-3] BILLED S7 account=ACC-S7 4.2 kWh
+22:33:00.362 [worker-3] RELEASED S7 bay-7 kW [bays 1/4, 7/60 kW]
+22:33:00.363 [worker-16] COMPLETED S8(P2,STANDARD,4.2kWh) after 41.8 sim-min
+22:33:00.363 [worker-16] BILLED S8 account=ACC-S8 4.2 kWh
+22:33:00.363 [worker-16] RELEASED S8 bay-7 kW [bays 0/4, 0/60 kW]
+22:33:00.363 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+Timeline (relative to F1 start):
+  F1  start +   0.0 ms  end + 250.1 ms  BILLED
+  F2  start +   0.0 ms  end + 243.7 ms  BILLED
+  S1  start +   0.2 ms  end +  41.6 ms  BILLED
+  S2  start +  15.2 ms  end +  59.4 ms  BILLED
+  F3  start + 243.9 ms  end + 307.5 ms  BILLED
+  S3  start + 243.9 ms  end + 288.4 ms  BILLED
+  S4  start + 243.9 ms  end + 288.4 ms  BILLED
+  S5  start + 250.2 ms  end + 292.2 ms  BILLED
+  S6  start + 288.5 ms  end + 332.5 ms  BILLED
+  S7  start + 288.5 ms  end + 332.5 ms  BILLED
+  S8  start + 292.2 ms  end + 334.1 ms  BILLED

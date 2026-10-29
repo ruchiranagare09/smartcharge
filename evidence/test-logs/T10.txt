@@ -1,28 +1,28 @@
-21:53:38.326 [test-main] Station started: mode=pool-4 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
-21:53:38.327 [test-main] QUEUED R1(P2,STANDARD,60.0kWh) account=ACC-R1 seq=1
-21:53:38.327 [test-main] QUEUED R2(P2,STANDARD,60.0kWh) account=ACC-R2 seq=2
-21:53:38.327 [test-main] QUEUED R3(P2,STANDARD,60.0kWh) account=ACC-R3 seq=3
-21:53:38.327 [test-main] QUEUED R4(P2,STANDARD,60.0kWh) account=ACC-R4 seq=4
-21:53:38.327 [test-main] QUEUED R5(P2,STANDARD,60.0kWh) account=ACC-R5 seq=5
-21:53:38.327 [test-main] QUEUED R6(P2,STANDARD,60.0kWh) account=ACC-R6 seq=6
-21:53:38.327 [worker-1] START R1(P2,STANDARD,60.0kWh) bay+7 kW waited=0.2 sim-min [bays 1/4, 7/60 kW]
-21:53:38.328 [worker-2] START R2(P2,STANDARD,60.0kWh) bay+7 kW waited=0.7 sim-min [bays 2/4, 14/60 kW]
-21:53:38.328 [worker-3] START R3(P2,STANDARD,60.0kWh) bay+7 kW waited=0.9 sim-min [bays 3/4, 21/60 kW]
-21:53:38.328 [worker-4] START R4(P2,STANDARD,60.0kWh) bay+7 kW waited=1.0 sim-min [bays 4/4, 28/60 kW]
-21:53:38.329 [test-main] SHUTDOWN requested (IMMEDIATE)
-21:53:38.329 [test-main] CANCELLED R5(P2,STANDARD,60.0kWh) (queued at shutdown)
-21:53:38.329 [test-main] CANCELLED R6(P2,STANDARD,60.0kWh) (queued at shutdown)
-21:53:38.329 [test-main] CANCEL requested for R2(P2,STANDARD,60.0kWh) (active at shutdown)
-21:53:38.329 [test-main] CANCEL requested for R3(P2,STANDARD,60.0kWh) (active at shutdown)
-21:53:38.329 [test-main] CANCEL requested for R4(P2,STANDARD,60.0kWh) (active at shutdown)
-21:53:38.329 [test-main] CANCEL requested for R1(P2,STANDARD,60.0kWh) (active at shutdown)
-21:53:38.329 [worker-2] CANCELLED R2(P2,STANDARD,60.0kWh) during charging (not billed)
-21:53:38.329 [worker-2] RELEASED R2 bay-7 kW [bays 3/4, 21/60 kW]
-21:53:38.329 [worker-3] CANCELLED R3(P2,STANDARD,60.0kWh) during charging (not billed)
-21:53:38.329 [worker-3] RELEASED R3 bay-7 kW [bays 2/4, 14/60 kW]
-21:53:38.330 [worker-4] CANCELLED R4(P2,STANDARD,60.0kWh) during charging (not billed)
-21:53:38.330 [worker-1] CANCELLED R1(P2,STANDARD,60.0kWh) during charging (not billed)
-21:53:38.330 [worker-4] RELEASED R4 bay-7 kW [bays 1/4, 7/60 kW]
-21:53:38.330 [worker-1] RELEASED R1 bay-7 kW [bays 0/4, 0/60 kW]
-21:53:38.330 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+22:32:58.119 [test-main] Station started: mode=pool-4 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+22:32:58.120 [test-main] QUEUED R1(P2,STANDARD,60.0kWh) account=ACC-R1 seq=1
+22:32:58.120 [test-main] QUEUED R2(P2,STANDARD,60.0kWh) account=ACC-R2 seq=2
+22:32:58.120 [worker-1] START R1(P2,STANDARD,60.0kWh) bay+7 kW waited=0.0 sim-min [bays 1/4, 7/60 kW]
+22:32:58.120 [worker-2] START R2(P2,STANDARD,60.0kWh) bay+7 kW waited=0.0 sim-min [bays 2/4, 14/60 kW]
+22:32:58.120 [test-main] QUEUED R3(P2,STANDARD,60.0kWh) account=ACC-R3 seq=3
+22:32:58.120 [test-main] QUEUED R4(P2,STANDARD,60.0kWh) account=ACC-R4 seq=4
+22:32:58.120 [worker-4] START R4(P2,STANDARD,60.0kWh) bay+7 kW waited=0.0 sim-min [bays 4/4, 28/60 kW]
+22:32:58.120 [test-main] QUEUED R5(P2,STANDARD,60.0kWh) account=ACC-R5 seq=5
+22:32:58.120 [worker-3] START R3(P2,STANDARD,60.0kWh) bay+7 kW waited=0.0 sim-min [bays 3/4, 21/60 kW]
+22:32:58.120 [test-main] QUEUED R6(P2,STANDARD,60.0kWh) account=ACC-R6 seq=6
+22:32:58.120 [test-main] SHUTDOWN requested (IMMEDIATE)
+22:32:58.120 [test-main] CANCELLED R5(P2,STANDARD,60.0kWh) (queued at shutdown)
+22:32:58.120 [test-main] CANCELLED R6(P2,STANDARD,60.0kWh) (queued at shutdown)
+22:32:58.121 [test-main] CANCEL requested for R2(P2,STANDARD,60.0kWh) (active at shutdown)
+22:32:58.121 [worker-2] CANCELLED R2(P2,STANDARD,60.0kWh) during charging (not billed)
+22:32:58.121 [test-main] CANCEL requested for R3(P2,STANDARD,60.0kWh) (active at shutdown)
+22:32:58.121 [worker-3] CANCELLED R3(P2,STANDARD,60.0kWh) during charging (not billed)
+22:32:58.121 [worker-2] RELEASED R2 bay-7 kW [bays 3/4, 21/60 kW]
+22:32:58.121 [test-main] CANCEL requested for R4(P2,STANDARD,60.0kWh) (active at shutdown)
+22:32:58.121 [worker-3] RELEASED R3 bay-7 kW [bays 2/4, 14/60 kW]
+22:32:58.121 [worker-4] CANCELLED R4(P2,STANDARD,60.0kWh) during charging (not billed)
+22:32:58.121 [test-main] CANCEL requested for R1(P2,STANDARD,60.0kWh) (active at shutdown)
+22:32:58.121 [worker-1] CANCELLED R1(P2,STANDARD,60.0kWh) during charging (not billed)
+22:32:58.121 [worker-4] RELEASED R4 bay-7 kW [bays 1/4, 7/60 kW]
+22:32:58.121 [worker-1] RELEASED R1 bay-7 kW [bays 0/4, 0/60 kW]
+22:32:58.121 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
 

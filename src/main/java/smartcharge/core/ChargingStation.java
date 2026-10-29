@@ -1,3 +1,8 @@
+/*
+ * SmartCharge - CO3408 Advanced Software Modelling
+ * Name: <STUDENT NAME>
+ * Student ID: <STUDENT ID>
+ */
 package smartcharge.core;
 
 import java.util.ArrayList;
@@ -22,6 +27,10 @@ import smartcharge.model.SessionState;
  * shutdown. Workers pull the next startable session from the {@link PriorityScheduler}; a session
  * is handed out only once its bay and power are already reserved, so no worker ever holds a
  * partial allocation.
+ *
+ * Source: shutdown follows the two-phase pattern (shutdown, awaitTermination, then shutdownNow)
+ * described in the Java 17 ExecutorService API:
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/ExecutorService.html
  */
 public final class ChargingStation {
 

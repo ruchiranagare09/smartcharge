@@ -68,28 +68,48 @@ arrival in the same lane has waited at least as long, so the merge needs no sort
 
 1. **Effective priority** = `max(1, base − ⌊waited / 30 sim-min⌋)` (FR-06).
 2. Walk the merged order; the first request whose allocation succeeds starts (FR-05, FR-07).
-3. When a later request starts ahead of a front request that could not fit (a backfill), start the
-   guard clock for that front request if it is not already running. Once the same request is still the
-   front 30 sim-min after its first overtake, return nothing until it fits itself (FR-08).
+3. When a later request starts ahead of a front request that could not fit (a backfill), record
+   that front request's *first overtake time* if it has none yet (`ChargingSession.overtakenSinceNanos`).
+   Whenever a request is at the front, has been overtaken, and its first overtake was at least
+   30 sim-min ago, return nothing until it fits itself (FR-08). Running sessions are unaffected and
+   finish normally, which is what eventually frees the power it needs.
+
+The clock is stored on the request, not on "whichever request is currently at the front". The
+previous version kept a single scheduler-wide clock that restarted whenever the front request
+changed. Aging could briefly put an older visitor in front, wiping the blocked fleet request's
+accumulated time. T25 checks the fix with an explicit clock: F is overtaken at t=2; an aged visitor
+becomes front at t=61 and starts at t=62; at t=63 F is front again and backfill is refused at once.
+Observed: `[S1, S2, V, none]`.
 
 Why the clock starts at the first overtake (a design change made during evaluation): the first
 version started it at the first *failed check* of the front request. Spare threads (pool-16,
 thread-per-request) re-check every few milliseconds even when all 4 bays are busy, so the clock started
-for requests that nobody had overtaken; pool-4 has no spare threads and only checked at releases. The
-benchmark exposed this as ~100 guard activations per run for pool-16 / thread-per-request versus 0 for
-pool-4 — the same workload was being scheduled by a different policy. Overtakes only happen at
-release or arrival events, which every multi-worker configuration observes identically, so the policy is
-now thread-count independent. The activation counter also only counts when the guard actually stops a
-request that `wouldFit`. After the change: 0 activations in 11 of 12 benchmark runs, 1 in one
-thread-per-request run (`evidence/benchmark-runs.csv`).
+for requests that nobody had overtaken; pool-4 has no spare threads and only checked at releases.
+
+During development the benchmark showed about 100 guard activations per run for pool-16 and
+thread-per-request, but 0 for pool-4: the same workload was being scheduled by a different policy.
+That pre-fix output was not retained as evidence. It can be reproduced by running
+`./scripts/benchmark.sh` at commit `0913b2e`, whose CSV already has a `guard_activations` column.
+
+Overtakes only happen at release or arrival events, which every multi-worker configuration observes
+identically, so the policy is now thread-count independent. The activation counter also only counts
+when the guard actually stops a request that `wouldFit`. With the final code: 0 activations in 11 of
+12 benchmark runs and 1 in one pool-16 run (`evidence/benchmark-runs.csv`).
 
 Worked example (from T17): a P1 fast request F cannot fit (only 9 kW free); P2 standard S1, S2 can.
 At t=10 S1 backfills; at t=39 S2 backfills; at t=40 F has been the blocked front for 30 → nothing starts
 even though S3 would fit; once 22 kW is free F starts, then S3. Observed: `[S1, S2, none, F, S3]`.
 
+The same behaviour on a running station (T24, `evidence/test-logs/T24.txt`):
+- **Setup:** two fast sessions are charging (44 kW) and a third fast request F3 is blocked.
+- **Backfill:** S1 and S2 (standard) backfill. The guard then engages about 40 ms (≈ 40 sim-min) later.
+- **Cost:** while it holds, 2 bays and 16 kW stay idle — the accepted cost in A-06.
+- **Outcome:** when a fast session ends, F3 starts within a fraction of a millisecond. Only then do
+  the standards S3–S8 that were waiting start.
+
 Design note from the benchmark: under the evaluated load average waits are ~10 simulated hours, far
 longer than the 30-minute aging step, so almost every queued request is aged to level 1 and order
-becomes near-FIFO (median P1/P2/P3 waits 539/606/637 sim-min for pool-4). The aging step is therefore
+becomes near-FIFO (median P1/P2/P3 waits 600/677/713 sim-min for pool-4). The aging step is therefore
 the main tuning knob for how much priority matters; a longer step would preserve more differentiation
 at the cost of more visitor waiting.
 
@@ -116,9 +136,9 @@ power lock. Evidence: T03, T06, T07, T18 and all 12 benchmark runs report peak �
 
 The same hazard exists in the legacy billing service (`HashMap` get/put and `ArrayList.add`).
 Observed in T13 without the adapter (`evidence/test-logs/T13.txt`): 5/5 trials corrupted, with
-7,035–7,989 of 8,000 entries surviving and 6–322 kWh of totals lost. The amount varies strongly between
-executions (an earlier development run lost ~3,500 entries per trial) because it depends on how threads
-interleave — which is exactly why the race cannot be "tested away". With the adapter (T12): 8,001/8,001
+5,897–6,339 of 8,000 entries surviving and 850–2,889 kWh of totals lost. The amount varies strongly
+between executions — development runs ranged from about 3,500 lost entries per trial down to 11 —
+because it depends on how threads interleave. That is exactly why the race cannot be "tested away". With the adapter (T12): 8,001/8,001
 entries, all totals exact, in every run.
 
 ### H2 — Deadlock (demonstrated separately, prevented in production)
@@ -129,8 +149,8 @@ See §6.
 
 Two forms: (a) visitors overtaken forever by a stream of higher-priority requests — addressed by aging
 (T16); (b) a large (fast) request overtaken forever by smaller backfilled requests — aging cannot help a
-P1 request, so the starvation guard bounds it (T17). Limitation: bays, not power, are usually the
-binding constraint for this workload, so backfill is rare (4 backfills in a 200-request run) and the
+P1 request, so the starvation guard bounds it (T17, T24, T25). Limitation: bays, not power, are usually the
+binding constraint for this workload, so backfill is rare (6 backfills in a 200-request run) and the
 guard activated in only 1 of 12 benchmark runs; its behaviour is primarily evidenced by the
 deterministic test T17.
 
@@ -188,16 +208,16 @@ The corrected variant with the same threads and interleaving completes (T20).
 | C5 | `ChargingSession` transitions | current state matches the transition's source state | state follows the state machine in §8 | terminal states never change |
 | C6 | `ChargingStation.shutdown(mode)` | station RUNNING | all station threads terminated ∧ reservedKw = 0 ∧ activeBays = 0 ∧ no session QUEUED/CHARGING | — |
 
-**Traceability** (requirement → model element → enforcement → test):
+**Traceability** (requirement → model element → enforcement → behaviour on violation → test):
 
-| # | Requirements | Model elements (§8) | Code enforcement | Tests / evidence |
-|---|---|---|---|---|
-| C1 | FR-09, FR-10, NFR-01 | Class: `StationResources.tryAllocate`; Sequence: `tryAllocate(kW) [power lock, bays.tryAcquire]`; State: QUEUED → CHARGING; Use case: UC4 | `IllegalArgumentException`; power lock; non-blocking `bays.tryAcquire()`; `assert invariantHolds()` | T03, T06, T07, T18, T20; benchmark peaks ≤ 4 bays / 58 kW |
-| C2 | FR-17 | Class: `StationResources.release`; Sequence: `release(kW) [finally]`; State: leaving COMPLETED / BILLED / BILLING_FAILED / CANCELLED after CHARGING; Use case: UC4 | `IllegalStateException` on unmatched release; `assert invariantHolds()`; called only from the `finally` in `runSession` | T09, T10, T14 |
-| C3 | FR-13, FR-14, FR-16, NFR-08 | Class: `BillingAdapter.bill` → `LegacyBillingService`; Sequence: `bill(session)`, `recordSession(...)`; State: COMPLETED → BILLED / BILLING_FAILED; Use case: UC5 | billing lock; `billedRequestIds` set; `IllegalStateException` if not COMPLETED; `assert` entry count grew by exactly 1 | T12, T14, T15; T13 for contrast |
-| C4 | FR-05–FR-08 | Class: `PriorityScheduler.selectNext`, `awaitNext`; Sequence: `awaitNext(allocator)`; State: QUEUED → CHARGING; Use case: UC1 | scheduler lock; `MergedOrder` ordering; aging in `effectivePriority`; guard via `recordOvertake` | T04, T16, T17 |
-| C5 | FR-12, FR-14, FR-15 | Class: `ChargingSession`; State: the whole session state machine; Use cases: UC2, UC4 | `synchronized` transitions; `IllegalStateException` on an illegal source state | T08, T09, T10, T11 |
-| C6 | FR-19 | Class: `ChargingStation.shutdown`; State: QUEUED / CHARGING → CANCELLED (IMMEDIATE), → COMPLETED → BILLED (GRACEFUL); Use case: UC8 | lifecycle compare-and-set; executor `awaitTermination` / `join`; `assert` that resources are 0 after termination | T10, T11; `SHUTDOWN complete` lines in `evidence/normal-run-*.txt` |
+| # | Requirements | Model elements (§8) | Code enforcement | On violation | Tests: contract holds / violation rejected |
+|---|---|---|---|---|---|
+| C1 | FR-09, FR-10, NFR-01 | Class: `StationResources.tryAllocate`; Sequence: `tryAllocate(kW) [power lock, bays.tryAcquire]`; State: QUEUED → CHARGING; Use case: UC4 | precondition check; power lock; non-blocking `bays.tryAcquire()`; `assert invariantHolds()` | kw ≤ 0 → `IllegalArgumentException`, ledger unchanged; a broken invariant → `AssertionError` (with `-ea`) | holds: T03, T06, T07, T18, T20, benchmark peaks / rejected: T21 |
+| C2 | FR-17 | Class: `StationResources.release`; Sequence: `release(kW) [finally]`; State: leaving COMPLETED / BILLED / BILLING_FAILED / CANCELLED after CHARGING; Use case: UC4 | precondition check under the power lock; `assert invariantHolds()`; only called from the `finally` in `runSession` | unmatched or oversized release → `IllegalStateException`, ledger unchanged | holds: T09, T10, T14 / rejected: T21 |
+| C3 | FR-13, FR-14, FR-16, NFR-08 | Class: `BillingAdapter.bill` → `LegacyBillingService`; Sequence: `bill(session)`, `recordSession(...)`, `alt` billing failure; State: COMPLETED → BILLED / BILLING_FAILED; Use case: UC5 | billing lock; `billedRequestIds` set; state precondition; `assert` entry count grew by exactly 1 | repeat call → `DUPLICATE_IGNORED`, no entry; non-COMPLETED session → `IllegalStateException`, no entry; legacy failure → BILLING_FAILED, no entry | holds: T12, T14, T15 (T13 for contrast) / rejected: T22 |
+| C4 | FR-05–FR-08 | Class: `PriorityScheduler.selectNext`, `awaitNext`, `Allocator`; Sequence: `awaitNext(allocator)`; State: QUEUED → CHARGING; Use case: UC1 | scheduler lock; `MergedOrder` ordering; aging in `effectivePriority`; per-request guard clock `overtakenSinceNanos` | not an input contract: the postcondition is guaranteed by construction and checked by ordering tests | T04, T16, T17, T24, T25 |
+| C5 | FR-12, FR-14, FR-15 | Class: `ChargingSession`; State: the whole session state machine; Use cases: UC2, UC4 | `synchronized` transitions with a source-state check | illegal transition → `IllegalStateException`, state unchanged | holds: T08, T09, T10, T11 / rejected: T22 |
+| C6 | FR-19 | Class: `ChargingStation.shutdown`; State: QUEUED / CHARGING → CANCELLED (IMMEDIATE), → COMPLETED → BILLED (GRACEFUL); Use case: UC8 | lifecycle state check; executor `awaitTermination` / `join`; `assert` resources are 0 after termination | shutdown when not RUNNING, or submit after shutdown → `IllegalStateException`, nothing queued | holds: T10, T11, `SHUTDOWN complete` lines in `evidence/normal-run-*.txt` / rejected: T23 |
 
 ## 8. Models (implementation-aligned)
 
@@ -214,6 +234,7 @@ classDiagram
       -Map~String,ChargingSession~ sessions
       -Set~String~ seenRequestIds
       -ExecutorService workerPool
+      -Allocator allocator
       +start()
       +submit(ChargingRequest) ChargingSession
       +cancel(String) boolean
@@ -246,6 +267,7 @@ classDiagram
       -long sequence
       -long arrivalNanos
       -CountDownLatch cancelSignal
+      long overtakenSinceNanos
       +markCharging(long, String)
       +requestCancel() boolean
       +finishCharging(long) SessionState
@@ -273,6 +295,44 @@ classDiagram
     class RequestValidator {
       +validate(ChargingRequest)
     }
+    class Allocator {
+      <<interface>>
+      +tryAllocate(ChargingSession) boolean
+      +wouldFit(ChargingSession) boolean
+    }
+    class Config {
+      <<record>>
+      workers
+      timeScale
+      agingStepSimMinutes
+      starvationGuardSimMinutes
+    }
+    class SessionState {
+      <<enumeration>>
+      QUEUED
+      CHARGING
+      COMPLETED
+      BILLED
+      BILLING_FAILED
+      CANCELLED
+    }
+    class Priority {
+      <<enumeration>>
+      FLEET_EMERGENCY
+      STAFF
+      VISITOR
+    }
+    class ChargingRate {
+      <<enumeration>>
+      STANDARD
+      FAST
+    }
+    ChargingStation "1" *-- "1" Config
+    ChargingStation "1" *-- "1" Allocator : adapts StationResources
+    PriorityScheduler ..> Allocator : uses
+    ChargingSession "*" --> "1" SessionState
+    ChargingSession "*" --> "1" Priority
+    ChargingRequest "*" --> "1" ChargingRate
     ChargingStation "1" *-- "1" PriorityScheduler
     ChargingStation "1" o-- "1" StationResources
     ChargingStation "1" o-- "1" BillingAdapter
@@ -322,18 +382,28 @@ sequenceDiagram
     R-->>Sc: true
     Sc-->>W: session (CHARGING)
     W->>W: awaitCancellation(duration)
-    W->>W: finishCharging() -> COMPLETED
-    W->>B: bill(session) [billing lock]
-    B->>L: recordSession(...)
-    B-->>W: BILLED
-    W->>R: release(kW) [finally]
+    alt cancel() or IMMEDIATE shutdown during charging
+        W->>W: finishCharging() -> CANCELLED (not billed)
+    else duration elapsed
+        W->>W: finishCharging() -> COMPLETED
+        W->>B: bill(session) [billing lock]
+        B->>L: recordSession(...)
+        alt legacy call succeeds
+            B-->>W: BILLED
+        else legacy throws
+            B-->>W: FAILED (session BILLING_FAILED, no entry)
+        end
+    end
+    W->>R: release(kW) [finally, every path]
     W->>Sc: capacityReleased() -> signal
 ```
 
 ### Use case model
 
-Mermaid has no native use case notation, so actors are drawn as nodes outside the system boundary,
-use cases as rounded nodes inside it, and `include` relationships as dotted arrows.
+Mermaid has no native use case notation, so the diagram adapts flowchart notation:
+- actors are nodes outside the system boundary;
+- use cases are rounded nodes inside it;
+- `«include»` relationships are dashed arrows labelled with the UML stereotype.
 
 ```mermaid
 flowchart LR
@@ -360,9 +430,9 @@ flowchart LR
     Operator --- UC7
     Operator --- UC8
     UC9 --- Engineer
-    UC1 -. include .-> UC3
-    UC1 -. include .-> UC4
-    UC4 -. include .-> UC5
+    UC1 -. "«include»" .-> UC3
+    UC1 -. "«include»" .-> UC4
+    UC4 -. "«include»" .-> UC5
     UC5 --- Billing
 ```
 
@@ -382,8 +452,11 @@ flowchart LR
 
 - Sessions are not pre-empted; a running low-priority session keeps its bay (H4).
 - Billing failure has no retry (A-07); failed sessions are reported, not re-billed.
-- Timing uses timed waits on a scaled clock; every session overruns its nominal length by ~3.2–3.9
-  sim-min (ms) on the test machine (`avg_overrun_sim_min` in the benchmark CSV), equally across
-  configurations.
-- The starvation guard rarely activates under the evaluated workload; it is verified mainly by T17.
+- Timing uses timed waits on a scaled clock, so every session overruns its nominal length slightly.
+  In the final benchmark runs the average overrun per run was 6.4–7.3 sim-min (ms)
+  (`avg_overrun_sim_min` in `evidence/benchmark-runs.csv`). It grows with host load and is slightly
+  higher with more threads.
+- The starvation guard rarely activates under the evaluated benchmark workload. It is verified by a
+  policy test with an explicit clock (T17, T25) and by an integrated station test that forces the
+  situation (T24).
 - `start()` must be called once by the owning thread; it is not designed for concurrent callers.

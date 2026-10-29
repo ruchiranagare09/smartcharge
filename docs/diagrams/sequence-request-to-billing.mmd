@@ -15,9 +15,17 @@ sequenceDiagram
     R-->>Sc: true
     Sc-->>W: session (CHARGING)
     W->>W: awaitCancellation(duration)
-    W->>W: finishCharging() -> COMPLETED
-    W->>B: bill(session) [billing lock]
-    B->>L: recordSession(...)
-    B-->>W: BILLED
-    W->>R: release(kW) [finally]
+    alt cancel() or IMMEDIATE shutdown during charging
+        W->>W: finishCharging() -> CANCELLED (not billed)
+    else duration elapsed
+        W->>W: finishCharging() -> COMPLETED
+        W->>B: bill(session) [billing lock]
+        B->>L: recordSession(...)
+        alt legacy call succeeds
+            B-->>W: BILLED
+        else legacy throws
+            B-->>W: FAILED (session BILLING_FAILED, no entry)
+        end
+    end
+    W->>R: release(kW) [finally, every path]
     W->>Sc: capacityReleased() -> signal

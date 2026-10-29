@@ -1,14 +1,14 @@
-21:53:38.599 [test-main] Station started: mode=pool-2 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
-21:53:38.600 [test-main] QUEUED RF(P2,STANDARD,7.0kWh) account=ACC-FAIL seq=1
-21:53:38.600 [test-main] QUEUED RG(P2,STANDARD,7.0kWh) account=ACC-RG seq=2
-21:53:38.600 [test-main] SHUTDOWN requested (GRACEFUL)
-21:53:38.601 [worker-1] START RF(P2,STANDARD,7.0kWh) bay+7 kW waited=1.4 sim-min [bays 1/4, 7/60 kW]
-21:53:38.602 [worker-2] START RG(P2,STANDARD,7.0kWh) bay+7 kW waited=1.9 sim-min [bays 2/4, 14/60 kW]
-21:53:38.663 [worker-1] COMPLETED RF(P2,STANDARD,7.0kWh) after 61.2 sim-min
-21:53:38.663 [worker-2] COMPLETED RG(P2,STANDARD,7.0kWh) after 61.1 sim-min
-21:53:38.663 [worker-1] BILLING FAILED for RF: simulated legacy billing outage
-21:53:38.663 [worker-1] RELEASED RF bay-7 kW [bays 1/4, 7/60 kW]
-21:53:38.663 [worker-2] BILLED RG account=ACC-RG 7.0 kWh
-21:53:38.663 [worker-2] RELEASED RG bay-7 kW [bays 0/4, 0/60 kW]
-21:53:38.664 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+22:32:58.312 [test-main] Station started: mode=pool-2 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+22:32:58.312 [test-main] QUEUED RF(P2,STANDARD,7.0kWh) account=ACC-FAIL seq=1
+22:32:58.312 [test-main] QUEUED RG(P2,STANDARD,7.0kWh) account=ACC-RG seq=2
+22:32:58.312 [test-main] SHUTDOWN requested (GRACEFUL)
+22:32:58.312 [worker-1] START RF(P2,STANDARD,7.0kWh) bay+7 kW waited=0.0 sim-min [bays 1/4, 7/60 kW]
+22:32:58.312 [worker-2] START RG(P2,STANDARD,7.0kWh) bay+7 kW waited=0.0 sim-min [bays 2/4, 14/60 kW]
+22:32:58.382 [worker-1] COMPLETED RF(P2,STANDARD,7.0kWh) after 70.2 sim-min
+22:32:58.382 [worker-2] COMPLETED RG(P2,STANDARD,7.0kWh) after 70.1 sim-min
+22:32:58.383 [worker-1] BILLING FAILED for RF: simulated legacy billing outage
+22:32:58.383 [worker-1] RELEASED RF bay-7 kW [bays 1/4, 7/60 kW]
+22:32:58.383 [worker-2] BILLED RG account=ACC-RG 7.0 kWh
+22:32:58.383 [worker-2] RELEASED RG bay-7 kW [bays 0/4, 0/60 kW]
+22:32:58.383 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
 BILLING billedSessions=1 legacyEntries=1 cancelled=0 cancelledBilled=false totalsMatch=true duplicatesIgnored=0 billingFailures=1 => RECONCILED
