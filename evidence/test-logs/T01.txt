@@ -1,9 +1,9 @@
-21:53:37.343 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
-21:53:37.364 [test-main] QUEUED R1(P2,STANDARD,7.0kWh) account=ACC-R1 seq=1
-21:53:37.371 [worker-1] START R1(P2,STANDARD,7.0kWh) bay+7 kW waited=1.3 sim-min [bays 1/4, 7/60 kW]
-21:53:37.372 [test-main] SHUTDOWN requested (GRACEFUL)
-21:53:37.432 [worker-1] COMPLETED R1(P2,STANDARD,7.0kWh) after 68.9 sim-min
-21:53:37.439 [worker-1] BILLED R1 account=ACC-R1 7.0 kWh
-21:53:37.440 [worker-1] RELEASED R1 bay-7 kW [bays 0/4, 0/60 kW]
-21:53:37.441 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+22:32:57.113 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+22:32:57.124 [test-main] QUEUED R1(P2,STANDARD,7.0kWh) account=ACC-R1 seq=1
+22:32:57.128 [worker-1] START R1(P2,STANDARD,7.0kWh) bay+7 kW waited=0.3 sim-min [bays 1/4, 7/60 kW]
+22:32:57.129 [test-main] SHUTDOWN requested (GRACEFUL)
+22:32:57.194 [worker-1] COMPLETED R1(P2,STANDARD,7.0kWh) after 70.1 sim-min
+22:32:57.198 [worker-1] BILLED R1 account=ACC-R1 7.0 kWh
+22:32:57.198 [worker-1] RELEASED R1 bay-7 kW [bays 0/4, 0/60 kW]
+22:32:57.199 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
 

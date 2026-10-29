@@ -84,13 +84,17 @@ Observed: `[S1, S2, V, none]`.
 Why the clock starts at the first overtake (a design change made during evaluation): the first
 version started it at the first *failed check* of the front request. Spare threads (pool-16,
 thread-per-request) re-check every few milliseconds even when all 4 bays are busy, so the clock started
-for requests that nobody had overtaken; pool-4 has no spare threads and only checked at releases. The
-benchmark exposed this as ~100 guard activations per run for pool-16 / thread-per-request versus 0 for
-pool-4 — the same workload was being scheduled by a different policy. Overtakes only happen at
-release or arrival events, which every multi-worker configuration observes identically, so the policy is
-now thread-count independent. The activation counter also only counts when the guard actually stops a
-request that `wouldFit`. After the change: 0 activations in 11 of 12 benchmark runs, 1 in one
-thread-per-request run (`evidence/benchmark-runs.csv`).
+for requests that nobody had overtaken; pool-4 has no spare threads and only checked at releases.
+
+During development the benchmark showed about 100 guard activations per run for pool-16 and
+thread-per-request, but 0 for pool-4: the same workload was being scheduled by a different policy.
+That pre-fix output was not retained as evidence. It can be reproduced by running
+`./scripts/benchmark.sh` at commit `0913b2e`, whose CSV already has a `guard_activations` column.
+
+Overtakes only happen at release or arrival events, which every multi-worker configuration observes
+identically, so the policy is now thread-count independent. The activation counter also only counts
+when the guard actually stops a request that `wouldFit`. With the final code: 0 activations in 11 of
+12 benchmark runs and 1 in one pool-16 run (`evidence/benchmark-runs.csv`).
 
 Worked example (from T17): a P1 fast request F cannot fit (only 9 kW free); P2 standard S1, S2 can.
 At t=10 S1 backfills; at t=39 S2 backfills; at t=40 F has been the blocked front for 30 → nothing starts
@@ -105,7 +109,7 @@ The same behaviour on a running station (T24, `evidence/test-logs/T24.txt`):
 
 Design note from the benchmark: under the evaluated load average waits are ~10 simulated hours, far
 longer than the 30-minute aging step, so almost every queued request is aged to level 1 and order
-becomes near-FIFO (median P1/P2/P3 waits 539/606/637 sim-min for pool-4). The aging step is therefore
+becomes near-FIFO (median P1/P2/P3 waits 600/677/713 sim-min for pool-4). The aging step is therefore
 the main tuning knob for how much priority matters; a longer step would preserve more differentiation
 at the cost of more visitor waiting.
 
@@ -132,9 +136,9 @@ power lock. Evidence: T03, T06, T07, T18 and all 12 benchmark runs report peak �
 
 The same hazard exists in the legacy billing service (`HashMap` get/put and `ArrayList.add`).
 Observed in T13 without the adapter (`evidence/test-logs/T13.txt`): 5/5 trials corrupted, with
-7,035–7,989 of 8,000 entries surviving and 6–322 kWh of totals lost. The amount varies strongly between
-executions (an earlier development run lost ~3,500 entries per trial) because it depends on how threads
-interleave — which is exactly why the race cannot be "tested away". With the adapter (T12): 8,001/8,001
+5,897–6,339 of 8,000 entries surviving and 850–2,889 kWh of totals lost. The amount varies strongly
+between executions — development runs ranged from about 3,500 lost entries per trial down to 11 —
+because it depends on how threads interleave. That is exactly why the race cannot be "tested away". With the adapter (T12): 8,001/8,001
 entries, all totals exact, in every run.
 
 ### H2 — Deadlock (demonstrated separately, prevented in production)
@@ -146,7 +150,7 @@ See §6.
 Two forms: (a) visitors overtaken forever by a stream of higher-priority requests — addressed by aging
 (T16); (b) a large (fast) request overtaken forever by smaller backfilled requests — aging cannot help a
 P1 request, so the starvation guard bounds it (T17, T24, T25). Limitation: bays, not power, are usually the
-binding constraint for this workload, so backfill is rare (4 backfills in a 200-request run) and the
+binding constraint for this workload, so backfill is rare (6 backfills in a 200-request run) and the
 guard activated in only 1 of 12 benchmark runs; its behaviour is primarily evidenced by the
 deterministic test T17.
 
@@ -448,9 +452,10 @@ flowchart LR
 
 - Sessions are not pre-empted; a running low-priority session keeps its bay (H4).
 - Billing failure has no retry (A-07); failed sessions are reported, not re-billed.
-- Timing uses timed waits on a scaled clock; every session overruns its nominal length by ~3.2–3.9
-  sim-min (ms) on the test machine (`avg_overrun_sim_min` in the benchmark CSV), equally across
-  configurations.
+- Timing uses timed waits on a scaled clock, so every session overruns its nominal length slightly.
+  In the final benchmark runs the average overrun per run was 6.4–7.3 sim-min (ms)
+  (`avg_overrun_sim_min` in `evidence/benchmark-runs.csv`). It grows with host load and is slightly
+  higher with more threads.
 - The starvation guard rarely activates under the evaluated benchmark workload. It is verified by a
   policy test with an explicit clock (T17, T25) and by an integrated station test that forces the
   situation (T24).

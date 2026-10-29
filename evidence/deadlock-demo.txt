@@ -7,15 +7,15 @@
 DETECTED: no progress within 2000 ms timeout; 5 of 5 threads still blocked
 Thread dump of demo threads:
   "std-1" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
   "std-2" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
   "std-3" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
   "std-4" state=WAITING waitingOn=java.util.concurrent.locks.ReentrantLock$NonfairSync@2ff4acd0 owner=fast-1
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:71)
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$0(DeadlockDemo.java:83)
   "fast-1" state=WAITING waitingOn=java.util.concurrent.Semaphore$FairSync@5caf905d owner=null
-      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$1(DeadlockDemo.java:91)
+      at app//smartcharge.demo.DeadlockDemo.lambda$runDeadlockProne$1(DeadlockDemo.java:103)
 Resource-allocation graph (holds: resource -> thread, requests: thread -> resource):
   bay permits x4 -> std-1, std-2, std-3, std-4      (all permits held)
   power ledger   -> fast-1                          (lock held)
@@ -32,11 +32,11 @@ RESULT deadlock-prone variant: DEADLOCKED (threads never finished)
 [std-3] allocated bay + 7 kW atomically (holds both, waits for nothing)
 [std-4] allocated bay + 7 kW atomically (holds both, waits for nothing)
 [fast-1] allocation refused (no free bay) - holding NOTHING, will retry
-[std-3] charging done, released bay + 7 kW
 [std-4] charging done, released bay + 7 kW
+[std-3] charging done, released bay + 7 kW
 [std-1] charging done, released bay + 7 kW
-[fast-1] allocated bay + 22 kW after 9 refused attempt(s)
 [std-2] charging done, released bay + 7 kW
+[fast-1] allocated bay + 22 kW after 8 refused attempt(s)
 Finished=true, final reserved=0 kW, active bays=0, peak reserved=29 kW, peak bays=4
 Why no deadlock: tryAcquire() never blocks while the power lock is held, and a refused request
   keeps nothing, so hold-and-wait and circular wait cannot occur.

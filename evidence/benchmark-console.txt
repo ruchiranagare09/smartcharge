@@ -1,38 +1,38 @@
 Build OK: out/main, out/test
 Benchmark: 200 requests, seed=42, fingerprint=b6cf65b335fdff82, scale=1.000 ms/sim-min, runs=3, java=17.0.16, cpus=12, assertions=true
 Warm-up run (pool-4, 40 requests) done and discarded
-run 1 pool-1             completion= 31799.2 sim-min ( 31799 ms) avgWait=12189.3 maxWait=24480.9 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
-run 1 pool-4             completion=  8095.7 sim-min (  8096 ms) avgWait=  610.8 maxWait= 1097.3 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
-run 1 pool-16            completion=  8088.5 sim-min (  8088 ms) avgWait=  613.2 maxWait= 1086.7 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
-run 1 thread-per-request completion=  8132.3 sim-min (  8132 ms) avgWait=  609.5 maxWait= 1089.5 peakPower=58 kW peakBays=4 completed=200 peakThreads=39 OK
-run 2 pool-1             completion= 31760.1 sim-min ( 31760 ms) avgWait=12167.6 maxWait=24448.2 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
-run 2 pool-4             completion=  8079.1 sim-min (  8079 ms) avgWait=  601.4 maxWait= 1084.6 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
-run 2 pool-16            completion=  8080.5 sim-min (  8081 ms) avgWait=  611.6 maxWait= 1091.9 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
-run 2 thread-per-request completion=  8088.0 sim-min (  8088 ms) avgWait=  611.0 maxWait= 1094.5 peakPower=58 kW peakBays=4 completed=200 peakThreads=39 OK
-run 3 pool-1             completion= 31809.4 sim-min ( 31809 ms) avgWait=12192.9 maxWait=24495.5 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
-run 3 pool-4             completion=  8095.3 sim-min (  8095 ms) avgWait=  610.2 maxWait= 1097.3 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
-run 3 pool-16            completion=  8070.5 sim-min (  8070 ms) avgWait=  602.3 maxWait= 1085.6 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
-run 3 thread-per-request completion=  8083.5 sim-min (  8084 ms) avgWait=  606.0 maxWait= 1086.6 peakPower=58 kW peakBays=4 completed=200 peakThreads=39 OK
+run 1 pool-1             completion= 32484.0 sim-min ( 32484 ms) avgWait=12550.8 maxWait=25162.7 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
+run 1 pool-4             completion=  8238.4 sim-min (  8238 ms) avgWait=  680.7 maxWait= 1191.1 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
+run 1 pool-16            completion=  8243.8 sim-min (  8244 ms) avgWait=  682.4 maxWait= 1194.8 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
+run 1 thread-per-request completion=  8259.6 sim-min (  8260 ms) avgWait=  695.5 maxWait= 1257.0 peakPower=58 kW peakBays=4 completed=200 peakThreads=41 OK
+run 2 pool-1             completion= 32401.4 sim-min ( 32401 ms) avgWait=12488.1 maxWait=25082.1 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
+run 2 pool-4             completion=  8252.5 sim-min (  8253 ms) avgWait=  681.2 maxWait= 1184.1 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
+run 2 pool-16            completion=  8258.4 sim-min (  8258 ms) avgWait=  692.7 maxWait= 1205.9 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
+run 2 thread-per-request completion=  8254.8 sim-min (  8255 ms) avgWait=  690.8 maxWait= 1250.3 peakPower=58 kW peakBays=4 completed=200 peakThreads=42 OK
+run 3 pool-1             completion= 32360.7 sim-min ( 32361 ms) avgWait=12435.7 maxWait=25031.6 peakPower=22 kW peakBays=1 completed=200 peakThreads=8 OK
+run 3 pool-4             completion=  8248.2 sim-min (  8248 ms) avgWait=  680.9 maxWait= 1180.2 peakPower=58 kW peakBays=4 completed=200 peakThreads=11 OK
+run 3 pool-16            completion=  8258.4 sim-min (  8258 ms) avgWait=  689.0 maxWait= 1205.7 peakPower=58 kW peakBays=4 completed=200 peakThreads=23 OK
+run 3 thread-per-request completion=  8270.5 sim-min (  8270 ms) avgWait=  697.0 maxWait= 1246.1 peakPower=58 kW peakBays=4 completed=200 peakThreads=42 OK
 
 # Benchmark summary (median of 3 runs per configuration)
 
-Workload: 200 requests, seed 42, fingerprint `b6cf65b335fdff82`; time scale 1.000 ms per simulated minute; Java 17.0.16; 12 logical CPUs; generated 2026-10-29T21:52:53.310786.
+Workload: 200 requests, seed 42, fingerprint `b6cf65b335fdff82`; time scale 1.000 ms per simulated minute; Java 17.0.16; 12 logical CPUs; generated 2026-10-29T22:35:59.217894.
 
 | Configuration | Total completion (sim-h) | Total completion (real s) | Avg wait (sim-min) | Max wait (sim-min) | Peak reserved (kW) | Peak bays | Completed | Avg wait P1 / P2 / P3 (sim-min) | Peak live threads | Guard activations | Avg session overrun (sim-min) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| pool-1 | 530.0 | 31.80 | 12189.3 | 24480.9 | 22 (max 22) | 1 | 200 | 10253 / 12242 / 12843 | 8 | 0 | 3.588 |
-| pool-4 | 134.9 | 8.10 | 610.2 | 1097.3 | 58 (max 58) | 4 | 200 | 539 / 606 / 637 | 11 | 0 | 3.643 |
-| pool-16 | 134.7 | 8.08 | 611.6 | 1086.7 | 58 (max 58) | 4 | 200 | 535 / 611 / 639 | 23 | 0 | 3.538 |
-| thread-per-request | 134.8 | 8.09 | 609.5 | 1089.5 | 58 (max 58) | 4 | 200 | 541 / 600 / 638 | 39 | 0 | 3.418 |
+| pool-1 | 540.0 | 32.40 | 12488.1 | 25082.1 | 22 (max 22) | 1 | 200 | 10505 / 12541 / 13157 | 8 | 0 | 6.619 |
+| pool-4 | 137.5 | 8.25 | 680.9 | 1184.1 | 58 (max 58) | 4 | 200 | 600 / 677 / 713 | 11 | 0 | 6.515 |
+| pool-16 | 137.6 | 8.26 | 689.0 | 1205.7 | 58 (max 58) | 4 | 200 | 600 / 683 / 724 | 23 | 0 | 6.822 |
+| thread-per-request | 137.7 | 8.26 | 695.5 | 1250.3 | 58 (max 58) | 4 | 200 | 620 / 698 / 723 | 42 | 0 | 6.961 |
 
 Per-run spread (min - max):
 
-- pool-1: completion 529.3 - 530.2 sim-h, avg wait 12167.6 - 12192.9 sim-min, max wait 24448.2 - 24495.5 sim-min
-- pool-4: completion 134.7 - 134.9 sim-h, avg wait 601.4 - 610.8 sim-min, max wait 1084.6 - 1097.3 sim-min
-- pool-16: completion 134.5 - 134.8 sim-h, avg wait 602.3 - 613.2 sim-min, max wait 1085.6 - 1091.9 sim-min
-- thread-per-request: completion 134.7 - 135.5 sim-h, avg wait 606.0 - 611.0 sim-min, max wait 1086.6 - 1094.5 sim-min
+- pool-1: completion 539.3 - 541.4 sim-h, avg wait 12435.7 - 12550.8 sim-min, max wait 25031.6 - 25162.7 sim-min
+- pool-4: completion 137.3 - 137.5 sim-h, avg wait 680.7 - 681.2 sim-min, max wait 1180.2 - 1191.1 sim-min
+- pool-16: completion 137.4 - 137.6 sim-h, avg wait 682.4 - 692.7 sim-min, max wait 1194.8 - 1205.9 sim-min
+- thread-per-request: completion 137.6 - 137.8 sim-h, avg wait 690.8 - 697.0 sim-min, max wait 1246.1 - 1257.0 sim-min
 
 Constraint check across all 12 runs (peak bays <= 4, peak power <= 60 kW, all requests billed, billing reconciled, identical workload fingerprint): **PASSED**
 
-Raw runs: results/benchmark-runs-20261029-215253.csv
-Summary:  results/benchmark-summary-20261029-215253.md
+Raw runs: results/benchmark-runs-20261029-223559.csv
+Summary:  results/benchmark-summary-20261029-223559.md

@@ -27,10 +27,22 @@ src/main/java/smartcharge/
   app/       Main (normal run), BenchmarkRunner, RunMetrics
   demo/      DeadlockDemo (separate; never used by the station)
 src/test/java/smartcharge/tests/   TestRunner, SmartChargeTests
-scripts/   build.sh, run.sh, test.sh, deadlock-demo.sh, benchmark.sh
+scripts/   build.sh, run.sh, test.sh, deadlock-demo.sh, benchmark.sh, set-author.sh
 docs/      requirements.md, design.md, testing.md, benchmark.md
+docs/diagrams/  UML models as Mermaid sources (.mmd) and rendered PNGs
 evidence/  committed outputs from real runs (logs, test report, deadlock dump, benchmark data, git log)
 ```
+
+## Before submission: author header
+
+Every Java file starts with a `Name` / `Student ID` header, as the submission rules require. The
+header ships with placeholders. Fill them in once:
+
+```sh
+./scripts/set-author.sh "Full Name" "StudentID"
+```
+
+The script fails if any placeholder remains.
 
 ## Build
 
@@ -94,7 +106,7 @@ Manual equivalent: `java -ea -cp out/main:out/test smartcharge.tests.TestRunner 
 
 - **Output:** a console summary, plus `results/test-results.md` (ID, input, expected, observed,
   result and log excerpts) and `results/test-logs/<ID>.txt` (the full thread-named log per test).
-- **Run time:** about 3 s.
+- **Run time:** about 3 s (24 tests plus 1 observation).
 - **Exit code:** 0 only if every test passes.
 
 ## Deadlock demonstration
@@ -160,3 +172,23 @@ Manual equivalent: `java -ea -cp out/main smartcharge.app.BenchmarkRunner --out 
 | Time scale | 1 simulated minute = 1 ms | `TimeScale.DEFAULT` |
 | Aging step / starvation guard | 30 / 30 simulated minutes | `ChargingStation.Config` |
 | Workload | 200 requests, seed 42 | `WorkloadGenerator` |
+
+## Scheduling policy (as implemented)
+
+1. **Order.** Pending requests are ordered by effective priority (1 is highest), then by arrival
+   order (FIFO).
+2. **Aging.** Effective priority = base priority − 1 for every 30 simulated minutes waited, never
+   above 1.
+3. **Start condition.** A request starts only if a bay and its full 7 or 22 kW can be reserved
+   together, atomically.
+4. **Backfill.** If the front request cannot start, the first later request that can start does.
+5. **Starvation guard.** When the front request was first overtaken by a backfill at least 30
+   simulated minutes ago, nothing else starts until it starts. Running sessions finish normally and
+   free the power it needs. The clock is kept per request, so aging cannot reset it.
+
+Details and evidence: `docs/design.md` §4, tests T16, T17, T24 and T25.
+
+## Versions
+
+The submitted version is the **most recent tag**, shown by `git describe --tags --abbrev=0`. Earlier
+tags mark earlier snapshots of the same history.

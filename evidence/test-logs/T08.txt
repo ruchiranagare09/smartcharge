@@ -1,11 +1,11 @@
-21:53:38.228 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
-21:53:38.228 [test-main] QUEUED BLK(P2,STANDARD,7.0kWh) account=ACC-BLK seq=1
-21:53:38.228 [worker-1] START BLK(P2,STANDARD,7.0kWh) bay+7 kW waited=0.0 sim-min [bays 1/4, 7/60 kW]
-21:53:38.229 [test-main] QUEUED R2(P1,STANDARD,7.0kWh) account=ACC-R2 seq=2
-21:53:38.229 [test-main] CANCELLED R2(P1,STANDARD,7.0kWh) while queued
-21:53:38.229 [test-main] SHUTDOWN requested (GRACEFUL)
-21:53:38.291 [worker-1] COMPLETED BLK(P2,STANDARD,7.0kWh) after 62.3 sim-min
-21:53:38.291 [worker-1] BILLED BLK account=ACC-BLK 7.0 kWh
-21:53:38.291 [worker-1] RELEASED BLK bay-7 kW [bays 0/4, 0/60 kW]
-21:53:38.292 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
+22:32:58.025 [test-main] Station started: mode=pool-1 bays=4 power=60 kW aging=30 min guard=30 min scale=1.000 ms/sim-min
+22:32:58.025 [test-main] QUEUED BLK(P2,STANDARD,7.0kWh) account=ACC-BLK seq=1
+22:32:58.025 [test-main] QUEUED R2(P1,STANDARD,7.0kWh) account=ACC-R2 seq=2
+22:32:58.025 [worker-1] START BLK(P2,STANDARD,7.0kWh) bay+7 kW waited=0.0 sim-min [bays 1/4, 7/60 kW]
+22:32:58.025 [test-main] CANCELLED R2(P1,STANDARD,7.0kWh) while queued
+22:32:58.026 [test-main] SHUTDOWN requested (GRACEFUL)
+22:32:58.087 [worker-1] COMPLETED BLK(P2,STANDARD,7.0kWh) after 61.9 sim-min
+22:32:58.087 [worker-1] BILLED BLK account=ACC-BLK 7.0 kWh
+22:32:58.087 [worker-1] RELEASED BLK bay-7 kW [bays 0/4, 0/60 kW]
+22:32:58.088 [test-main] SHUTDOWN complete: threadsTerminated=true reservedKw=0 activeBays=0
 BILLING billedSessions=1 legacyEntries=1 cancelled=1 cancelledBilled=false totalsMatch=true duplicatesIgnored=0 billingFailures=0 => RECONCILED
