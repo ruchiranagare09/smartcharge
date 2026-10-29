@@ -1,3 +1,15 @@
+# Output of: git log --oneline --graph --all  (captured just before the commit that adds this file)
+* 2a843dd Add clean-checkout benchmark dataset and verification transcript; report both datasets
+*   2b87dcd Merge fix/audit-gaps: per-request guard clock, contract-violation and guard tests, author headers, citations, completed models
+|\  
+| * 3850672 Regenerate evidence on final code; add measurable NFR targets, quality rationale, brief page references and README policy/author sections
+| * 63bd76e Complete UML models: Allocator/Config/enums in class diagram, cancel and billing-failure paths in sequence, include stereotype; trace contract violations to tests
+| * e1e1c9a Cite deadlock theory and Java API sources in code comments
+| * 76dc652 Add name and student ID header to every Java file with a script to fill it in
+| * 8f88554 Add contract-violation, integrated starvation-guard and guard-clock tests; loosen timing thresholds
+| * 07aeafe Keep starvation-guard clock per request so aging cannot reset a blocked request's timer
+|/  
+* 55e3fa7 Refresh git history graph in evidence
 * de7c554 Export UML diagrams as Mermaid sources and rendered PNGs
 * aea9086 Add use case diagram and trace each design contract to its model elements
 * ba18356 Add git history graph to evidence
