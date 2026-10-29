@@ -1,4 +1,12 @@
 # Output of: git log --oneline --graph --all  (captured just before the commit that adds this file)
+* 679327d Re-verify README javac/java commands from a clean checkout
+* a7f0c56 Note header commits in legacy-isolation requirement
+* 7300ac5 Fill in name and student ID header in all source files
+*   a289a25 Merge chore/remove-scripts: README uses plain javac/java commands
+|\  
+| * 573dec4 Remove helper scripts from the repository and document plain javac/java commands in the README
+|/  
+* 6c19273 Refresh git history graph in evidence
 * 2a843dd Add clean-checkout benchmark dataset and verification transcript; report both datasets
 *   2b87dcd Merge fix/audit-gaps: per-request guard clock, contract-violation and guard tests, author headers, citations, completed models
 |\  
