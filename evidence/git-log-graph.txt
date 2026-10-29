@@ -1,0 +1,38 @@
+* 8e13de8 Report both benchmark datasets and explain the small pool-4 advantage via session overrun
+* 78781c5 Add clean-checkout verification transcript and second benchmark dataset
+* 182c3c0 Add evidence from real runs: normal-run logs, test report, deadlock dump, benchmark data
+* 3ef3723 Document requirements, traceability, design, concurrency analysis, testing and benchmark results
+* 1bd4515 Write README with build, run, test, deadlock-demo and benchmark instructions
+* 949599d Add run and deadlock-demo scripts that save logs and propagate exit codes
+*   9bee973 Merge fix/guard-consistency: thread-count-independent starvation guard
+|\  
+| * fda9af4 Record guard activations and session overrun in benchmark output to expose measurement bias
+| * 3507b51 Start starvation-guard clock at first backfill overtake so the policy is identical across pool sizes
+|/  
+*   8979a0a Merge feature/benchmark: worker-pool throughput and latency experiment
+|\  
+| * 0913b2e Add worker-pool benchmark: 4 configurations, interleaved repeated runs, median summary
+|/  
+*   50a6f0f Merge feature/test-suite: 19 executable test cases plus legacy-billing observation
+|\  
+| * 95c9797 Add consolidated normal, edge, billing, scheduling and deadlock test cases
+| * 986cf2e Add dependency-free test runner with per-test log capture and markdown report
+|/  
+*   a813fb7 Merge feature/deadlock-demo: reproducible deadlock and corrected allocator evidence
+|\  
+| * 50ca14e Add separate deadlock demo with forced interleaving, watchdog detection and corrected variant
+|/  
+*   cf27d76 Merge feature/scheduler: scheduler, station controller, workload and normal run
+|\  
+| * 6c3f3d5 Add normal-run entrypoint with status monitor, run metrics and billing reconciliation
+| * 6419f2f Add seeded workload generator, fingerprint and intake replay driver
+| * 9596e18 Add station controller with worker pool, thread-per-request mode, cancellation and shutdown
+| * c3962cf Add priority scheduler with FIFO lanes, aging, backfill and starvation guard
+|/  
+*   f553a65 Merge feature/core-domain: domain model, validation, billing adapter, resources
+|\  
+| * 84534d1 Add atomic bay and power allocation with fixed lock order
+| * 2442271 Add legacy billing stand-in and lock-guarded exactly-once billing adapter
+| * 5680558 Add request model, session lifecycle and intake validation
+|/  
+* 91ceca8 Add project scaffold: .gitignore and README stub
