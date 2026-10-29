@@ -13,7 +13,7 @@
 | Statistic | median of the 3 runs; per-run min–max also reported |
 | Policy | identical in every configuration: aging 30 sim-min, starvation guard 30 sim-min, backfill |
 | Host | Java 17.0.16, 12 logical CPUs (macOS); assertions on |
-| Command | `./scripts/benchmark.sh` |
+| Command | `java -ea -cp out/main smartcharge.app.BenchmarkRunner --out results` |
 
 **Metric definitions** (`app/RunMetrics.java`), used identically in every run:
 

@@ -121,7 +121,7 @@ in A-06. Any description of the policy, including the report, should use the FR-
 | NFR-06 | `CountDownLatch` cancel signal, `ChargingStation.shutdown` | T09, T10 |
 | NFR-07 | `BillingAdapter` | T08–T15, every reconciled run |
 | NFR-08 | `WorkloadGenerator.fingerprint` | benchmark output |
-| NFR-09 | `scripts/*.sh`, README | `evidence/clean-checkout-verification.txt` |
+| NFR-09 | README compile and run commands | `evidence/clean-checkout-verification.txt` |
 | NFR-10 | `core/Log`, `TestRunner` log capture | `evidence/normal-run-*.txt`, `evidence/test-logs/` |
 | NFR-11 | assertions, exceptions, `TestRunner` `-ea` guard | T21–T23, test report header |
 | NFR-12 | `billing/LegacyBillingService`, `BillingAdapter` | git history, T12, T13 |
