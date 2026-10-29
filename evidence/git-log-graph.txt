@@ -1,4 +1,6 @@
 # Output of: git log --oneline --graph --all  (captured just before the commit that adds this file)
+* 466a166 docs: remove duplicate console output from evidence
+* d2f1fe9 docs: update git history graph
 * 5e0e6b7 docs: rename evidence files to verification and benchmark runs A/B
 * b16dd32 Refresh git history graph in evidence
 * 679327d Re-verify README javac/java commands from a clean checkout
