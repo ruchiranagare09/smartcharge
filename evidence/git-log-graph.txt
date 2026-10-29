@@ -1,4 +1,6 @@
 # Output of: git log --oneline --graph --all  (captured just before the commit that adds this file)
+* 5e0e6b7 docs: rename evidence files to verification and benchmark runs A/B
+* b16dd32 Refresh git history graph in evidence
 * 679327d Re-verify README javac/java commands from a clean checkout
 * a7f0c56 Note header commits in legacy-isolation requirement
 * 7300ac5 Fill in name and student ID header in all source files
