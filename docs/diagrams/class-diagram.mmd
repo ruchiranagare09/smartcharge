@@ -1,0 +1,73 @@
+classDiagram
+    class ChargingStation {
+      -Config config
+      -Map~String,ChargingSession~ sessions
+      -Set~String~ seenRequestIds
+      -ExecutorService workerPool
+      +start()
+      +submit(ChargingRequest) ChargingSession
+      +cancel(String) boolean
+      +shutdown(ShutdownMode, long, TimeUnit) boolean
+      +status() Status
+    }
+    class PriorityScheduler {
+      -ReentrantLock lock
+      -Condition workAvailable
+      -List~ArrayDeque~ lanes
+      -long agingStepNanos
+      -long starvationGuardNanos
+      +enqueue(ChargingRequest) ChargingSession
+      +awaitNext(Allocator) ChargingSession
+      +selectNext(long, Allocator) ChargingSession
+      +cancelQueued(ChargingSession, long) boolean
+      +close(boolean) List
+    }
+    class StationResources {
+      -Semaphore bays
+      -ReentrantLock powerLock
+      -int reservedKw
+      +tryAllocate(int) boolean
+      +wouldFit(int) boolean
+      +release(int)
+      +snapshot() Snapshot
+    }
+    class ChargingSession {
+      -SessionState state
+      -long sequence
+      -long arrivalNanos
+      -CountDownLatch cancelSignal
+      +markCharging(long, String)
+      +requestCancel() boolean
+      +finishCharging(long) SessionState
+      +markBilled()
+    }
+    class ChargingRequest {
+      <<record>>
+      requestId
+      accountId
+      priority
+      energyKwh
+      rate
+    }
+    class BillingAdapter {
+      -ReentrantLock lock
+      -Set~String~ billedRequestIds
+      +bill(ChargingSession) Result
+      +reconcile(Collection) Reconciliation
+    }
+    class LegacyBillingService {
+      +recordSession(String, double, long, long)
+      +getTotal(String) double
+      +getEntryCount() int
+    }
+    class RequestValidator {
+      +validate(ChargingRequest)
+    }
+    ChargingStation "1" *-- "1" PriorityScheduler
+    ChargingStation "1" o-- "1" StationResources
+    ChargingStation "1" o-- "1" BillingAdapter
+    ChargingStation "1" *-- "1" RequestValidator
+    ChargingStation "1" --> "0..*" ChargingSession : tracks
+    PriorityScheduler "1" --> "0..*" ChargingSession : queues
+    ChargingSession "*" --> "1" ChargingRequest
+    BillingAdapter "1" --> "1" LegacyBillingService : serialises

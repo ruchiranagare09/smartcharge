@@ -1,0 +1,28 @@
+flowchart LR
+    Driver["👤 Driver<br/>(fleet/emergency, staff, visitor)"]
+    Operator["👤 Station operator"]
+    Engineer["👤 Engineer"]
+    Billing["👤 Legacy billing system<br/>(secondary actor)"]
+
+    subgraph SmartCharge["SmartCharge system"]
+        UC1(["UC1 Submit charging request"])
+        UC2(["UC2 Cancel request"])
+        UC3(["UC3 Validate request"])
+        UC4(["UC4 Charge vehicle"])
+        UC5(["UC5 Record billing"])
+        UC6(["UC6 Start station"])
+        UC7(["UC7 View station status"])
+        UC8(["UC8 Shut down station"])
+        UC9(["UC9 Run tests / deadlock demo / benchmark"])
+    end
+
+    Driver --- UC1
+    Driver --- UC2
+    Operator --- UC6
+    Operator --- UC7
+    Operator --- UC8
+    UC9 --- Engineer
+    UC1 -. include .-> UC3
+    UC1 -. include .-> UC4
+    UC4 -. include .-> UC5
+    UC5 --- Billing

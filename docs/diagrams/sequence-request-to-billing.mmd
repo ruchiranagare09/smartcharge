@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant I as intake
+    participant St as ChargingStation
+    participant Sc as PriorityScheduler
+    participant W as worker-k
+    participant R as StationResources
+    participant B as BillingAdapter
+    participant L as LegacyBillingService
+    I->>St: submit(request)
+    St->>St: validate, duplicate check
+    St->>Sc: enqueue(request) [scheduler lock]
+    Sc-->>W: signal(workAvailable)
+    W->>Sc: awaitNext(allocator)
+    Sc->>R: tryAllocate(kW) [power lock, bays.tryAcquire]
+    R-->>Sc: true
+    Sc-->>W: session (CHARGING)
+    W->>W: awaitCancellation(duration)
+    W->>W: finishCharging() -> COMPLETED
+    W->>B: bill(session) [billing lock]
+    B->>L: recordSession(...)
+    B-->>W: BILLED
+    W->>R: release(kW) [finally]
+    W->>Sc: capacityReleased() -> signal

@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> QUEUED : submit() valid and unique
+    QUEUED --> CHARGING : selectNext() allocated bay + power
+    QUEUED --> CANCELLED : cancel() / IMMEDIATE shutdown
+    CHARGING --> COMPLETED : duration elapsed, no cancel requested
+    CHARGING --> CANCELLED : cancel() / IMMEDIATE shutdown / interrupt
+    COMPLETED --> BILLED : adapter recorded one entry
+    COMPLETED --> BILLING_FAILED : legacy threw
+    BILLED --> [*]
+    BILLING_FAILED --> [*]
+    CANCELLED --> [*]
