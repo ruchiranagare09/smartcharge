@@ -87,6 +87,7 @@ public final class ChargingStation {
     private final RequestValidator validator = new RequestValidator();
     private final Set<String> seenRequestIds = ConcurrentHashMap.newKeySet();
     private final Map<String, ChargingSession> sessions = new ConcurrentHashMap<>();
+    private final PriorityScheduler.Allocator allocator;
     private final List<Thread> requestThreads = Collections.synchronizedList(new ArrayList<>());
     private final AtomicInteger requestThreadCounter = new AtomicInteger();
     private final AtomicReference<Lifecycle> lifecycle = new AtomicReference<>(Lifecycle.NEW);
@@ -99,6 +100,17 @@ public final class ChargingStation {
         this.scheduler = new PriorityScheduler(
                 config.timeScale().simMinutesToNanos(config.agingStepSimMinutes()),
                 config.timeScale().simMinutesToNanos(config.starvationGuardSimMinutes()));
+        this.allocator = new PriorityScheduler.Allocator() {
+            @Override
+            public boolean tryAllocate(ChargingSession session) {
+                return resources.tryAllocate(session.request().rate().kw());
+            }
+
+            @Override
+            public boolean wouldFit(ChargingSession session) {
+                return resources.wouldFit(session.request().rate().kw());
+            }
+        };
     }
 
     public void start() {
@@ -257,7 +269,7 @@ public final class ChargingStation {
     private void workerLoop() {
         try {
             ChargingSession session;
-            while ((session = scheduler.awaitNext(this::allocate)) != null) {
+            while ((session = scheduler.awaitNext(allocator)) != null) {
                 runSession(session);
                 if (Thread.currentThread().isInterrupted()) {
                     break;
@@ -270,17 +282,13 @@ public final class ChargingStation {
 
     private void runOneSession() {
         try {
-            ChargingSession session = scheduler.awaitNext(this::allocate);
+            ChargingSession session = scheduler.awaitNext(allocator);
             if (session != null) {
                 runSession(session);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-    }
-
-    private boolean allocate(ChargingSession session) {
-        return resources.tryAllocate(session.request().rate().kw());
     }
 
     /**

@@ -142,17 +142,19 @@ public final class BenchmarkRunner {
                 System.getProperty("java.version"), Runtime.getRuntime().availableProcessors(),
                 LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)));
         sb.append("| Configuration | Total completion (sim-h) | Total completion (real s) | Avg wait (sim-min) | Max wait (sim-min) "
-                + "| Peak reserved (kW) | Peak bays | Completed | Avg wait P1 / P2 / P3 (sim-min) | Peak live threads |\n");
-        sb.append("|---|---|---|---|---|---|---|---|---|---|\n");
+                + "| Peak reserved (kW) | Peak bays | Completed | Avg wait P1 / P2 / P3 (sim-min) | Peak live threads "
+                + "| Guard activations | Avg session overrun (sim-min) |\n");
+        sb.append("|---|---|---|---|---|---|---|---|---|---|---|---|\n");
         for (Map.Entry<String, List<Row>> e : byConfig.entrySet()) {
             List<RunMetrics> ms = e.getValue().stream().map(Row::metrics).toList();
-            sb.append(String.format(Locale.ROOT, "| %s | %.1f | %.2f | %.1f | %.1f | %.0f (max %d) | %.0f | %.0f | %.0f / %.0f / %.0f | %.0f |%n",
+            sb.append(String.format(Locale.ROOT, "| %s | %.1f | %.2f | %.1f | %.1f | %.0f (max %d) | %.0f | %.0f | %.0f / %.0f / %.0f | %.0f | %.0f | %.3f |%n",
                     e.getKey(), median(ms, m -> m.completionSimMin() / 60.0), median(ms, m -> m.completionRealMs() / 1000.0),
                     median(ms, RunMetrics::avgWaitSimMin), median(ms, RunMetrics::maxWaitSimMin),
                     median(ms, RunMetrics::peakReservedKw), ms.stream().mapToInt(RunMetrics::peakReservedKw).max().orElse(0),
                     median(ms, RunMetrics::peakActiveBays), median(ms, RunMetrics::completed),
                     median(ms, RunMetrics::avgWaitP1), median(ms, RunMetrics::avgWaitP2), median(ms, RunMetrics::avgWaitP3),
-                    medianInt(e.getValue().stream().mapToInt(Row::peakThreads).toArray())));
+                    medianInt(e.getValue().stream().mapToInt(Row::peakThreads).toArray()),
+                    median(ms, RunMetrics::guardActivations), median(ms, RunMetrics::avgOverrunSimMin)));
         }
         sb.append("\nPer-run spread (min - max):\n\n");
         for (Map.Entry<String, List<Row>> e : byConfig.entrySet()) {
