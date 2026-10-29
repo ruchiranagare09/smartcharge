@@ -85,6 +85,16 @@ public final class StationResources {
         }
     }
 
+    /** True if a bay is free and kw more would stay within capacity. Reserves nothing. */
+    public boolean wouldFit(int kw) {
+        powerLock.lock();
+        try {
+            return reservedKw + kw <= powerCapacityKw && bays.availablePermits() > 0;
+        } finally {
+            powerLock.unlock();
+        }
+    }
+
     public Snapshot snapshot() {
         powerLock.lock();
         try {

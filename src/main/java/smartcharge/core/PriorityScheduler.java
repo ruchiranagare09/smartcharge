@@ -18,8 +18,9 @@ import smartcharge.model.Priority;
  * 2. Aging: effective priority = base level - one level per agingStep waited, never above 1.
  * 3. Backfill: if the front request cannot get a bay and its full power, start the first later
  *    request that can.
- * 4. Starvation guard: once the same front request has been blocked for starvationGuard, stop
- *    backfilling until it starts, so freed power accumulates for it.
+ * 4. Starvation guard: once the same front request has been overtaken by backfill for
+ *    starvationGuard (measured from the first overtake), stop backfilling until it starts, so
+ *    freed power accumulates for it.
  *
  * Lock order: scheduler lock -> StationResources power lock. Nothing acquires them the other way.
  */
@@ -29,6 +30,11 @@ public final class PriorityScheduler {
     @FunctionalInterface
     public interface Allocator {
         boolean tryAllocate(ChargingSession session);
+
+        /** Whether the session would fit right now, without reserving anything. */
+        default boolean wouldFit(ChargingSession session) {
+            return false;
+        }
     }
 
     private final ReentrantLock lock = new ReentrantLock();
@@ -125,7 +131,7 @@ public final class PriorityScheduler {
         lock.lock();
         try {
             MergedOrder order = new MergedOrder(nowNanos);
-            boolean front = true;
+            ChargingSession front = null;
             while (order.hasNext()) {
                 ChargingSession candidate = order.next();
                 if (allocator.tryAllocate(candidate)) {
@@ -134,26 +140,22 @@ public final class PriorityScheduler {
                     if (candidate == blockedHead) {
                         blockedHead = null;
                     }
-                    if (!front) {
-                        Log.info("BACKFILL %s starts ahead of blocked %s", candidate, blockedHead);
+                    if (front != null) {
+                        recordOvertake(front, nowNanos);
+                        Log.info("BACKFILL %s starts ahead of blocked %s", candidate, front);
                     }
                     return candidate;
                 }
-                if (front) {
-                    if (candidate != blockedHead) {
-                        blockedHead = candidate;
-                        blockedHeadSinceNanos = nowNanos;
-                        guardLogged = false;
-                    }
-                    if (nowNanos - blockedHeadSinceNanos >= starvationGuardNanos) {
-                        if (!guardLogged) {
+                if (front == null) {
+                    front = candidate;
+                    if (front == blockedHead && nowNanos - blockedHeadSinceNanos >= starvationGuardNanos) {
+                        if (!guardLogged && anyLaterWouldFit(order, allocator)) {
                             guardLogged = true;
                             guardActivations++;
-                            Log.info("STARVATION GUARD %s blocked too long; backfill paused until it starts", candidate);
+                            Log.info("STARVATION GUARD %s overtaken for too long; backfill paused until it starts", front);
                         }
                         return null;
                     }
-                    front = false;
                 }
             }
             return null;
@@ -236,6 +238,29 @@ public final class PriorityScheduler {
             return guardActivations;
         } finally {
             lock.unlock();
+        }
+    }
+
+    /** Counts a guard activation only when it actually stops a request that could have started. */
+    private static boolean anyLaterWouldFit(MergedOrder order, Allocator allocator) {
+        while (order.hasNext()) {
+            if (allocator.wouldFit(order.next())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * The guard clock starts at the first backfill past the current front request. Starting it
+     * at the first failed check instead would depend on how often idle threads poll, making the
+     * policy differ between pool sizes.
+     */
+    private void recordOvertake(ChargingSession front, long nowNanos) {
+        if (front != blockedHead) {
+            blockedHead = front;
+            blockedHeadSinceNanos = nowNanos;
+            guardLogged = false;
         }
     }
 
