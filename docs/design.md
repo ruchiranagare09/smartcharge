@@ -95,8 +95,8 @@ Overtakes only happen at release or arrival events, which every multi-worker con
 identically, so the policy is now thread-count independent. The activation counter also only counts
 when the guard actually stops a request that `wouldFit`. With the final code the guard activated
 once in each of 3 of the 24 benchmark runs:
-- 1 of 12 in `evidence/benchmark-runs.csv` (pool-16);
-- 2 of 12 in `evidence/benchmark-runs-clean-checkout.csv` (thread-per-request and pool-16).
+- 1 of 12 in `evidence/benchmark-runs-a.csv` (pool-16);
+- 2 of 12 in `evidence/benchmark-runs-b.csv` (thread-per-request and pool-16).
 
 The activations are spread across configurations rather than tied to thread count.
 
@@ -458,7 +458,7 @@ flowchart LR
 - Billing failure has no retry (A-07); failed sessions are reported, not re-billed.
 - Timing uses timed waits on a scaled clock, so every session overruns its nominal length slightly.
   In the final benchmark runs the average overrun per run was 6.4–7.3 sim-min (ms)
-  (`avg_overrun_sim_min` in `evidence/benchmark-runs.csv`). It grows with host load and is slightly
+  (`avg_overrun_sim_min` in `evidence/benchmark-runs-a.csv`). It grows with host load and is slightly
   higher with more threads.
 - The starvation guard rarely activates under the evaluated benchmark workload. It is verified by a
   policy test with an explicit clock (T17, T25) and by an integrated station test that forces the

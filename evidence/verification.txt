@@ -1,4 +1,4 @@
-# Clean-checkout verification (README commands, run exactly as written)
+# Verification: README commands run exactly as written on a fresh clone from GitHub
 Date: 2026-10-29 22:53:48 IST
 Clone: https://github.com/ruchiranagare09/smartcharge.git @ a7f0c56
 Host: Darwin arm64

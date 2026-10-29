@@ -31,7 +31,7 @@ Diagnostics also recorded for every run:
 
 ### Dataset A — final code, development checkout
 
-Source: `evidence/benchmark-summary.md`, `evidence/benchmark-runs.csv`, `evidence/benchmark-console.txt`.
+Source: `evidence/benchmark-summary-a.md`, `evidence/benchmark-runs-a.csv`, `evidence/benchmark-console.txt`.
 
 | Configuration | Total completion (sim-h) | Total completion (real s) | Avg wait (sim-min) | Max wait (sim-min) | Peak reserved (kW) | Peak bays | Completed | Peak live threads | Avg overrun (sim-min) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -44,12 +44,12 @@ Source: `evidence/benchmark-summary.md`, `evidence/benchmark-runs.csv`, `evidenc
 - **Guard activations:** 1 run of 12 (pool-16, run 2).
 - **Constraint check:** **PASSED**.
 
-### Dataset B — clean checkout from GitHub
+### Dataset B — fresh clone from GitHub
 
-Source: `evidence/benchmark-summary-clean-checkout.md`, `evidence/benchmark-runs-clean-checkout.csv`.
+Source: `evidence/benchmark-summary-b.md`, `evidence/benchmark-runs-b.csv`.
 This invocation ran on a fresh clone of commit `2b87dcd`, which has the same Java code as the final
 version (later commits changed only documentation, helper-script removal and the name / ID header
-comment). The final README verification (`evidence/clean-checkout-verification.txt`, commit `a7f0c56`)
+comment). The final README verification (`evidence/verification.txt`, commit `a7f0c56`)
 ran the same command once more, and all 12 runs again passed the constraint check.
 
 | Configuration | Total completion (sim-h) | Total completion (real s) | Avg wait (sim-min) | Max wait (sim-min) | Peak reserved (kW) | Peak bays | Completed | Peak live threads | Avg overrun (sim-min) |
