@@ -179,16 +179,31 @@ The corrected variant with the same threads and interleaving completes (T20).
 
 ## 7. Design contracts (as enforced in code)
 
-| # | Operation | Preconditions | Postconditions | Invariant | Enforcement | Req | Tests |
-|---|---|---|---|---|---|---|---|
-| C1 | `StationResources.tryAllocate(kw)` | kw > 0 | true ⇒ reservedKw′ = reservedKw + kw ∧ activeBays′ = activeBays + 1; false ⇒ no change | 0 ≤ reservedKw ≤ 60 ∧ 0 ≤ activeBays ≤ 4 | `IllegalArgumentException`; power lock; `assert invariantHolds()` | FR-09, FR-10, NFR-01 | T03, T06, T07, T18, T20 |
-| C2 | `StationResources.release(kw)` | a matching allocation of kw is held | reservedKw′ = reservedKw − kw ∧ activeBays′ = activeBays − 1 | as C1 | `IllegalStateException` on unmatched release; `assert` | FR-17 | T09, T10, T14 |
-| C3 | `BillingAdapter.bill(s)` | s is COMPLETED, or s was already billed | first call: exactly one new legacy entry and s is BILLED, or no entry and s is BILLING_FAILED; later calls: no entry (DUPLICATE_IGNORED) | legacy entries = number of BILLED sessions | billing lock; `IllegalStateException`; `assert` entry count grew by 1 | FR-13, FR-14, FR-16 | T12, T14, T15 |
-| C4 | `PriorityScheduler.selectNext(now, alloc)` | caller may hold the scheduler lock (re-entrant) | returns null, or a session that is removed from the queue and whose allocation succeeded; no queued session ahead of it in (effective priority, sequence) order could start, unless the guard blocks backfill | pending = Σ lane sizes | scheduler lock; ordering by `MergedOrder` | FR-05–FR-08 | T04, T16, T17 |
-| C5 | `ChargingSession` transitions | current state matches the transition's source state | state follows the state machine in §8 | terminal states never change | `synchronized`; `IllegalStateException` | FR-12, FR-14 | T08–T11 |
-| C6 | `ChargingStation.shutdown(mode)` | station RUNNING | all station threads terminated ∧ reservedKw = 0 ∧ activeBays = 0 ∧ no session QUEUED/CHARGING | — | lifecycle CAS; `assert` after termination | FR-19 | T10, T11 |
+| # | Operation | Preconditions | Postconditions | Invariant |
+|---|---|---|---|---|
+| C1 | `StationResources.tryAllocate(kw)` | kw > 0 | true ⇒ reservedKw′ = reservedKw + kw ∧ activeBays′ = activeBays + 1; false ⇒ no change | 0 ≤ reservedKw ≤ 60 ∧ 0 ≤ activeBays ≤ 4 |
+| C2 | `StationResources.release(kw)` | a matching allocation of kw is held | reservedKw′ = reservedKw − kw ∧ activeBays′ = activeBays − 1 | as C1 |
+| C3 | `BillingAdapter.bill(s)` | s is COMPLETED, or s was already billed | first call: exactly one new legacy entry and s is BILLED, or no entry and s is BILLING_FAILED; later calls: no entry (DUPLICATE_IGNORED) | legacy entries = number of BILLED sessions |
+| C4 | `PriorityScheduler.selectNext(now, alloc)` | caller may already hold the scheduler lock (it is re-entrant) | returns null, or a session that has been removed from the queue and whose allocation succeeded; no queued session ahead of it in (effective priority, sequence) order could start, unless the guard blocks backfill | pending = Σ lane sizes |
+| C5 | `ChargingSession` transitions | current state matches the transition's source state | state follows the state machine in §8 | terminal states never change |
+| C6 | `ChargingStation.shutdown(mode)` | station RUNNING | all station threads terminated ∧ reservedKw = 0 ∧ activeBays = 0 ∧ no session QUEUED/CHARGING | — |
+
+**Traceability** (requirement → model element → enforcement → test):
+
+| # | Requirements | Model elements (§8) | Code enforcement | Tests / evidence |
+|---|---|---|---|---|
+| C1 | FR-09, FR-10, NFR-01 | Class: `StationResources.tryAllocate`; Sequence: `tryAllocate(kW) [power lock, bays.tryAcquire]`; State: QUEUED → CHARGING; Use case: UC4 | `IllegalArgumentException`; power lock; non-blocking `bays.tryAcquire()`; `assert invariantHolds()` | T03, T06, T07, T18, T20; benchmark peaks ≤ 4 bays / 58 kW |
+| C2 | FR-17 | Class: `StationResources.release`; Sequence: `release(kW) [finally]`; State: leaving COMPLETED / BILLED / BILLING_FAILED / CANCELLED after CHARGING; Use case: UC4 | `IllegalStateException` on unmatched release; `assert invariantHolds()`; called only from the `finally` in `runSession` | T09, T10, T14 |
+| C3 | FR-13, FR-14, FR-16, NFR-08 | Class: `BillingAdapter.bill` → `LegacyBillingService`; Sequence: `bill(session)`, `recordSession(...)`; State: COMPLETED → BILLED / BILLING_FAILED; Use case: UC5 | billing lock; `billedRequestIds` set; `IllegalStateException` if not COMPLETED; `assert` entry count grew by exactly 1 | T12, T14, T15; T13 for contrast |
+| C4 | FR-05–FR-08 | Class: `PriorityScheduler.selectNext`, `awaitNext`; Sequence: `awaitNext(allocator)`; State: QUEUED → CHARGING; Use case: UC1 | scheduler lock; `MergedOrder` ordering; aging in `effectivePriority`; guard via `recordOvertake` | T04, T16, T17 |
+| C5 | FR-12, FR-14, FR-15 | Class: `ChargingSession`; State: the whole session state machine; Use cases: UC2, UC4 | `synchronized` transitions; `IllegalStateException` on an illegal source state | T08, T09, T10, T11 |
+| C6 | FR-19 | Class: `ChargingStation.shutdown`; State: QUEUED / CHARGING → CANCELLED (IMMEDIATE), → COMPLETED → BILLED (GRACEFUL); Use case: UC8 | lifecycle compare-and-set; executor `awaitTermination` / `join`; `assert` that resources are 0 after termination | T10, T11; `SHUTDOWN complete` lines in `evidence/normal-run-*.txt` |
 
 ## 8. Models (implementation-aligned)
+
+Four UML models follow: class, session state machine, sequence, and use case. Each is also exported to
+`docs/diagrams/` as Mermaid source (`.mmd`) and a rendered PNG, ready for documents that cannot render
+Mermaid. To regenerate the PNGs, run `mmdc -i <file>.mmd -o <file>.png` (Mermaid CLI).
 
 ### Class model
 
@@ -302,7 +317,7 @@ sequenceDiagram
     St->>St: validate, duplicate check
     St->>Sc: enqueue(request) [scheduler lock]
     Sc-->>W: signal(workAvailable)
-    W->>Sc: awaitNext(allocate)
+    W->>Sc: awaitNext(allocator)
     Sc->>R: tryAllocate(kW) [power lock, bays.tryAcquire]
     R-->>Sc: true
     Sc-->>W: session (CHARGING)
@@ -315,14 +330,53 @@ sequenceDiagram
     W->>Sc: capacityReleased() -> signal
 ```
 
-### Use cases
+### Use case model
 
-| Actor | Use case |
-|---|---|
-| Driver (fleet/emergency, staff, visitor) | Submit charging request; cancel request |
-| Station operator | Start station; view status; shut down (graceful / immediate) |
-| Legacy billing system | Record completed session |
-| Engineer | Run tests; run deadlock demo; run benchmark |
+Mermaid has no native use case notation, so actors are drawn as nodes outside the system boundary,
+use cases as rounded nodes inside it, and `include` relationships as dotted arrows.
+
+```mermaid
+flowchart LR
+    Driver["👤 Driver<br/>(fleet/emergency, staff, visitor)"]
+    Operator["👤 Station operator"]
+    Engineer["👤 Engineer"]
+    Billing["👤 Legacy billing system<br/>(secondary actor)"]
+
+    subgraph SmartCharge["SmartCharge system"]
+        UC1(["UC1 Submit charging request"])
+        UC2(["UC2 Cancel request"])
+        UC3(["UC3 Validate request"])
+        UC4(["UC4 Charge vehicle"])
+        UC5(["UC5 Record billing"])
+        UC6(["UC6 Start station"])
+        UC7(["UC7 View station status"])
+        UC8(["UC8 Shut down station"])
+        UC9(["UC9 Run tests / deadlock demo / benchmark"])
+    end
+
+    Driver --- UC1
+    Driver --- UC2
+    Operator --- UC6
+    Operator --- UC7
+    Operator --- UC8
+    UC9 --- Engineer
+    UC1 -. include .-> UC3
+    UC1 -. include .-> UC4
+    UC4 -. include .-> UC5
+    UC5 --- Billing
+```
+
+| ID | Use case | Primary actor | Main flow | Requirements |
+|---|---|---|---|---|
+| UC1 | Submit charging request | Driver | request validated (UC3), queued, scheduled, charged (UC4) | FR-01, FR-04–FR-11 |
+| UC2 | Cancel request | Driver | queued → CANCELLED, or charging → CANCELLED; never billed | FR-14, FR-15 |
+| UC3 | Validate request | (included) | reject invalid fields or duplicate ID | FR-02, FR-03 |
+| UC4 | Charge vehicle | (included) | bay + full power reserved, session runs, resources released | FR-09–FR-12, FR-17 |
+| UC5 | Record billing | Legacy billing system | exactly one entry per completed session via the adapter | FR-13, FR-14, FR-16, FR-20 |
+| UC6 | Start station | Station operator | worker pool created, intake opens | FR-11 |
+| UC7 | View station status | Station operator | periodic STATUS lines and final summary | FR-18 |
+| UC8 | Shut down station | Station operator | graceful or immediate; threads end, resources released | FR-19 |
+| UC9 | Run tests / deadlock demo / benchmark | Engineer | separate entry points, never the normal run path | FR-21–FR-23 |
 
 ## 9. Known limitations
 
