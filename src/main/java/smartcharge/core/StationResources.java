@@ -1,3 +1,8 @@
+/*
+ * SmartCharge - CO3408 Advanced Software Modelling
+ * Name: <STUDENT NAME>
+ * Student ID: <STUDENT ID>
+ */
 package smartcharge.core;
 
 import java.util.concurrent.Semaphore;
